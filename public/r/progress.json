@@ -1,8 +1,8 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "progress",
-  "title": "Shadcn Progress",
-  "description": "Proxy for shadcn/ui default progress component.",
+  "title": "Corti Progress",
+  "description": "Corti namespaced shadcn default progress component. Design opinion comes from installed Corti theme tokens.",
   "registryDependencies": [
     "https://ui.shadcn.com/r/styles/default/progress.json"
   ],

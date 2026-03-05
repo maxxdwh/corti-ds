@@ -1,8 +1,8 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "chart",
-  "title": "Shadcn Chart",
-  "description": "Proxy for shadcn/ui default chart component.",
+  "title": "Corti Chart",
+  "description": "Corti namespaced shadcn default chart component. Design opinion comes from installed Corti theme tokens.",
   "registryDependencies": [
     "https://ui.shadcn.com/r/styles/default/chart.json"
   ],

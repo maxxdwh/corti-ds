@@ -1,8 +1,8 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "context-menu",
-  "title": "Shadcn Context Menu",
-  "description": "Proxy for shadcn/ui default context-menu component.",
+  "title": "Corti Context Menu",
+  "description": "Corti namespaced shadcn default context-menu component. Design opinion comes from installed Corti theme tokens.",
   "registryDependencies": [
     "https://ui.shadcn.com/r/styles/default/context-menu.json"
   ],

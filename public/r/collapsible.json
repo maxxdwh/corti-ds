@@ -1,8 +1,8 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "collapsible",
-  "title": "Shadcn Collapsible",
-  "description": "Proxy for shadcn/ui default collapsible component.",
+  "title": "Corti Collapsible",
+  "description": "Corti namespaced shadcn default collapsible component. Design opinion comes from installed Corti theme tokens.",
   "registryDependencies": [
     "https://ui.shadcn.com/r/styles/default/collapsible.json"
   ],

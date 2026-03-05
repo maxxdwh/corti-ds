@@ -1,10 +1,17 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "button",
-  "title": "Shadcn Button",
-  "description": "Proxy for shadcn/ui default button component.",
+  "title": "Corti Button",
+  "description": "Corti namespaced button wrapper around shadcn default button.",
   "registryDependencies": [
     "https://ui.shadcn.com/r/styles/default/button.json"
+  ],
+  "files": [
+    {
+      "path": "registry/default/corti-button/corti-button.tsx",
+      "content": "import { type ButtonProps, Button } from \"@/components/ui/button\"\n\nexport type CortiButtonProps = ButtonProps\n\nexport function CortiButton({\n  ...props\n}: CortiButtonProps) {\n  return <Button data-slot=\"corti-button\" {...props} />\n}\n",
+      "type": "registry:ui"
+    }
   ],
   "type": "registry:ui"
 }

@@ -1,8 +1,8 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "select",
-  "title": "Shadcn Select",
-  "description": "Proxy for shadcn/ui default select component.",
+  "title": "Corti Select",
+  "description": "Corti namespaced shadcn default select component. Design opinion comes from installed Corti theme tokens.",
   "registryDependencies": [
     "https://ui.shadcn.com/r/styles/default/select.json"
   ],

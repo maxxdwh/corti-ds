@@ -1,8 +1,8 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "tooltip",
-  "title": "Shadcn Tooltip",
-  "description": "Proxy for shadcn/ui default tooltip component.",
+  "title": "Corti Tooltip",
+  "description": "Corti namespaced shadcn default tooltip component. Design opinion comes from installed Corti theme tokens.",
   "registryDependencies": [
     "https://ui.shadcn.com/r/styles/default/tooltip.json"
   ],

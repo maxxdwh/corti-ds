@@ -1,8 +1,8 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "pagination",
-  "title": "Shadcn Pagination",
-  "description": "Proxy for shadcn/ui default pagination component.",
+  "title": "Corti Pagination",
+  "description": "Corti namespaced shadcn default pagination component. Design opinion comes from installed Corti theme tokens.",
   "registryDependencies": [
     "https://ui.shadcn.com/r/styles/default/pagination.json"
   ],

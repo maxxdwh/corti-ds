@@ -1,8 +1,8 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "checkbox",
-  "title": "Shadcn Checkbox",
-  "description": "Proxy for shadcn/ui default checkbox component.",
+  "title": "Corti Checkbox",
+  "description": "Corti namespaced shadcn default checkbox component. Design opinion comes from installed Corti theme tokens.",
   "registryDependencies": [
     "https://ui.shadcn.com/r/styles/default/checkbox.json"
   ],

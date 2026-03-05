@@ -1,8 +1,8 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "aspect-ratio",
-  "title": "Shadcn Aspect Ratio",
-  "description": "Proxy for shadcn/ui default aspect-ratio component.",
+  "title": "Corti Aspect Ratio",
+  "description": "Corti namespaced shadcn default aspect-ratio component. Design opinion comes from installed Corti theme tokens.",
   "registryDependencies": [
     "https://ui.shadcn.com/r/styles/default/aspect-ratio.json"
   ],

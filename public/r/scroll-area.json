@@ -1,8 +1,8 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "scroll-area",
-  "title": "Shadcn Scroll Area",
-  "description": "Proxy for shadcn/ui default scroll-area component.",
+  "title": "Corti Scroll Area",
+  "description": "Corti namespaced shadcn default scroll-area component. Design opinion comes from installed Corti theme tokens.",
   "registryDependencies": [
     "https://ui.shadcn.com/r/styles/default/scroll-area.json"
   ],

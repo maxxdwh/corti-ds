@@ -1,8 +1,8 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "alert-dialog",
-  "title": "Shadcn Alert Dialog",
-  "description": "Proxy for shadcn/ui default alert-dialog component.",
+  "title": "Corti Alert Dialog",
+  "description": "Corti namespaced shadcn default alert-dialog component. Design opinion comes from installed Corti theme tokens.",
   "registryDependencies": [
     "https://ui.shadcn.com/r/styles/default/alert-dialog.json"
   ],

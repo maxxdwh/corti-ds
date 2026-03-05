@@ -1,6 +1,6 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
-  "name": "corti-theme-core",
+  "name": "theme-core",
   "title": "Corti Theme Core",
   "description": "Shared semantic variables used by Corti themes.",
   "cssVars": {

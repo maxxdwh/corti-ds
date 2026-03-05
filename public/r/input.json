@@ -1,8 +1,8 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "input",
-  "title": "Shadcn Input",
-  "description": "Proxy for shadcn/ui default input component.",
+  "title": "Corti Input",
+  "description": "Corti namespaced shadcn default input component. Design opinion comes from installed Corti theme tokens.",
   "registryDependencies": [
     "https://ui.shadcn.com/r/styles/default/input.json"
   ],

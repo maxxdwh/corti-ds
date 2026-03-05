@@ -1,8 +1,8 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "spinner",
-  "title": "Shadcn Spinner",
-  "description": "Proxy for shadcn/ui default spinner component.",
+  "title": "Corti Spinner",
+  "description": "Corti namespaced shadcn default spinner component. Design opinion comes from installed Corti theme tokens.",
   "registryDependencies": [
     "https://ui.shadcn.com/r/styles/default/spinner.json"
   ],

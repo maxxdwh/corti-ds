@@ -1,8 +1,8 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "switch",
-  "title": "Shadcn Switch",
-  "description": "Proxy for shadcn/ui default switch component.",
+  "title": "Corti Switch",
+  "description": "Corti namespaced shadcn default switch component. Design opinion comes from installed Corti theme tokens.",
   "registryDependencies": [
     "https://ui.shadcn.com/r/styles/default/switch.json"
   ],

@@ -1,8 +1,8 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "carousel",
-  "title": "Shadcn Carousel",
-  "description": "Proxy for shadcn/ui default carousel component.",
+  "title": "Corti Carousel",
+  "description": "Corti namespaced shadcn default carousel component. Design opinion comes from installed Corti theme tokens.",
   "registryDependencies": [
     "https://ui.shadcn.com/r/styles/default/carousel.json"
   ],

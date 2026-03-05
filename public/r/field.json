@@ -1,8 +1,8 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "field",
-  "title": "Shadcn Field",
-  "description": "Proxy for shadcn/ui default field component.",
+  "title": "Corti Field",
+  "description": "Corti namespaced shadcn default field component. Design opinion comes from installed Corti theme tokens.",
   "registryDependencies": [
     "https://ui.shadcn.com/r/styles/default/field.json"
   ],

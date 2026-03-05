@@ -1,6 +1,6 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
-  "name": "corti-activity-row",
+  "name": "activity-row",
   "title": "Corti Activity Row",
   "description": "A compact activity row with actor, action, status, and time.",
   "registryDependencies": [

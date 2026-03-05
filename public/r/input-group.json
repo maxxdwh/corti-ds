@@ -1,8 +1,8 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "input-group",
-  "title": "Shadcn Input Group",
-  "description": "Proxy for shadcn/ui default input-group component.",
+  "title": "Corti Input Group",
+  "description": "Corti namespaced shadcn default input-group component. Design opinion comes from installed Corti theme tokens.",
   "registryDependencies": [
     "https://ui.shadcn.com/r/styles/default/input-group.json"
   ],

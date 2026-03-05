@@ -1,10 +1,10 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
-  "name": "corti-theme-assistant",
+  "name": "theme-assistant",
   "title": "Corti Assistant Theme",
   "description": "Blue assistant light and dark themes.",
   "registryDependencies": [
-    "@corti/corti-theme-core"
+    "@corti/theme-core"
   ],
   "css": {
     "@layer base": {

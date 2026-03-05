@@ -1,8 +1,8 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "input-otp",
-  "title": "Shadcn Input Otp",
-  "description": "Proxy for shadcn/ui default input-otp component.",
+  "title": "Corti Input Otp",
+  "description": "Corti namespaced shadcn default input-otp component. Design opinion comes from installed Corti theme tokens.",
   "registryDependencies": [
     "https://ui.shadcn.com/r/styles/default/input-otp.json"
   ],

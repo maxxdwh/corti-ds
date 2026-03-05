@@ -1,6 +1,6 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
-  "name": "corti-section-header",
+  "name": "section-header",
   "title": "Corti Section Header",
   "description": "A section title with optional description and action button.",
   "registryDependencies": [

@@ -1,6 +1,6 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
-  "name": "corti-loading-panel",
+  "name": "loading-panel",
   "title": "Corti Loading Panel",
   "description": "A card-shaped loading placeholder for content areas.",
   "registryDependencies": [

@@ -1,8 +1,8 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "accordion",
-  "title": "Shadcn Accordion",
-  "description": "Proxy for shadcn/ui default accordion component.",
+  "title": "Corti Accordion",
+  "description": "Corti namespaced shadcn default accordion component. Design opinion comes from installed Corti theme tokens.",
   "registryDependencies": [
     "https://ui.shadcn.com/r/styles/default/accordion.json"
   ],

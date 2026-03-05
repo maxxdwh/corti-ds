@@ -1,10 +1,10 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
-  "name": "corti-theme-showcase",
+  "name": "theme-showcase",
   "title": "Corti Showcase Theme",
   "description": "Playful 90s 8-bit inspired showcase themes using IBM Plex Mono typography and square edges.",
   "registryDependencies": [
-    "@corti/corti-theme-core"
+    "@corti/theme-core"
   ],
   "css": {
     "@layer base": {

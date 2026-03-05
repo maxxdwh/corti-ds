@@ -1,13 +1,13 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
-  "name": "corti-theme-switcher",
+  "name": "theme-switcher",
   "title": "Corti Theme Switcher",
   "description": "A lightweight theme switcher for Corti data-theme values.",
   "registryDependencies": [
     "https://ui.shadcn.com/r/styles/default/select.json",
-    "@corti/corti-theme-console",
-    "@corti/corti-theme-assistant",
-    "@corti/corti-theme-showcase"
+    "@corti/theme-console",
+    "@corti/theme-assistant",
+    "@corti/theme-showcase"
   ],
   "files": [
     {

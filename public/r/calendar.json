@@ -1,8 +1,8 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "calendar",
-  "title": "Shadcn Calendar",
-  "description": "Proxy for shadcn/ui default calendar component.",
+  "title": "Corti Calendar",
+  "description": "Corti namespaced shadcn default calendar component. Design opinion comes from installed Corti theme tokens.",
   "registryDependencies": [
     "https://ui.shadcn.com/r/styles/default/calendar.json"
   ],

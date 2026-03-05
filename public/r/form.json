@@ -1,8 +1,8 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "form",
-  "title": "Shadcn Form",
-  "description": "Proxy for shadcn/ui default form component.",
+  "title": "Corti Form",
+  "description": "Corti namespaced shadcn default form component. Design opinion comes from installed Corti theme tokens.",
   "registryDependencies": [
     "https://ui.shadcn.com/r/styles/default/form.json"
   ],

@@ -1,8 +1,8 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "sonner",
-  "title": "Shadcn Sonner",
-  "description": "Proxy for shadcn/ui default sonner component.",
+  "title": "Corti Sonner",
+  "description": "Corti namespaced shadcn default sonner component. Design opinion comes from installed Corti theme tokens.",
   "registryDependencies": [
     "https://ui.shadcn.com/r/styles/default/sonner.json"
   ],

@@ -1,8 +1,8 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "resizable",
-  "title": "Shadcn Resizable",
-  "description": "Proxy for shadcn/ui default resizable component.",
+  "title": "Corti Resizable",
+  "description": "Corti namespaced shadcn default resizable component. Design opinion comes from installed Corti theme tokens.",
   "registryDependencies": [
     "https://ui.shadcn.com/r/styles/default/resizable.json"
   ],

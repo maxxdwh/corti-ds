@@ -1,8 +1,8 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "toggle-group",
-  "title": "Shadcn Toggle Group",
-  "description": "Proxy for shadcn/ui default toggle-group component.",
+  "title": "Corti Toggle Group",
+  "description": "Corti namespaced shadcn default toggle-group component. Design opinion comes from installed Corti theme tokens.",
   "registryDependencies": [
     "https://ui.shadcn.com/r/styles/default/toggle-group.json"
   ],

@@ -1,6 +1,6 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
-  "name": "corti-status-pill",
+  "name": "status-pill",
   "title": "Corti Status Pill",
   "description": "A status badge wrapper with semantic variants.",
   "registryDependencies": [

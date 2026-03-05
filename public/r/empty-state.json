@@ -1,6 +1,6 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
-  "name": "corti-empty-state",
+  "name": "empty-state",
   "title": "Corti Empty State",
   "description": "A compact empty-state card with optional actions.",
   "registryDependencies": [

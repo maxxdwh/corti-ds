@@ -1,8 +1,8 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "popover",
-  "title": "Shadcn Popover",
-  "description": "Proxy for shadcn/ui default popover component.",
+  "title": "Corti Popover",
+  "description": "Corti namespaced shadcn default popover component. Design opinion comes from installed Corti theme tokens.",
   "registryDependencies": [
     "https://ui.shadcn.com/r/styles/default/popover.json"
   ],

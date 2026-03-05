@@ -1,8 +1,8 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "separator",
-  "title": "Shadcn Separator",
-  "description": "Proxy for shadcn/ui default separator component.",
+  "title": "Corti Separator",
+  "description": "Corti namespaced shadcn default separator component. Design opinion comes from installed Corti theme tokens.",
   "registryDependencies": [
     "https://ui.shadcn.com/r/styles/default/separator.json"
   ],

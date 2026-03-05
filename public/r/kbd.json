@@ -1,8 +1,8 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "kbd",
-  "title": "Shadcn Kbd",
-  "description": "Proxy for shadcn/ui default kbd component.",
+  "title": "Corti Kbd",
+  "description": "Corti namespaced shadcn default kbd component. Design opinion comes from installed Corti theme tokens.",
   "registryDependencies": [
     "https://ui.shadcn.com/r/styles/default/kbd.json"
   ],

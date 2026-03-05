@@ -1,10 +1,10 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
-  "name": "corti-theme-console",
+  "name": "theme-console",
   "title": "Corti Console Theme",
   "description": "Monochrome console-inspired light and dark themes.",
   "registryDependencies": [
-    "@corti/corti-theme-core"
+    "@corti/theme-core"
   ],
   "css": {
     "@layer base": {

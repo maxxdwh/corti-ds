@@ -1,8 +1,8 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "label",
-  "title": "Shadcn Label",
-  "description": "Proxy for shadcn/ui default label component.",
+  "title": "Corti Label",
+  "description": "Corti namespaced shadcn default label component. Design opinion comes from installed Corti theme tokens.",
   "registryDependencies": [
     "https://ui.shadcn.com/r/styles/default/label.json"
   ],

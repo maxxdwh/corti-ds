@@ -1,8 +1,8 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "slider",
-  "title": "Shadcn Slider",
-  "description": "Proxy for shadcn/ui default slider component.",
+  "title": "Corti Slider",
+  "description": "Corti namespaced shadcn default slider component. Design opinion comes from installed Corti theme tokens.",
   "registryDependencies": [
     "https://ui.shadcn.com/r/styles/default/slider.json"
   ],
