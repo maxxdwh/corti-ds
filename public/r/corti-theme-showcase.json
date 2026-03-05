@@ -2,7 +2,7 @@
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "corti-theme-showcase",
   "title": "Corti Showcase Theme",
-  "description": "Playful 90s 8-bit inspired showcase themes using IBM Plex Mono and Press Start 2P headings.",
+  "description": "Playful 90s 8-bit inspired showcase themes using IBM Plex Mono typography and square edges.",
   "registryDependencies": [
     "@corti/corti-theme-core"
   ],
@@ -10,6 +10,7 @@
     "@layer base": {
       "html[data-theme=\"corti-showcase-light\"]": {
         "--font-sans": "\"IBM Plex Mono\", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace",
+        "--font-mono": "\"IBM Plex Mono\", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace",
         "--background": "hsl(73 100% 97%)",
         "--foreground": "hsl(229 35% 14%)",
         "--card": "hsl(73 60% 94%)",
@@ -29,7 +30,14 @@
         "--border": "hsl(229 35% 28%)",
         "--input": "hsl(229 35% 34%)",
         "--ring": "#B8F818",
-        "--radius": "0rem",
+        "--radius": "0px",
+        "--radius-sm": "0px",
+        "--radius-md": "0px",
+        "--radius-lg": "0px",
+        "--radius-xl": "0px",
+        "--radius-2xl": "0px",
+        "--radius-3xl": "0px",
+        "--radius-4xl": "0px",
         "--chart-1": "hsl(250 78% 55%)",
         "--chart-2": "hsl(199 92% 52%)",
         "--chart-3": "hsl(328 84% 60%)",
@@ -58,6 +66,7 @@
       },
       "html[data-theme=\"corti-showcase-dark\"]": {
         "--font-sans": "\"IBM Plex Mono\", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace",
+        "--font-mono": "\"IBM Plex Mono\", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace",
         "--background": "hsl(230 47% 9%)",
         "--foreground": "hsl(84 100% 96%)",
         "--card": "hsl(231 42% 13%)",
@@ -77,7 +86,14 @@
         "--border": "hsl(229 35% 36%)",
         "--input": "hsl(229 35% 34%)",
         "--ring": "#B8F818",
-        "--radius": "0rem",
+        "--radius": "0px",
+        "--radius-sm": "0px",
+        "--radius-md": "0px",
+        "--radius-lg": "0px",
+        "--radius-xl": "0px",
+        "--radius-2xl": "0px",
+        "--radius-3xl": "0px",
+        "--radius-4xl": "0px",
         "--chart-1": "#B8F818",
         "--chart-2": "hsl(199 92% 60%)",
         "--chart-3": "hsl(328 84% 64%)",
@@ -104,8 +120,11 @@
         "--variant-warning-border": "hsl(45 96% 54%)",
         "--variant-warning-text": "hsl(45 100% 78%)"
       },
+      "html[data-theme^=\"corti-showcase\"]": {
+        "font-family": "\"IBM Plex Mono\", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace"
+      },
       "html[data-theme^=\"corti-showcase\"] :is(h1, h2, h3, h4, h5, h6)": {
-        "font-family": "\"Press Start 2P\", \"IBM Plex Mono\", ui-monospace, monospace",
+        "font-family": "\"IBM Plex Mono\", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace",
         "letter-spacing": "0.04em",
         "line-height": "1.35",
         "text-transform": "uppercase"
