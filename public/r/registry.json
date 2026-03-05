@@ -113,6 +113,15 @@
       ]
     },
     {
+      "name": "corti-dashboard-01",
+      "type": "registry:block",
+      "title": "Corti Dashboard 01",
+      "description": "Dashboard layout with sidebar, charts, and data table (based on shadcn dashboard-01).",
+      "registryDependencies": [
+        "https://ui.shadcn.com/r/styles/default/dashboard-01.json"
+      ]
+    },
+    {
       "name": "corti-theme-core",
       "type": "registry:theme",
       "title": "Corti Theme Core",

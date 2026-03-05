@@ -1,0 +1,10 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "corti-dashboard-01",
+  "title": "Corti Dashboard 01",
+  "description": "Dashboard layout with sidebar, charts, and data table (based on shadcn dashboard-01).",
+  "registryDependencies": [
+    "https://ui.shadcn.com/r/styles/default/dashboard-01.json"
+  ],
+  "type": "registry:block"
+}
