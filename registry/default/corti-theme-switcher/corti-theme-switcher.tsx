@@ -1,6 +1,13 @@
 "use client"
 
 import * as React from "react"
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select"
 
 const STORAGE_KEY = "corti-theme"
 
@@ -17,6 +24,15 @@ function isCortiTheme(value: string): value is CortiTheme {
   return THEMES.some((theme) => theme.value === value)
 }
 
+function applyTheme(theme: CortiTheme) {
+  const root = document.documentElement
+  const isDark = theme.endsWith("-dark")
+
+  root.dataset.theme = theme
+  root.classList.toggle("dark", isDark)
+  root.style.colorScheme = isDark ? "dark" : "light"
+}
+
 export function CortiThemeSwitcher() {
   const [theme, setTheme] = React.useState<CortiTheme>("corti-console-light")
 
@@ -31,37 +47,35 @@ export function CortiThemeSwitcher() {
         ? current
         : "corti-console-light"
 
-    root.dataset.theme = nextTheme
+    applyTheme(nextTheme)
     setTheme(nextTheme)
   }, [])
 
-  function onChange(event: React.ChangeEvent<HTMLSelectElement>) {
-    const nextTheme = event.target.value
-
+  function onChange(nextTheme: string) {
     if (!isCortiTheme(nextTheme)) {
       return
     }
 
-    document.documentElement.dataset.theme = nextTheme
+    applyTheme(nextTheme)
     window.localStorage.setItem(STORAGE_KEY, nextTheme)
     setTheme(nextTheme)
   }
 
   return (
-    <label className="inline-flex items-center gap-2 text-sm text-muted-foreground">
-      Theme
-      <select
-        aria-label="Select theme"
-        className="h-9 rounded-md border bg-background px-3 text-foreground"
-        value={theme}
-        onChange={onChange}
-      >
-        {THEMES.map((option) => (
-          <option key={option.value} value={option.value}>
-            {option.label}
-          </option>
-        ))}
-      </select>
-    </label>
+    <div className="inline-flex items-center gap-2">
+      <span className="text-sm text-muted-foreground">Theme</span>
+      <Select value={theme} onValueChange={onChange}>
+        <SelectTrigger className="w-52">
+          <SelectValue placeholder="Select theme" />
+        </SelectTrigger>
+        <SelectContent>
+          {THEMES.map((option) => (
+            <SelectItem key={option.value} value={option.value}>
+              {option.label}
+            </SelectItem>
+          ))}
+        </SelectContent>
+      </Select>
+    </div>
   )
 }
