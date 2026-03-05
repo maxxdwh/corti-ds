@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "corti-status-pill",
+  "title": "Corti Status Pill",
+  "description": "A status badge wrapper with semantic variants.",
+  "registryDependencies": [
+    "https://ui.shadcn.com/r/styles/default/badge.json"
+  ],
+  "files": [
+    {
+      "path": "registry/default/corti-status-pill/corti-status-pill.tsx",
+      "content": "import { Badge } from \"@/components/ui/badge\"\nimport { cn } from \"@/lib/utils\"\n\nexport type CortiStatusPillProps = {\n  label: string\n  status?: \"neutral\" | \"success\" | \"warning\" | \"critical\"\n}\n\nexport function CortiStatusPill({\n  label,\n  status = \"neutral\",\n}: CortiStatusPillProps) {\n  return (\n    <Badge\n      variant=\"secondary\"\n      className={cn(\n        status === \"success\" && \"bg-emerald-100 text-emerald-800\",\n        status === \"warning\" && \"bg-amber-100 text-amber-800\",\n        status === \"critical\" && \"bg-red-100 text-red-800\"\n      )}\n    >\n      {label}\n    </Badge>\n  )\n}\n",
+      "type": "registry:ui"
+    }
+  ],
+  "type": "registry:ui"
+}

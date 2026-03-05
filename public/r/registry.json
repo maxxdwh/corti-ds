@@ -33,6 +33,84 @@
           "type": "registry:block"
         }
       ]
+    },
+    {
+      "name": "corti-stat-card",
+      "type": "registry:ui",
+      "title": "Corti Stat Card",
+      "description": "A compact metric card with optional trend badge.",
+      "registryDependencies": [
+        "https://ui.shadcn.com/r/styles/default/card.json",
+        "https://ui.shadcn.com/r/styles/default/badge.json"
+      ],
+      "files": [
+        {
+          "path": "registry/default/corti-stat-card/corti-stat-card.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "corti-section-header",
+      "type": "registry:ui",
+      "title": "Corti Section Header",
+      "description": "A section title with optional description and action button.",
+      "registryDependencies": [
+        "https://ui.shadcn.com/r/styles/default/button.json"
+      ],
+      "files": [
+        {
+          "path": "registry/default/corti-section-header/corti-section-header.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "corti-status-pill",
+      "type": "registry:ui",
+      "title": "Corti Status Pill",
+      "description": "A status badge wrapper with semantic variants.",
+      "registryDependencies": [
+        "https://ui.shadcn.com/r/styles/default/badge.json"
+      ],
+      "files": [
+        {
+          "path": "registry/default/corti-status-pill/corti-status-pill.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "corti-loading-panel",
+      "type": "registry:ui",
+      "title": "Corti Loading Panel",
+      "description": "A card-shaped loading placeholder for content areas.",
+      "registryDependencies": [
+        "https://ui.shadcn.com/r/styles/default/card.json",
+        "https://ui.shadcn.com/r/styles/default/skeleton.json"
+      ],
+      "files": [
+        {
+          "path": "registry/default/corti-loading-panel/corti-loading-panel.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "corti-activity-row",
+      "type": "registry:ui",
+      "title": "Corti Activity Row",
+      "description": "A compact activity row with actor, action, status, and time.",
+      "registryDependencies": [
+        "https://ui.shadcn.com/r/styles/default/avatar.json",
+        "https://ui.shadcn.com/r/styles/default/badge.json"
+      ],
+      "files": [
+        {
+          "path": "registry/default/corti-activity-row/corti-activity-row.tsx",
+          "type": "registry:ui"
+        }
+      ]
     }
   ]
 }
