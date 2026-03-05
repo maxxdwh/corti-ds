@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "corti-empty-state",
+  "title": "Corti Empty State",
+  "description": "A compact empty-state card with optional actions.",
+  "registryDependencies": [
+    "https://ui.shadcn.com/r/styles/default/button.json",
+    "https://ui.shadcn.com/r/styles/default/card.json"
+  ],
+  "files": [
+    {
+      "path": "registry/default/corti-empty-state/corti-empty-state.tsx",
+      "content": "import { Button } from \"@/components/ui/button\"\nimport {\n  Card,\n  CardContent,\n  CardDescription,\n  CardFooter,\n  CardHeader,\n  CardTitle,\n} from \"@/components/ui/card\"\n\ntype CortiEmptyStateProps = {\n  title: string\n  description: string\n  primaryActionLabel?: string\n  secondaryActionLabel?: string\n}\n\nexport function CortiEmptyState({\n  title,\n  description,\n  primaryActionLabel,\n  secondaryActionLabel,\n}: CortiEmptyStateProps) {\n  return (\n    <Card className=\"w-full max-w-md\">\n      <CardHeader>\n        <CardTitle>{title}</CardTitle>\n        <CardDescription>{description}</CardDescription>\n      </CardHeader>\n      <CardContent className=\"text-sm text-muted-foreground\">\n        Add this component when a list, inbox, or queue has no items yet.\n      </CardContent>\n      <CardFooter className=\"flex gap-2\">\n        {secondaryActionLabel ? (\n          <Button variant=\"outline\" className=\"flex-1\">\n            {secondaryActionLabel}\n          </Button>\n        ) : null}\n        {primaryActionLabel ? (\n          <Button className=\"flex-1\">{primaryActionLabel}</Button>\n        ) : null}\n      </CardFooter>\n    </Card>\n  )\n}\n",
+      "type": "registry:block"
+    }
+  ],
+  "type": "registry:block"
+}

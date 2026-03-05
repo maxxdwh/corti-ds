@@ -1,0 +1,12 @@
+{
+  "name": "corti-ds-registry",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "registry:build": "shadcn build",
+    "registry:watch": "shadcn build --watch"
+  },
+  "devDependencies": {
+    "shadcn": "^3.4.5"
+  }
+}

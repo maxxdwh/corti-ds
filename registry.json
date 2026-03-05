@@ -1,0 +1,38 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry.json",
+  "name": "corti",
+  "homepage": "https://corti.com",
+  "items": [
+    {
+      "name": "corti-button",
+      "type": "registry:ui",
+      "title": "Corti Button",
+      "description": "A small Corti-flavored wrapper around the base shadcn Button.",
+      "registryDependencies": [
+        "https://ui.shadcn.com/r/styles/default/button.json"
+      ],
+      "files": [
+        {
+          "path": "registry/default/corti-button/corti-button.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "corti-empty-state",
+      "type": "registry:block",
+      "title": "Corti Empty State",
+      "description": "A compact empty-state card with optional actions.",
+      "registryDependencies": [
+        "https://ui.shadcn.com/r/styles/default/button.json",
+        "https://ui.shadcn.com/r/styles/default/card.json"
+      ],
+      "files": [
+        {
+          "path": "registry/default/corti-empty-state/corti-empty-state.tsx",
+          "type": "registry:block"
+        }
+      ]
+    }
+  ]
+}
