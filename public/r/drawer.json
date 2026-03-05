@@ -1,0 +1,10 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "drawer",
+  "title": "Shadcn Drawer",
+  "description": "Proxy for shadcn/ui default drawer component.",
+  "registryDependencies": [
+    "https://ui.shadcn.com/r/styles/default/drawer.json"
+  ],
+  "type": "registry:ui"
+}

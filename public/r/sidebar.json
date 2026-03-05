@@ -1,0 +1,10 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "sidebar",
+  "title": "Shadcn Sidebar",
+  "description": "Proxy for shadcn/ui default sidebar component.",
+  "registryDependencies": [
+    "https://ui.shadcn.com/r/styles/default/sidebar.json"
+  ],
+  "type": "registry:ui"
+}

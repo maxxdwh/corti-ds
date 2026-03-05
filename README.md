@@ -11,12 +11,18 @@ Small starter registry for Corti components built on top of shadcn/ui.
 - `corti-status-pill`
 - `corti-loading-panel`
 - `corti-activity-row`
-- `corti-dashboard-01`
 - `corti-theme-core`
 - `corti-theme-console`
 - `corti-theme-assistant`
 - `corti-theme-showcase`
 - `corti-theme-switcher`
+- Every official shadcn/ui **default-style UI component** (54 total) as proxy items, e.g.:
+  - `@corti/button`
+  - `@corti/input`
+  - `@corti/select`
+  - `@corti/table`
+  - `@corti/sidebar`
+  - `@corti/toast`
 
 All registry source files live under `registry/default/...`.
 Base dependencies are pinned to shadcn `styles/default/*` endpoints.
@@ -52,11 +58,13 @@ npx shadcn@latest add @corti/corti-section-header
 npx shadcn@latest add @corti/corti-status-pill
 npx shadcn@latest add @corti/corti-loading-panel
 npx shadcn@latest add @corti/corti-activity-row
-npx shadcn@latest add @corti/corti-dashboard-01
 npx shadcn@latest add @corti/corti-theme-console
 npx shadcn@latest add @corti/corti-theme-assistant
 npx shadcn@latest add @corti/corti-theme-showcase
 npx shadcn@latest add @corti/corti-theme-switcher
+
+# shadcn default proxies (examples)
+npx shadcn@latest add @corti/button @corti/input @corti/select
 ```
 
 Set a theme at runtime:

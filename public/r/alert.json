@@ -1,0 +1,10 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "alert",
+  "title": "Shadcn Alert",
+  "description": "Proxy for shadcn/ui default alert component.",
+  "registryDependencies": [
+    "https://ui.shadcn.com/r/styles/default/alert.json"
+  ],
+  "type": "registry:ui"
+}

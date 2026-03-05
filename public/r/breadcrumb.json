@@ -1,0 +1,10 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "breadcrumb",
+  "title": "Shadcn Breadcrumb",
+  "description": "Proxy for shadcn/ui default breadcrumb component.",
+  "registryDependencies": [
+    "https://ui.shadcn.com/r/styles/default/breadcrumb.json"
+  ],
+  "type": "registry:ui"
+}

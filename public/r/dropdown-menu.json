@@ -1,0 +1,10 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "dropdown-menu",
+  "title": "Shadcn Dropdown Menu",
+  "description": "Proxy for shadcn/ui default dropdown-menu component.",
+  "registryDependencies": [
+    "https://ui.shadcn.com/r/styles/default/dropdown-menu.json"
+  ],
+  "type": "registry:ui"
+}

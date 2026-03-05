@@ -1,0 +1,10 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "aspect-ratio",
+  "title": "Shadcn Aspect Ratio",
+  "description": "Proxy for shadcn/ui default aspect-ratio component.",
+  "registryDependencies": [
+    "https://ui.shadcn.com/r/styles/default/aspect-ratio.json"
+  ],
+  "type": "registry:ui"
+}

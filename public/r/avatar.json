@@ -1,0 +1,10 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "avatar",
+  "title": "Shadcn Avatar",
+  "description": "Proxy for shadcn/ui default avatar component.",
+  "registryDependencies": [
+    "https://ui.shadcn.com/r/styles/default/avatar.json"
+  ],
+  "type": "registry:ui"
+}

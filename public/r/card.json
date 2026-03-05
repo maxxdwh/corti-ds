@@ -1,0 +1,10 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "card",
+  "title": "Shadcn Card",
+  "description": "Proxy for shadcn/ui default card component.",
+  "registryDependencies": [
+    "https://ui.shadcn.com/r/styles/default/card.json"
+  ],
+  "type": "registry:ui"
+}

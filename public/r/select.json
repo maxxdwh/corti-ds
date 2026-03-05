@@ -1,0 +1,10 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "select",
+  "title": "Shadcn Select",
+  "description": "Proxy for shadcn/ui default select component.",
+  "registryDependencies": [
+    "https://ui.shadcn.com/r/styles/default/select.json"
+  ],
+  "type": "registry:ui"
+}

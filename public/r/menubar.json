@@ -1,0 +1,10 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "menubar",
+  "title": "Shadcn Menubar",
+  "description": "Proxy for shadcn/ui default menubar component.",
+  "registryDependencies": [
+    "https://ui.shadcn.com/r/styles/default/menubar.json"
+  ],
+  "type": "registry:ui"
+}

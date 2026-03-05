@@ -1,0 +1,10 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "sheet",
+  "title": "Shadcn Sheet",
+  "description": "Proxy for shadcn/ui default sheet component.",
+  "registryDependencies": [
+    "https://ui.shadcn.com/r/styles/default/sheet.json"
+  ],
+  "type": "registry:ui"
+}

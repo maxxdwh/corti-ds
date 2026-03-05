@@ -1,0 +1,10 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "accordion",
+  "title": "Shadcn Accordion",
+  "description": "Proxy for shadcn/ui default accordion component.",
+  "registryDependencies": [
+    "https://ui.shadcn.com/r/styles/default/accordion.json"
+  ],
+  "type": "registry:ui"
+}

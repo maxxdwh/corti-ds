@@ -113,15 +113,6 @@
       ]
     },
     {
-      "name": "corti-dashboard-01",
-      "type": "registry:block",
-      "title": "Corti Dashboard 01",
-      "description": "Dashboard layout with sidebar, charts, and data table (based on shadcn dashboard-01).",
-      "registryDependencies": [
-        "https://ui.shadcn.com/r/styles/default/dashboard-01.json"
-      ]
-    },
-    {
       "name": "corti-theme-core",
       "type": "registry:theme",
       "title": "Corti Theme Core",
@@ -554,6 +545,492 @@
           "path": "registry/default/corti-theme-switcher/corti-theme-switcher.tsx",
           "type": "registry:ui"
         }
+      ]
+    },
+    {
+      "name": "accordion",
+      "type": "registry:ui",
+      "title": "Shadcn Accordion",
+      "description": "Proxy for shadcn/ui default accordion component.",
+      "registryDependencies": [
+        "https://ui.shadcn.com/r/styles/default/accordion.json"
+      ]
+    },
+    {
+      "name": "alert",
+      "type": "registry:ui",
+      "title": "Shadcn Alert",
+      "description": "Proxy for shadcn/ui default alert component.",
+      "registryDependencies": [
+        "https://ui.shadcn.com/r/styles/default/alert.json"
+      ]
+    },
+    {
+      "name": "alert-dialog",
+      "type": "registry:ui",
+      "title": "Shadcn Alert Dialog",
+      "description": "Proxy for shadcn/ui default alert-dialog component.",
+      "registryDependencies": [
+        "https://ui.shadcn.com/r/styles/default/alert-dialog.json"
+      ]
+    },
+    {
+      "name": "aspect-ratio",
+      "type": "registry:ui",
+      "title": "Shadcn Aspect Ratio",
+      "description": "Proxy for shadcn/ui default aspect-ratio component.",
+      "registryDependencies": [
+        "https://ui.shadcn.com/r/styles/default/aspect-ratio.json"
+      ]
+    },
+    {
+      "name": "avatar",
+      "type": "registry:ui",
+      "title": "Shadcn Avatar",
+      "description": "Proxy for shadcn/ui default avatar component.",
+      "registryDependencies": [
+        "https://ui.shadcn.com/r/styles/default/avatar.json"
+      ]
+    },
+    {
+      "name": "badge",
+      "type": "registry:ui",
+      "title": "Shadcn Badge",
+      "description": "Proxy for shadcn/ui default badge component.",
+      "registryDependencies": [
+        "https://ui.shadcn.com/r/styles/default/badge.json"
+      ]
+    },
+    {
+      "name": "breadcrumb",
+      "type": "registry:ui",
+      "title": "Shadcn Breadcrumb",
+      "description": "Proxy for shadcn/ui default breadcrumb component.",
+      "registryDependencies": [
+        "https://ui.shadcn.com/r/styles/default/breadcrumb.json"
+      ]
+    },
+    {
+      "name": "button",
+      "type": "registry:ui",
+      "title": "Shadcn Button",
+      "description": "Proxy for shadcn/ui default button component.",
+      "registryDependencies": [
+        "https://ui.shadcn.com/r/styles/default/button.json"
+      ]
+    },
+    {
+      "name": "button-group",
+      "type": "registry:ui",
+      "title": "Shadcn Button Group",
+      "description": "Proxy for shadcn/ui default button-group component.",
+      "registryDependencies": [
+        "https://ui.shadcn.com/r/styles/default/button-group.json"
+      ]
+    },
+    {
+      "name": "calendar",
+      "type": "registry:ui",
+      "title": "Shadcn Calendar",
+      "description": "Proxy for shadcn/ui default calendar component.",
+      "registryDependencies": [
+        "https://ui.shadcn.com/r/styles/default/calendar.json"
+      ]
+    },
+    {
+      "name": "card",
+      "type": "registry:ui",
+      "title": "Shadcn Card",
+      "description": "Proxy for shadcn/ui default card component.",
+      "registryDependencies": [
+        "https://ui.shadcn.com/r/styles/default/card.json"
+      ]
+    },
+    {
+      "name": "carousel",
+      "type": "registry:ui",
+      "title": "Shadcn Carousel",
+      "description": "Proxy for shadcn/ui default carousel component.",
+      "registryDependencies": [
+        "https://ui.shadcn.com/r/styles/default/carousel.json"
+      ]
+    },
+    {
+      "name": "chart",
+      "type": "registry:ui",
+      "title": "Shadcn Chart",
+      "description": "Proxy for shadcn/ui default chart component.",
+      "registryDependencies": [
+        "https://ui.shadcn.com/r/styles/default/chart.json"
+      ]
+    },
+    {
+      "name": "checkbox",
+      "type": "registry:ui",
+      "title": "Shadcn Checkbox",
+      "description": "Proxy for shadcn/ui default checkbox component.",
+      "registryDependencies": [
+        "https://ui.shadcn.com/r/styles/default/checkbox.json"
+      ]
+    },
+    {
+      "name": "collapsible",
+      "type": "registry:ui",
+      "title": "Shadcn Collapsible",
+      "description": "Proxy for shadcn/ui default collapsible component.",
+      "registryDependencies": [
+        "https://ui.shadcn.com/r/styles/default/collapsible.json"
+      ]
+    },
+    {
+      "name": "command",
+      "type": "registry:ui",
+      "title": "Shadcn Command",
+      "description": "Proxy for shadcn/ui default command component.",
+      "registryDependencies": [
+        "https://ui.shadcn.com/r/styles/default/command.json"
+      ]
+    },
+    {
+      "name": "context-menu",
+      "type": "registry:ui",
+      "title": "Shadcn Context Menu",
+      "description": "Proxy for shadcn/ui default context-menu component.",
+      "registryDependencies": [
+        "https://ui.shadcn.com/r/styles/default/context-menu.json"
+      ]
+    },
+    {
+      "name": "dialog",
+      "type": "registry:ui",
+      "title": "Shadcn Dialog",
+      "description": "Proxy for shadcn/ui default dialog component.",
+      "registryDependencies": [
+        "https://ui.shadcn.com/r/styles/default/dialog.json"
+      ]
+    },
+    {
+      "name": "drawer",
+      "type": "registry:ui",
+      "title": "Shadcn Drawer",
+      "description": "Proxy for shadcn/ui default drawer component.",
+      "registryDependencies": [
+        "https://ui.shadcn.com/r/styles/default/drawer.json"
+      ]
+    },
+    {
+      "name": "dropdown-menu",
+      "type": "registry:ui",
+      "title": "Shadcn Dropdown Menu",
+      "description": "Proxy for shadcn/ui default dropdown-menu component.",
+      "registryDependencies": [
+        "https://ui.shadcn.com/r/styles/default/dropdown-menu.json"
+      ]
+    },
+    {
+      "name": "empty",
+      "type": "registry:ui",
+      "title": "Shadcn Empty",
+      "description": "Proxy for shadcn/ui default empty component.",
+      "registryDependencies": [
+        "https://ui.shadcn.com/r/styles/default/empty.json"
+      ]
+    },
+    {
+      "name": "field",
+      "type": "registry:ui",
+      "title": "Shadcn Field",
+      "description": "Proxy for shadcn/ui default field component.",
+      "registryDependencies": [
+        "https://ui.shadcn.com/r/styles/default/field.json"
+      ]
+    },
+    {
+      "name": "form",
+      "type": "registry:ui",
+      "title": "Shadcn Form",
+      "description": "Proxy for shadcn/ui default form component.",
+      "registryDependencies": [
+        "https://ui.shadcn.com/r/styles/default/form.json"
+      ]
+    },
+    {
+      "name": "hover-card",
+      "type": "registry:ui",
+      "title": "Shadcn Hover Card",
+      "description": "Proxy for shadcn/ui default hover-card component.",
+      "registryDependencies": [
+        "https://ui.shadcn.com/r/styles/default/hover-card.json"
+      ]
+    },
+    {
+      "name": "input",
+      "type": "registry:ui",
+      "title": "Shadcn Input",
+      "description": "Proxy for shadcn/ui default input component.",
+      "registryDependencies": [
+        "https://ui.shadcn.com/r/styles/default/input.json"
+      ]
+    },
+    {
+      "name": "input-group",
+      "type": "registry:ui",
+      "title": "Shadcn Input Group",
+      "description": "Proxy for shadcn/ui default input-group component.",
+      "registryDependencies": [
+        "https://ui.shadcn.com/r/styles/default/input-group.json"
+      ]
+    },
+    {
+      "name": "input-otp",
+      "type": "registry:ui",
+      "title": "Shadcn Input Otp",
+      "description": "Proxy for shadcn/ui default input-otp component.",
+      "registryDependencies": [
+        "https://ui.shadcn.com/r/styles/default/input-otp.json"
+      ]
+    },
+    {
+      "name": "item",
+      "type": "registry:ui",
+      "title": "Shadcn Item",
+      "description": "Proxy for shadcn/ui default item component.",
+      "registryDependencies": [
+        "https://ui.shadcn.com/r/styles/default/item.json"
+      ]
+    },
+    {
+      "name": "kbd",
+      "type": "registry:ui",
+      "title": "Shadcn Kbd",
+      "description": "Proxy for shadcn/ui default kbd component.",
+      "registryDependencies": [
+        "https://ui.shadcn.com/r/styles/default/kbd.json"
+      ]
+    },
+    {
+      "name": "label",
+      "type": "registry:ui",
+      "title": "Shadcn Label",
+      "description": "Proxy for shadcn/ui default label component.",
+      "registryDependencies": [
+        "https://ui.shadcn.com/r/styles/default/label.json"
+      ]
+    },
+    {
+      "name": "menubar",
+      "type": "registry:ui",
+      "title": "Shadcn Menubar",
+      "description": "Proxy for shadcn/ui default menubar component.",
+      "registryDependencies": [
+        "https://ui.shadcn.com/r/styles/default/menubar.json"
+      ]
+    },
+    {
+      "name": "navigation-menu",
+      "type": "registry:ui",
+      "title": "Shadcn Navigation Menu",
+      "description": "Proxy for shadcn/ui default navigation-menu component.",
+      "registryDependencies": [
+        "https://ui.shadcn.com/r/styles/default/navigation-menu.json"
+      ]
+    },
+    {
+      "name": "pagination",
+      "type": "registry:ui",
+      "title": "Shadcn Pagination",
+      "description": "Proxy for shadcn/ui default pagination component.",
+      "registryDependencies": [
+        "https://ui.shadcn.com/r/styles/default/pagination.json"
+      ]
+    },
+    {
+      "name": "popover",
+      "type": "registry:ui",
+      "title": "Shadcn Popover",
+      "description": "Proxy for shadcn/ui default popover component.",
+      "registryDependencies": [
+        "https://ui.shadcn.com/r/styles/default/popover.json"
+      ]
+    },
+    {
+      "name": "progress",
+      "type": "registry:ui",
+      "title": "Shadcn Progress",
+      "description": "Proxy for shadcn/ui default progress component.",
+      "registryDependencies": [
+        "https://ui.shadcn.com/r/styles/default/progress.json"
+      ]
+    },
+    {
+      "name": "radio-group",
+      "type": "registry:ui",
+      "title": "Shadcn Radio Group",
+      "description": "Proxy for shadcn/ui default radio-group component.",
+      "registryDependencies": [
+        "https://ui.shadcn.com/r/styles/default/radio-group.json"
+      ]
+    },
+    {
+      "name": "resizable",
+      "type": "registry:ui",
+      "title": "Shadcn Resizable",
+      "description": "Proxy for shadcn/ui default resizable component.",
+      "registryDependencies": [
+        "https://ui.shadcn.com/r/styles/default/resizable.json"
+      ]
+    },
+    {
+      "name": "scroll-area",
+      "type": "registry:ui",
+      "title": "Shadcn Scroll Area",
+      "description": "Proxy for shadcn/ui default scroll-area component.",
+      "registryDependencies": [
+        "https://ui.shadcn.com/r/styles/default/scroll-area.json"
+      ]
+    },
+    {
+      "name": "select",
+      "type": "registry:ui",
+      "title": "Shadcn Select",
+      "description": "Proxy for shadcn/ui default select component.",
+      "registryDependencies": [
+        "https://ui.shadcn.com/r/styles/default/select.json"
+      ]
+    },
+    {
+      "name": "separator",
+      "type": "registry:ui",
+      "title": "Shadcn Separator",
+      "description": "Proxy for shadcn/ui default separator component.",
+      "registryDependencies": [
+        "https://ui.shadcn.com/r/styles/default/separator.json"
+      ]
+    },
+    {
+      "name": "sheet",
+      "type": "registry:ui",
+      "title": "Shadcn Sheet",
+      "description": "Proxy for shadcn/ui default sheet component.",
+      "registryDependencies": [
+        "https://ui.shadcn.com/r/styles/default/sheet.json"
+      ]
+    },
+    {
+      "name": "sidebar",
+      "type": "registry:ui",
+      "title": "Shadcn Sidebar",
+      "description": "Proxy for shadcn/ui default sidebar component.",
+      "registryDependencies": [
+        "https://ui.shadcn.com/r/styles/default/sidebar.json"
+      ]
+    },
+    {
+      "name": "skeleton",
+      "type": "registry:ui",
+      "title": "Shadcn Skeleton",
+      "description": "Proxy for shadcn/ui default skeleton component.",
+      "registryDependencies": [
+        "https://ui.shadcn.com/r/styles/default/skeleton.json"
+      ]
+    },
+    {
+      "name": "slider",
+      "type": "registry:ui",
+      "title": "Shadcn Slider",
+      "description": "Proxy for shadcn/ui default slider component.",
+      "registryDependencies": [
+        "https://ui.shadcn.com/r/styles/default/slider.json"
+      ]
+    },
+    {
+      "name": "sonner",
+      "type": "registry:ui",
+      "title": "Shadcn Sonner",
+      "description": "Proxy for shadcn/ui default sonner component.",
+      "registryDependencies": [
+        "https://ui.shadcn.com/r/styles/default/sonner.json"
+      ]
+    },
+    {
+      "name": "spinner",
+      "type": "registry:ui",
+      "title": "Shadcn Spinner",
+      "description": "Proxy for shadcn/ui default spinner component.",
+      "registryDependencies": [
+        "https://ui.shadcn.com/r/styles/default/spinner.json"
+      ]
+    },
+    {
+      "name": "switch",
+      "type": "registry:ui",
+      "title": "Shadcn Switch",
+      "description": "Proxy for shadcn/ui default switch component.",
+      "registryDependencies": [
+        "https://ui.shadcn.com/r/styles/default/switch.json"
+      ]
+    },
+    {
+      "name": "table",
+      "type": "registry:ui",
+      "title": "Shadcn Table",
+      "description": "Proxy for shadcn/ui default table component.",
+      "registryDependencies": [
+        "https://ui.shadcn.com/r/styles/default/table.json"
+      ]
+    },
+    {
+      "name": "tabs",
+      "type": "registry:ui",
+      "title": "Shadcn Tabs",
+      "description": "Proxy for shadcn/ui default tabs component.",
+      "registryDependencies": [
+        "https://ui.shadcn.com/r/styles/default/tabs.json"
+      ]
+    },
+    {
+      "name": "textarea",
+      "type": "registry:ui",
+      "title": "Shadcn Textarea",
+      "description": "Proxy for shadcn/ui default textarea component.",
+      "registryDependencies": [
+        "https://ui.shadcn.com/r/styles/default/textarea.json"
+      ]
+    },
+    {
+      "name": "toast",
+      "type": "registry:ui",
+      "title": "Shadcn Toast",
+      "description": "Proxy for shadcn/ui default toast component.",
+      "registryDependencies": [
+        "https://ui.shadcn.com/r/styles/default/toast.json"
+      ]
+    },
+    {
+      "name": "toggle",
+      "type": "registry:ui",
+      "title": "Shadcn Toggle",
+      "description": "Proxy for shadcn/ui default toggle component.",
+      "registryDependencies": [
+        "https://ui.shadcn.com/r/styles/default/toggle.json"
+      ]
+    },
+    {
+      "name": "toggle-group",
+      "type": "registry:ui",
+      "title": "Shadcn Toggle Group",
+      "description": "Proxy for shadcn/ui default toggle-group component.",
+      "registryDependencies": [
+        "https://ui.shadcn.com/r/styles/default/toggle-group.json"
+      ]
+    },
+    {
+      "name": "tooltip",
+      "type": "registry:ui",
+      "title": "Shadcn Tooltip",
+      "description": "Proxy for shadcn/ui default tooltip component.",
+      "registryDependencies": [
+        "https://ui.shadcn.com/r/styles/default/tooltip.json"
       ]
     }
   ]

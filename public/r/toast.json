@@ -1,0 +1,10 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "toast",
+  "title": "Shadcn Toast",
+  "description": "Proxy for shadcn/ui default toast component.",
+  "registryDependencies": [
+    "https://ui.shadcn.com/r/styles/default/toast.json"
+  ],
+  "type": "registry:ui"
+}

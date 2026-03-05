@@ -1,0 +1,10 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "switch",
+  "title": "Shadcn Switch",
+  "description": "Proxy for shadcn/ui default switch component.",
+  "registryDependencies": [
+    "https://ui.shadcn.com/r/styles/default/switch.json"
+  ],
+  "type": "registry:ui"
+}

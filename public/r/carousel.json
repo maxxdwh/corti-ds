@@ -1,0 +1,10 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "carousel",
+  "title": "Shadcn Carousel",
+  "description": "Proxy for shadcn/ui default carousel component.",
+  "registryDependencies": [
+    "https://ui.shadcn.com/r/styles/default/carousel.json"
+  ],
+  "type": "registry:ui"
+}

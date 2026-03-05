@@ -1,0 +1,10 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "spinner",
+  "title": "Shadcn Spinner",
+  "description": "Proxy for shadcn/ui default spinner component.",
+  "registryDependencies": [
+    "https://ui.shadcn.com/r/styles/default/spinner.json"
+  ],
+  "type": "registry:ui"
+}

@@ -1,0 +1,10 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "tooltip",
+  "title": "Shadcn Tooltip",
+  "description": "Proxy for shadcn/ui default tooltip component.",
+  "registryDependencies": [
+    "https://ui.shadcn.com/r/styles/default/tooltip.json"
+  ],
+  "type": "registry:ui"
+}

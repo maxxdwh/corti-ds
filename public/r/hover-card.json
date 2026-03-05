@@ -1,0 +1,10 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "hover-card",
+  "title": "Shadcn Hover Card",
+  "description": "Proxy for shadcn/ui default hover-card component.",
+  "registryDependencies": [
+    "https://ui.shadcn.com/r/styles/default/hover-card.json"
+  ],
+  "type": "registry:ui"
+}

@@ -1,0 +1,10 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "button",
+  "title": "Shadcn Button",
+  "description": "Proxy for shadcn/ui default button component.",
+  "registryDependencies": [
+    "https://ui.shadcn.com/r/styles/default/button.json"
+  ],
+  "type": "registry:ui"
+}

@@ -1,0 +1,10 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "textarea",
+  "title": "Shadcn Textarea",
+  "description": "Proxy for shadcn/ui default textarea component.",
+  "registryDependencies": [
+    "https://ui.shadcn.com/r/styles/default/textarea.json"
+  ],
+  "type": "registry:ui"
+}
