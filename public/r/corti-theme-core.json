@@ -1,0 +1,23 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "corti-theme-core",
+  "title": "Corti Theme Core",
+  "description": "Shared semantic variables used by Corti themes.",
+  "cssVars": {
+    "theme": {
+      "variant-success-bg": "hsl(142 76% 97%)",
+      "variant-success-border": "hsl(142 61% 86%)",
+      "variant-success-text": "hsl(142 70% 28%)",
+      "variant-warning-bg": "hsl(38 100% 96%)",
+      "variant-warning-border": "hsl(38 94% 84%)",
+      "variant-warning-text": "hsl(30 92% 34%)",
+      "variant-error-bg": "hsl(0 100% 97%)",
+      "variant-error-border": "hsl(0 93% 86%)",
+      "variant-error-text": "hsl(0 72% 37%)",
+      "variant-info-bg": "hsl(210 100% 97%)",
+      "variant-info-border": "hsl(210 100% 88%)",
+      "variant-info-text": "hsl(215 60% 23%)"
+    }
+  },
+  "type": "registry:theme"
+}

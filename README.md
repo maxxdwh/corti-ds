@@ -11,6 +11,10 @@ Small starter registry for Corti components built on top of shadcn/ui.
 - `corti-status-pill`
 - `corti-loading-panel`
 - `corti-activity-row`
+- `corti-theme-core`
+- `corti-theme-console`
+- `corti-theme-assistant`
+- `corti-theme-switcher`
 
 All registry source files live under `registry/default/...`.
 Base dependencies are pinned to shadcn `styles/default/*` endpoints.
@@ -46,4 +50,14 @@ npx shadcn@latest add @corti/corti-section-header
 npx shadcn@latest add @corti/corti-status-pill
 npx shadcn@latest add @corti/corti-loading-panel
 npx shadcn@latest add @corti/corti-activity-row
+npx shadcn@latest add @corti/corti-theme-console
+npx shadcn@latest add @corti/corti-theme-assistant
+npx shadcn@latest add @corti/corti-theme-switcher
+```
+
+Set a theme at runtime:
+
+```ts
+document.documentElement.dataset.theme = "corti-console-light"
+// or: corti-console-dark, corti-assistant-light, corti-assistant-dark
 ```

@@ -1,0 +1,60 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "corti-theme-console",
+  "title": "Corti Console Theme",
+  "description": "Monochrome console-inspired light and dark themes.",
+  "registryDependencies": [
+    "@corti/corti-theme-core"
+  ],
+  "css": {
+    "@layer base": {
+      "html[data-theme=\"corti-console-light\"]": {
+        "--font-sans": "ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, Liberation Mono, monospace",
+        "--background": "hsl(0 0% 100%)",
+        "--foreground": "hsl(0 0% 6%)",
+        "--card": "hsl(0 0% 100%)",
+        "--card-foreground": "hsl(0 0% 6%)",
+        "--popover": "hsl(0 0% 100%)",
+        "--popover-foreground": "hsl(0 0% 6%)",
+        "--primary": "hsl(0 0% 6%)",
+        "--primary-foreground": "hsl(0 0% 100%)",
+        "--secondary": "hsl(0 0% 98%)",
+        "--secondary-foreground": "hsl(0 0% 6%)",
+        "--muted": "hsl(0 0% 98%)",
+        "--muted-foreground": "hsl(0 0% 41%)",
+        "--accent": "hsl(0 0% 95%)",
+        "--accent-foreground": "hsl(0 0% 6%)",
+        "--destructive": "hsl(0 84% 60%)",
+        "--destructive-foreground": "hsl(0 0% 100%)",
+        "--border": "hsl(0 0% 90%)",
+        "--input": "hsl(0 0% 90%)",
+        "--ring": "hsl(0 0% 45%)",
+        "--radius": "0.5rem"
+      },
+      "html[data-theme=\"corti-console-dark\"]": {
+        "--font-sans": "ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, Liberation Mono, monospace",
+        "--background": "hsl(0 0% 6%)",
+        "--foreground": "hsl(0 0% 90%)",
+        "--card": "hsl(0 0% 10%)",
+        "--card-foreground": "hsl(0 0% 90%)",
+        "--popover": "hsl(0 0% 10%)",
+        "--popover-foreground": "hsl(0 0% 90%)",
+        "--primary": "hsl(0 0% 100%)",
+        "--primary-foreground": "hsl(0 0% 6%)",
+        "--secondary": "hsl(0 0% 16%)",
+        "--secondary-foreground": "hsl(0 0% 90%)",
+        "--muted": "hsl(0 0% 16%)",
+        "--muted-foreground": "hsl(0 0% 65%)",
+        "--accent": "hsl(0 0% 16%)",
+        "--accent-foreground": "hsl(0 0% 90%)",
+        "--destructive": "hsl(0 63% 31%)",
+        "--destructive-foreground": "hsl(0 0% 100%)",
+        "--border": "hsl(0 0% 25%)",
+        "--input": "hsl(0 0% 25%)",
+        "--ring": "hsl(0 0% 80%)",
+        "--radius": "0.5rem"
+      }
+    }
+  },
+  "type": "registry:theme"
+}

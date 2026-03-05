@@ -111,6 +111,162 @@
           "type": "registry:ui"
         }
       ]
+    },
+    {
+      "name": "corti-theme-core",
+      "type": "registry:theme",
+      "title": "Corti Theme Core",
+      "description": "Shared semantic variables used by Corti themes.",
+      "cssVars": {
+        "theme": {
+          "variant-success-bg": "hsl(142 76% 97%)",
+          "variant-success-border": "hsl(142 61% 86%)",
+          "variant-success-text": "hsl(142 70% 28%)",
+          "variant-warning-bg": "hsl(38 100% 96%)",
+          "variant-warning-border": "hsl(38 94% 84%)",
+          "variant-warning-text": "hsl(30 92% 34%)",
+          "variant-error-bg": "hsl(0 100% 97%)",
+          "variant-error-border": "hsl(0 93% 86%)",
+          "variant-error-text": "hsl(0 72% 37%)",
+          "variant-info-bg": "hsl(210 100% 97%)",
+          "variant-info-border": "hsl(210 100% 88%)",
+          "variant-info-text": "hsl(215 60% 23%)"
+        }
+      }
+    },
+    {
+      "name": "corti-theme-console",
+      "type": "registry:theme",
+      "title": "Corti Console Theme",
+      "description": "Monochrome console-inspired light and dark themes.",
+      "registryDependencies": [
+        "@corti/corti-theme-core"
+      ],
+      "css": {
+        "@layer base": {
+          "html[data-theme=\"corti-console-light\"]": {
+            "--font-sans": "ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, Liberation Mono, monospace",
+            "--background": "hsl(0 0% 100%)",
+            "--foreground": "hsl(0 0% 6%)",
+            "--card": "hsl(0 0% 100%)",
+            "--card-foreground": "hsl(0 0% 6%)",
+            "--popover": "hsl(0 0% 100%)",
+            "--popover-foreground": "hsl(0 0% 6%)",
+            "--primary": "hsl(0 0% 6%)",
+            "--primary-foreground": "hsl(0 0% 100%)",
+            "--secondary": "hsl(0 0% 98%)",
+            "--secondary-foreground": "hsl(0 0% 6%)",
+            "--muted": "hsl(0 0% 98%)",
+            "--muted-foreground": "hsl(0 0% 41%)",
+            "--accent": "hsl(0 0% 95%)",
+            "--accent-foreground": "hsl(0 0% 6%)",
+            "--destructive": "hsl(0 84% 60%)",
+            "--destructive-foreground": "hsl(0 0% 100%)",
+            "--border": "hsl(0 0% 90%)",
+            "--input": "hsl(0 0% 90%)",
+            "--ring": "hsl(0 0% 45%)",
+            "--radius": "0.5rem"
+          },
+          "html[data-theme=\"corti-console-dark\"]": {
+            "--font-sans": "ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, Liberation Mono, monospace",
+            "--background": "hsl(0 0% 6%)",
+            "--foreground": "hsl(0 0% 90%)",
+            "--card": "hsl(0 0% 10%)",
+            "--card-foreground": "hsl(0 0% 90%)",
+            "--popover": "hsl(0 0% 10%)",
+            "--popover-foreground": "hsl(0 0% 90%)",
+            "--primary": "hsl(0 0% 100%)",
+            "--primary-foreground": "hsl(0 0% 6%)",
+            "--secondary": "hsl(0 0% 16%)",
+            "--secondary-foreground": "hsl(0 0% 90%)",
+            "--muted": "hsl(0 0% 16%)",
+            "--muted-foreground": "hsl(0 0% 65%)",
+            "--accent": "hsl(0 0% 16%)",
+            "--accent-foreground": "hsl(0 0% 90%)",
+            "--destructive": "hsl(0 63% 31%)",
+            "--destructive-foreground": "hsl(0 0% 100%)",
+            "--border": "hsl(0 0% 25%)",
+            "--input": "hsl(0 0% 25%)",
+            "--ring": "hsl(0 0% 80%)",
+            "--radius": "0.5rem"
+          }
+        }
+      }
+    },
+    {
+      "name": "corti-theme-assistant",
+      "type": "registry:theme",
+      "title": "Corti Assistant Theme",
+      "description": "Blue assistant light and dark themes.",
+      "registryDependencies": [
+        "@corti/corti-theme-core"
+      ],
+      "css": {
+        "@layer base": {
+          "html[data-theme=\"corti-assistant-light\"]": {
+            "--font-sans": "ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica Neue, Arial, sans-serif",
+            "--background": "hsl(0 0% 100%)",
+            "--foreground": "hsl(0 0% 4%)",
+            "--card": "hsl(0 0% 100%)",
+            "--card-foreground": "hsl(0 0% 4%)",
+            "--popover": "hsl(0 0% 100%)",
+            "--popover-foreground": "hsl(0 0% 4%)",
+            "--primary": "hsl(226 70% 55%)",
+            "--primary-foreground": "hsl(0 0% 100%)",
+            "--secondary": "hsl(0 0% 96%)",
+            "--secondary-foreground": "hsl(0 0% 9%)",
+            "--muted": "hsl(0 0% 96%)",
+            "--muted-foreground": "hsl(0 0% 45%)",
+            "--accent": "hsl(226 70% 55%)",
+            "--accent-foreground": "hsl(0 0% 100%)",
+            "--destructive": "hsl(0 84% 60%)",
+            "--destructive-foreground": "hsl(0 0% 98%)",
+            "--border": "hsl(0 0% 90%)",
+            "--input": "hsl(0 0% 90%)",
+            "--ring": "hsl(226 70% 55%)",
+            "--radius": "0.5rem"
+          },
+          "html[data-theme=\"corti-assistant-dark\"]": {
+            "--font-sans": "ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica Neue, Arial, sans-serif",
+            "--background": "hsl(0 0% 4%)",
+            "--foreground": "hsl(0 0% 98%)",
+            "--card": "hsl(0 0% 6%)",
+            "--card-foreground": "hsl(0 0% 98%)",
+            "--popover": "hsl(0 0% 6%)",
+            "--popover-foreground": "hsl(0 0% 98%)",
+            "--primary": "hsl(226 70% 65%)",
+            "--primary-foreground": "hsl(0 0% 10%)",
+            "--secondary": "hsl(0 0% 15%)",
+            "--secondary-foreground": "hsl(0 0% 98%)",
+            "--muted": "hsl(0 0% 15%)",
+            "--muted-foreground": "hsl(0 0% 64%)",
+            "--accent": "hsl(0 0% 15%)",
+            "--accent-foreground": "hsl(0 0% 98%)",
+            "--destructive": "hsl(0 63% 31%)",
+            "--destructive-foreground": "hsl(0 0% 98%)",
+            "--border": "hsl(0 0% 18%)",
+            "--input": "hsl(0 0% 18%)",
+            "--ring": "hsl(226 70% 65%)",
+            "--radius": "0.5rem"
+          }
+        }
+      }
+    },
+    {
+      "name": "corti-theme-switcher",
+      "type": "registry:ui",
+      "title": "Corti Theme Switcher",
+      "description": "A lightweight theme switcher for Corti data-theme values.",
+      "registryDependencies": [
+        "@corti/corti-theme-console",
+        "@corti/corti-theme-assistant"
+      ],
+      "files": [
+        {
+          "path": "registry/default/corti-theme-switcher/corti-theme-switcher.tsx",
+          "type": "registry:ui"
+        }
+      ]
     }
   ]
 }

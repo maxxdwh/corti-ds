@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "corti-theme-switcher",
+  "title": "Corti Theme Switcher",
+  "description": "A lightweight theme switcher for Corti data-theme values.",
+  "registryDependencies": [
+    "@corti/corti-theme-console",
+    "@corti/corti-theme-assistant"
+  ],
+  "files": [
+    {
+      "path": "registry/default/corti-theme-switcher/corti-theme-switcher.tsx",
+      "content": "\"use client\"\n\nimport * as React from \"react\"\n\nconst STORAGE_KEY = \"corti-theme\"\n\nconst THEMES = [\n  { label: \"Console Light\", value: \"corti-console-light\" },\n  { label: \"Console Dark\", value: \"corti-console-dark\" },\n  { label: \"Assistant Light\", value: \"corti-assistant-light\" },\n  { label: \"Assistant Dark\", value: \"corti-assistant-dark\" },\n] as const\n\ntype CortiTheme = (typeof THEMES)[number][\"value\"]\n\nfunction isCortiTheme(value: string): value is CortiTheme {\n  return THEMES.some((theme) => theme.value === value)\n}\n\nexport function CortiThemeSwitcher() {\n  const [theme, setTheme] = React.useState<CortiTheme>(\"corti-console-light\")\n\n  React.useEffect(() => {\n    const root = document.documentElement\n    const current = root.dataset.theme\n    const stored = window.localStorage.getItem(STORAGE_KEY)\n\n    const nextTheme = isCortiTheme(stored ?? \"\")\n      ? stored\n      : isCortiTheme(current ?? \"\")\n        ? current\n        : \"corti-console-light\"\n\n    root.dataset.theme = nextTheme\n    setTheme(nextTheme)\n  }, [])\n\n  function onChange(event: React.ChangeEvent<HTMLSelectElement>) {\n    const nextTheme = event.target.value\n\n    if (!isCortiTheme(nextTheme)) {\n      return\n    }\n\n    document.documentElement.dataset.theme = nextTheme\n    window.localStorage.setItem(STORAGE_KEY, nextTheme)\n    setTheme(nextTheme)\n  }\n\n  return (\n    <label className=\"inline-flex items-center gap-2 text-sm text-muted-foreground\">\n      Theme\n      <select\n        aria-label=\"Select theme\"\n        className=\"h-9 rounded-md border bg-background px-3 text-foreground\"\n        value={theme}\n        onChange={onChange}\n      >\n        {THEMES.map((option) => (\n          <option key={option.value} value={option.value}>\n            {option.label}\n          </option>\n        ))}\n      </select>\n    </label>\n  )\n}\n",
+      "type": "registry:ui"
+    }
+  ],
+  "type": "registry:ui"
+}
