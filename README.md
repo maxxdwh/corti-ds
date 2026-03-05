@@ -14,6 +14,7 @@ Small starter registry for Corti components built on top of shadcn/ui.
 - `corti-theme-core`
 - `corti-theme-console`
 - `corti-theme-assistant`
+- `corti-theme-showcase`
 - `corti-theme-switcher`
 
 All registry source files live under `registry/default/...`.
@@ -52,6 +53,7 @@ npx shadcn@latest add @corti/corti-loading-panel
 npx shadcn@latest add @corti/corti-activity-row
 npx shadcn@latest add @corti/corti-theme-console
 npx shadcn@latest add @corti/corti-theme-assistant
+npx shadcn@latest add @corti/corti-theme-showcase
 npx shadcn@latest add @corti/corti-theme-switcher
 ```
 
@@ -59,5 +61,8 @@ Set a theme at runtime:
 
 ```ts
 document.documentElement.dataset.theme = "corti-console-light"
-// or: corti-console-dark, corti-assistant-light, corti-assistant-dark
+// or: corti-console-dark, corti-assistant-light, corti-assistant-dark,
+// corti-showcase-light, corti-showcase-dark
 ```
+
+For `corti-theme-showcase`, load `IBM Plex Mono` and `Press Start 2P` in your app for best visual result.

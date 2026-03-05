@@ -16,6 +16,8 @@ const THEMES = [
   { label: "Console Dark", value: "corti-console-dark" },
   { label: "Assistant Light", value: "corti-assistant-light" },
   { label: "Assistant Dark", value: "corti-assistant-dark" },
+  { label: "Showcase Light", value: "corti-showcase-light" },
+  { label: "Showcase Dark", value: "corti-showcase-dark" },
 ] as const
 
 type CortiTheme = (typeof THEMES)[number]["value"]
@@ -65,7 +67,7 @@ export function CortiThemeSwitcher() {
     <div className="inline-flex items-center gap-2">
       <span className="text-sm text-muted-foreground">Theme</span>
       <Select value={theme} onValueChange={onChange}>
-        <SelectTrigger className="w-52">
+        <SelectTrigger className="w-56">
           <SelectValue placeholder="Select theme" />
         </SelectTrigger>
         <SelectContent>
