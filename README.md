@@ -65,9 +65,15 @@ document.documentElement.dataset.theme = "corti-console-light"
 // corti-showcase-light, corti-showcase-dark
 ```
 
-For `corti-theme-showcase`, load `IBM Plex Mono` in your app for best visual result.
+`corti-theme-showcase` uses IBM Plex Mono typography and forces square edges (`--radius* = 0px`).
 
 `corti-theme-switcher` includes a `Shadcn Default` option that removes `data-theme` overrides.
+
+If you update a component/theme that is already installed in a consumer app, reinstall with overwrite:
+
+```bash
+npx shadcn@latest add -o @corti/<item-name>
+```
 
 ## Manual theme edits
 
