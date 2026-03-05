@@ -66,3 +66,5 @@ document.documentElement.dataset.theme = "corti-console-light"
 ```
 
 For `corti-theme-showcase`, load `IBM Plex Mono` and `Press Start 2P` in your app for best visual result.
+
+`corti-theme-switcher` includes a `Shadcn Default` option that removes `data-theme` overrides.
