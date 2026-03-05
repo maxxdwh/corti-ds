@@ -42,7 +42,19 @@
         "--sidebar-accent": "hsl(216 90% 90%)",
         "--sidebar-accent-foreground": "hsl(229 35% 14%)",
         "--sidebar-border": "hsl(229 35% 28%)",
-        "--sidebar-ring": "#B8F818"
+        "--sidebar-ring": "#B8F818",
+        "--variant-error-bg": "hsl(350 100% 95%)",
+        "--variant-error-border": "hsl(350 88% 68%)",
+        "--variant-error-text": "hsl(350 88% 30%)",
+        "--variant-info-bg": "hsl(199 100% 92%)",
+        "--variant-info-border": "hsl(199 88% 62%)",
+        "--variant-info-text": "hsl(222 70% 24%)",
+        "--variant-success-bg": "hsl(85 100% 90%)",
+        "--variant-success-border": "hsl(86 85% 54%)",
+        "--variant-success-text": "hsl(120 62% 22%)",
+        "--variant-warning-bg": "hsl(45 100% 90%)",
+        "--variant-warning-border": "hsl(38 96% 55%)",
+        "--variant-warning-text": "hsl(25 88% 24%)"
       },
       "html[data-theme=\"corti-showcase-dark\"]": {
         "--font-sans": "\"IBM Plex Mono\", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace",
@@ -78,7 +90,19 @@
         "--sidebar-accent": "hsl(229 40% 24%)",
         "--sidebar-accent-foreground": "hsl(84 100% 96%)",
         "--sidebar-border": "hsl(229 35% 36%)",
-        "--sidebar-ring": "#B8F818"
+        "--sidebar-ring": "#B8F818",
+        "--variant-error-bg": "hsl(350 70% 14%)",
+        "--variant-error-border": "hsl(350 84% 46%)",
+        "--variant-error-text": "hsl(350 100% 84%)",
+        "--variant-info-bg": "hsl(205 72% 14%)",
+        "--variant-info-border": "hsl(199 90% 48%)",
+        "--variant-info-text": "hsl(199 100% 80%)",
+        "--variant-success-bg": "hsl(102 62% 14%)",
+        "--variant-success-border": "#B8F818",
+        "--variant-success-text": "hsl(88 100% 82%)",
+        "--variant-warning-bg": "hsl(42 82% 16%)",
+        "--variant-warning-border": "hsl(45 96% 54%)",
+        "--variant-warning-text": "hsl(45 100% 78%)"
       },
       "html[data-theme^=\"corti-showcase\"] :is(h1, h2, h3, h4, h5, h6)": {
         "font-family": "\"Press Start 2P\", \"IBM Plex Mono\", ui-monospace, monospace",

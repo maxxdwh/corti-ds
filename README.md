@@ -68,3 +68,21 @@ document.documentElement.dataset.theme = "corti-console-light"
 For `corti-theme-showcase`, load `IBM Plex Mono` and `Press Start 2P` in your app for best visual result.
 
 `corti-theme-switcher` includes a `Shadcn Default` option that removes `data-theme` overrides.
+
+## Manual theme edits
+
+If you want to manually tweak a theme, edit these files:
+
+- `registry.json`:
+  - `corti-theme-console`
+  - `corti-theme-assistant`
+  - `corti-theme-showcase`
+- `registry/default/corti-theme-switcher/corti-theme-switcher.tsx` (theme options + switch behavior)
+
+After editing, rebuild and republish:
+
+```bash
+npm run registry:build
+```
+
+Do not edit `public/r/*.json` directly. Those files are generated from `registry.json`.
