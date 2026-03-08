@@ -15,8 +15,8 @@ Small starter registry for Corti components built on top of shadcn/ui.
   - `theme-core`
   - `theme-console`
   - `theme-assistant`
+  - `theme-classic`
   - `theme-showcase`
-  - `theme-win95`
   - `theme-switcher`
 - Full shadcn default UI catalog under `@corti/*` names (no `corti-*` duplicates), e.g.:
   - `accordion`
@@ -62,8 +62,8 @@ npx shadcn@latest add @corti/loading-panel
 npx shadcn@latest add @corti/activity-row
 npx shadcn@latest add @corti/theme-console
 npx shadcn@latest add @corti/theme-assistant
+npx shadcn@latest add @corti/theme-classic
 npx shadcn@latest add @corti/theme-showcase
-npx shadcn@latest add @corti/theme-win95
 npx shadcn@latest add @corti/theme-switcher
 npx shadcn@latest add @corti/input @corti/select @corti/sidebar
 ```
@@ -73,11 +73,11 @@ Set a theme at runtime:
 ```ts
 document.documentElement.dataset.theme = "corti-console-light"
 // or: corti-console-dark, corti-assistant-light, corti-assistant-dark,
-// corti-showcase-light, corti-showcase-dark,
-// corti-win95-light, corti-win95-dark
+// corti-classic-light, corti-classic-dark, corti-showcase-light,
+// corti-showcase-dark
 ```
 
-`theme-switcher` includes a `Shadcn Default` option that removes `data-theme` overrides.
+`theme-switcher` uses `Console` as the baseline shadcn-style option. In Theme Lab and the switcher component, selecting `Console` removes `data-theme` overrides and falls back to the default shadcn styling.
 
 If you update a component/theme that is already installed in a consumer app, reinstall with overwrite:
 
@@ -92,8 +92,8 @@ If you want to manually tweak a theme, edit these files:
 - `registry.json`:
   - `theme-console`
   - `theme-assistant`
+  - `theme-classic`
   - `theme-showcase`
-  - `theme-win95`
 - `registry/default/corti-theme-switcher/corti-theme-switcher.tsx` (theme options + switch behavior)
 
 After editing, rebuild and republish:

@@ -15,6 +15,7 @@ const THEME_FILES = [
   "/themes/theme-core.json",
   "/themes/theme-console.json",
   "/themes/theme-assistant.json",
+  "/themes/theme-classic.json",
   "/themes/theme-showcase.json",
 ]
 

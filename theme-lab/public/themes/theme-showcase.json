@@ -131,6 +131,14 @@
         "letter-spacing": "0.04em",
         "line-height": "1.35",
         "text-transform": "uppercase"
+      },
+      "[data-theme^=\"corti-showcase\"] [data-slot=\"alert-dialog-media\"]": {
+        "background": "transparent",
+        "border": "0",
+        "box-shadow": "none"
+      },
+      "[data-theme^=\"corti-showcase\"] [data-slot=\"alert-dialog-content\"][data-size=\"sm\"]": {
+        "max-width": "42rem"
       }
     }
   },
