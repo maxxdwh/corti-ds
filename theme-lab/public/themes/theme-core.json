@@ -5,6 +5,7 @@
   "description": "Shared semantic variables used by Corti themes.",
   "cssVars": {
     "theme": {
+      "overlay": "hsl(0 0% 0% / 0.48)",
       "variant-success-bg": "hsl(142 76% 97%)",
       "variant-success-border": "hsl(142 61% 86%)",
       "variant-success-text": "hsl(142 70% 28%)",

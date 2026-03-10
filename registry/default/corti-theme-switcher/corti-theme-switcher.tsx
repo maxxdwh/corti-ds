@@ -12,15 +12,14 @@ import {
 const STORAGE_KEY = "corti-theme"
 
 const THEMES = [
-  { label: "Shadcn Default", value: "shadcn-default" },
   { label: "Console Light", value: "corti-console-light" },
   { label: "Console Dark", value: "corti-console-dark" },
   { label: "Assistant Light", value: "corti-assistant-light" },
   { label: "Assistant Dark", value: "corti-assistant-dark" },
+  { label: "Classic Light", value: "corti-classic-light" },
+  { label: "Classic Dark", value: "corti-classic-dark" },
   { label: "Showcase Light", value: "corti-showcase-light" },
   { label: "Showcase Dark", value: "corti-showcase-dark" },
-  { label: "Win95 Light", value: "corti-win95-light" },
-  { label: "Win95 Dark", value: "corti-win95-dark" },
 ] as const
 
 type CortiTheme = (typeof THEMES)[number]["value"]
@@ -32,10 +31,12 @@ function isCortiTheme(value: string): value is CortiTheme {
 function applyTheme(theme: CortiTheme) {
   const root = document.documentElement
 
-  if (theme === "shadcn-default") {
+  if (theme.startsWith("corti-console")) {
+    const isDark = theme.endsWith("-dark")
+
     delete root.dataset.theme
-    root.classList.remove("dark")
-    root.style.colorScheme = "light"
+    root.classList.toggle("dark", isDark)
+    root.style.colorScheme = isDark ? "dark" : "light"
     return
   }
 
@@ -47,7 +48,7 @@ function applyTheme(theme: CortiTheme) {
 }
 
 export function CortiThemeSwitcher() {
-  const [theme, setTheme] = React.useState<CortiTheme>("shadcn-default")
+  const [theme, setTheme] = React.useState<CortiTheme>("corti-console-light")
 
   React.useEffect(() => {
     const root = document.documentElement
@@ -58,7 +59,7 @@ export function CortiThemeSwitcher() {
       ? stored
       : isCortiTheme(current ?? "")
         ? current
-        : "shadcn-default"
+        : "corti-console-light"
 
     applyTheme(nextTheme)
     setTheme(nextTheme)

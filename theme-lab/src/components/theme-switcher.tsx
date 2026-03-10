@@ -2,22 +2,16 @@
 
 import * as React from "react"
 import { Laptop, Moon, Sun } from "lucide-react"
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select"
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs"
+import { cn } from "@/lib/utils"
 
 export const THEME_STORAGE_KEY = "theme-family"
 export const MODE_STORAGE_KEY = "theme-mode"
 
 export const THEME_FAMILIES = [
-  { label: "Shadcn Default", value: "shadcn" },
   { label: "Console", value: "corti-console" },
   { label: "Assistant", value: "corti-assistant" },
+  { label: "Classic", value: "corti-classic" },
   { label: "Showcase", value: "corti-showcase" },
 ] as const
 
@@ -49,18 +43,14 @@ export function ThemeSwitcher({
   mode,
   onThemeFamilyChange,
   onModeChange,
+  className,
 }: {
   themeFamily: ThemeFamily
   mode: ThemeMode
   onThemeFamilyChange: (value: ThemeFamily) => void
   onModeChange: (value: ThemeMode) => void
+  className?: string
 }) {
-  const modeIcons: Record<ThemeMode, React.ReactNode> = {
-    system: <Laptop className="size-4" />,
-    light: <Sun className="size-4" />,
-    dark: <Moon className="size-4" />,
-  }
-
   function handleThemeFamilyChange(nextThemeFamily: string) {
     if (isThemeFamily(nextThemeFamily)) {
       onThemeFamilyChange(nextThemeFamily)
@@ -74,31 +64,54 @@ export function ThemeSwitcher({
   }
 
   return (
-    <div className="inline-flex flex-wrap items-center gap-2">
-      <span className="text-sm text-muted-foreground">Theme</span>
-      <Select value={themeFamily} onValueChange={handleThemeFamilyChange}>
-        <SelectTrigger className="w-44">
-          <SelectValue placeholder="Select theme" />
-        </SelectTrigger>
-        <SelectContent>
+    <div className={cn("space-y-3", className)}>
+      <div className="space-y-1.5">
+        <span className="text-xs font-medium tracking-wide text-muted-foreground uppercase">
+          Theme
+        </span>
+        <div
+          className={cn(
+            "space-y-1 border border-border/70 bg-secondary/40 p-1",
+            themeFamily === "corti-classic" ? "rounded-none" : "rounded-xl"
+          )}
+        >
           {THEME_FAMILIES.map((option) => (
-            <SelectItem key={option.value} value={option.value}>
+            <button
+              key={option.value}
+              type="button"
+              aria-pressed={themeFamily === option.value}
+              className={cn(
+                "flex h-10 w-full items-center border px-3 text-left text-sm font-medium focus-visible:ring-2 focus-visible:ring-ring focus-visible:outline-none",
+                themeFamily === "corti-classic"
+                  ? "rounded-none transition-none"
+                  : "rounded-lg transition-colors",
+                themeFamily === "corti-classic" && themeFamily === option.value
+                  ? "bg-background text-foreground shadow-[inset_1px_1px_0_var(--classic-shadow-deep),inset_-1px_-1px_0_var(--classic-highlight)]"
+                  : themeFamily === "corti-classic"
+                    ? "bg-secondary text-muted-foreground shadow-[inset_1px_1px_0_var(--classic-highlight),inset_-1px_-1px_0_var(--classic-shadow-deep)] hover:bg-secondary"
+                    : "hover:bg-background/80",
+                themeFamily === option.value
+                  ? "border-border bg-background text-foreground"
+                  : "border-transparent text-muted-foreground"
+              )}
+              onClick={() => handleThemeFamilyChange(option.value)}
+            >
               {option.label}
-            </SelectItem>
+            </button>
           ))}
-        </SelectContent>
-      </Select>
+        </div>
+      </div>
 
-      <Tabs value={mode} onValueChange={handleModeChange}>
-        <TabsList>
+      <Tabs value={mode} onValueChange={handleModeChange} className="w-full">
+        <TabsList className="grid w-full grid-cols-3">
           <TabsTrigger value="system" title="System" aria-label="System theme">
-            {modeIcons.system}
+            <Laptop className="size-4" />
           </TabsTrigger>
           <TabsTrigger value="light" title="Light" aria-label="Light theme">
-            {modeIcons.light}
+            <Sun className="size-4" />
           </TabsTrigger>
           <TabsTrigger value="dark" title="Dark" aria-label="Dark theme">
-            {modeIcons.dark}
+            <Moon className="size-4" />
           </TabsTrigger>
         </TabsList>
       </Tabs>

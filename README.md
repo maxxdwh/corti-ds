@@ -1,46 +1,88 @@
-# Corti ShadCN Registry (Default Style)
+# Corti DS Registry
 
-Small starter registry for Corti components built on top of shadcn/ui.
+Corti's shadcn/ui-based component registry and theme library.
 
-## What is included
+This repo publishes:
 
-- Custom Corti DS items:
-  - `button` (Corti wrapper)
-  - `empty-state`
-  - `stat-card`
-  - `section-header`
-  - `status-pill`
-  - `loading-panel`
-  - `activity-row`
-  - `theme-core`
-  - `theme-console`
-  - `theme-assistant`
-  - `theme-showcase`
-  - `theme-win95`
-  - `theme-switcher`
-- Full shadcn default UI catalog under `@corti/*` names (no `corti-*` duplicates), e.g.:
-  - `accordion`
-  - `input`
-  - `select`
-  - `table`
-  - `sidebar`
-  - `toast`
+- Corti-specific components such as `button`, `empty-state`, `stat-card`, and `activity-row`
+- namespaced shadcn/ui primitives under `@corti/*`
+- shared themes: `Console`, `Assistant`, `Classic`, and `Showcase`
+- a `theme-switcher` component and a local Theme Lab for visual review
 
-All registry source files live under `registry/default/...`.
-Base dependencies are pinned to shadcn `styles/default/*` endpoints.
+## Structure
 
-## Build the registry
+- `registry.json`
+  Source of truth for registry items and themes.
+- `registry/default/...`
+  Source files for Corti-owned registry items.
+- `public/r/...`
+  Generated installable registry JSON files.
+- `theme-lab/...`
+  Local app for reviewing components and themes.
+
+Do not edit `public/r/*.json` directly. Rebuild from `registry.json`.
+
+## Themes
+
+Available themes:
+
+- `theme-console`
+  Baseline shadcn-style light and dark tokens under the Corti namespace.
+- `theme-assistant`
+  Corti assistant theme.
+- `theme-classic`
+  Retro desktop-inspired theme with beveled chrome.
+- `theme-showcase`
+  High-contrast editorial/demo theme.
+
+`Console` is the default baseline option. In Theme Lab and `theme-switcher`, choosing `Console` clears `data-theme` overrides and falls back to standard shadcn styling.
+
+Runtime theme values:
+
+- `corti-console-light`
+- `corti-console-dark`
+- `corti-assistant-light`
+- `corti-assistant-dark`
+- `corti-classic-light`
+- `corti-classic-dark`
+- `corti-showcase-light`
+- `corti-showcase-dark`
+
+Example:
+
+```ts
+document.documentElement.dataset.theme = "corti-classic-light"
+```
+
+To return to baseline shadcn styling, remove the override:
+
+```ts
+delete document.documentElement.dataset.theme
+```
+
+## Build
+
+Install dependencies:
 
 ```bash
 npm install
+```
+
+Build the registry:
+
+```bash
 npm run registry:build
 ```
 
-This generates installable JSON files in `public/r`.
+Watch registry output during theme or component work:
 
-## Use from another project
+```bash
+npm run registry:watch
+```
 
-Add this registry URL to your consumer project's `components.json`:
+## Consume From Another Project
+
+Add the registry to the consumer app's `components.json`:
 
 ```json
 {
@@ -50,56 +92,104 @@ Add this registry URL to your consumer project's `components.json`:
 }
 ```
 
-Then install items with the shadcn CLI:
+Install components with the shadcn CLI:
 
 ```bash
 npx shadcn@latest add @corti/button
 npx shadcn@latest add @corti/empty-state
 npx shadcn@latest add @corti/stat-card
-npx shadcn@latest add @corti/section-header
-npx shadcn@latest add @corti/status-pill
-npx shadcn@latest add @corti/loading-panel
 npx shadcn@latest add @corti/activity-row
 npx shadcn@latest add @corti/theme-console
 npx shadcn@latest add @corti/theme-assistant
+npx shadcn@latest add @corti/theme-classic
 npx shadcn@latest add @corti/theme-showcase
-npx shadcn@latest add @corti/theme-win95
 npx shadcn@latest add @corti/theme-switcher
+```
+
+Install standard shadcn primitives from this registry the same way:
+
+```bash
 npx shadcn@latest add @corti/input @corti/select @corti/sidebar
 ```
 
-Set a theme at runtime:
-
-```ts
-document.documentElement.dataset.theme = "corti-console-light"
-// or: corti-console-dark, corti-assistant-light, corti-assistant-dark,
-// corti-showcase-light, corti-showcase-dark,
-// corti-win95-light, corti-win95-dark
-```
-
-`theme-switcher` includes a `Shadcn Default` option that removes `data-theme` overrides.
-
-If you update a component/theme that is already installed in a consumer app, reinstall with overwrite:
+To overwrite an existing installed item:
 
 ```bash
 npx shadcn@latest add -o @corti/<item-name>
 ```
 
-## Manual theme edits
+## Included Items
 
-If you want to manually tweak a theme, edit these files:
+Corti-owned items:
 
-- `registry.json`:
-  - `theme-console`
-  - `theme-assistant`
-  - `theme-showcase`
-  - `theme-win95`
-- `registry/default/corti-theme-switcher/corti-theme-switcher.tsx` (theme options + switch behavior)
+- `button`
+- `empty-state`
+- `stat-card`
+- `section-header`
+- `status-pill`
+- `loading-panel`
+- `activity-row`
+- `theme-core`
+- `theme-console`
+- `theme-assistant`
+- `theme-classic`
+- `theme-showcase`
+- `theme-switcher`
 
-After editing, rebuild and republish:
+The registry also republishes the default shadcn/ui catalog under `@corti/*`, including:
+
+- `accordion`
+- `alert`
+- `alert-dialog`
+- `avatar`
+- `badge`
+- `card`
+- `dialog`
+- `field`
+- `form`
+- `input`
+- `popover`
+- `progress`
+- `select`
+- `sheet`
+- `sidebar`
+- `switch`
+- `table`
+- `tabs`
+- `textarea`
+- `toast`
+- `tooltip`
+
+See `public/r/` for the full generated list.
+
+## Theme Editing
+
+If you need to change a theme, start here:
+
+- `registry.json`
+- `registry/default/corti-theme-switcher/corti-theme-switcher.tsx`
+- `theme-lab/public/themes/*.json`
+- `theme-lab/src/components/theme-style-loader.tsx`
+- `theme-lab/src/components/theme-switcher.tsx`
+
+After editing:
 
 ```bash
 npm run registry:build
 ```
 
-Do not edit `public/r/*.json` directly. Those files are generated from `registry.json`.
+If you changed Theme Lab surfaces or theme previews, also verify the app build from `theme-lab/`:
+
+```bash
+npm run build
+```
+
+## Theme Lab
+
+Theme Lab is the local preview app for registry components and theme behavior. Use it to review:
+
+- theme token application
+- dialogs, sheets, popovers, and other portal surfaces
+- component states across `Console`, `Assistant`, `Classic`, and `Showcase`
+
+Theme Lab theme files live in `theme-lab/public/themes/`.
