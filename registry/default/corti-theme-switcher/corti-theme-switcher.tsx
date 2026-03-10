@@ -19,6 +19,8 @@ const THEMES = [
   { label: "Assistant Dark", value: "corti-assistant-dark" },
   { label: "Showcase Light", value: "corti-showcase-light" },
   { label: "Showcase Dark", value: "corti-showcase-dark" },
+  { label: "Win95 Light", value: "corti-win95-light" },
+  { label: "Win95 Dark", value: "corti-win95-dark" },
 ] as const
 
 type CortiTheme = (typeof THEMES)[number]["value"]
