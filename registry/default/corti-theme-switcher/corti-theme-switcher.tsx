@@ -20,6 +20,8 @@ const THEMES = [
   { label: "Classic Dark", value: "corti-classic-dark" },
   { label: "Showcase Light", value: "corti-showcase-light" },
   { label: "Showcase Dark", value: "corti-showcase-dark" },
+  { label: "Retro Arcade Light", value: "corti-retro-arcade-light" },
+  { label: "Retro Arcade Dark", value: "corti-retro-arcade-dark" },
 ] as const
 
 type CortiTheme = (typeof THEMES)[number]["value"]

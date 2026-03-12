@@ -6,7 +6,6 @@ import { Dialog as SheetPrimitive } from "radix-ui"
 
 import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
-import { useThemePortalContainer } from "@/components/theme-scope"
 
 function Sheet({ ...props }: React.ComponentProps<typeof SheetPrimitive.Root>) {
   return <SheetPrimitive.Root data-slot="sheet" {...props} />
@@ -27,14 +26,7 @@ function SheetClose({
 function SheetPortal({
   ...props
 }: React.ComponentProps<typeof SheetPrimitive.Portal>) {
-  const container = useThemePortalContainer()
-  return (
-    <SheetPrimitive.Portal
-      data-slot="sheet-portal"
-      container={container ?? undefined}
-      {...props}
-    />
-  )
+  return <SheetPrimitive.Portal data-slot="sheet-portal" {...props} />
 }
 
 function SheetOverlay({

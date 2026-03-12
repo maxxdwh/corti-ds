@@ -17,12 +17,31 @@ const THEME_FILES = [
   "/themes/theme-assistant.json",
   "/themes/theme-classic.json",
   "/themes/theme-showcase.json",
+  "/themes/theme-retro-arcade.json",
 ]
+
+const THEME_FONTS_HREF =
+  "https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Silkscreen:wght@400;700&family=VT323&display=swap"
 
 function declarations(vars: Record<string, string>) {
   return Object.entries(vars)
     .map(([key, value]) => `${key}: ${value};`)
     .join(" ")
+}
+
+function ensureThemeFonts() {
+  const id = "theme-fonts"
+  let link = document.getElementById(id) as HTMLLinkElement | null
+
+  if (link) {
+    return
+  }
+
+  link = document.createElement("link")
+  link.id = id
+  link.rel = "stylesheet"
+  link.href = THEME_FONTS_HREF
+  document.head.appendChild(link)
 }
 
 function toCss(themeFiles: ThemeFile[]) {
@@ -57,6 +76,8 @@ export function ThemeStyleLoader() {
     let cancelled = false
 
     async function load() {
+      ensureThemeFonts()
+
       const responses = await Promise.all(
         THEME_FILES.map(async (file) => {
           const response = await fetch(file)

@@ -9,6 +9,14 @@ This repo publishes:
 - shared themes: `Console`, `Assistant`, `Classic`, and `Showcase`
 - a `theme-switcher` component and a local Theme Lab for visual review
 
+## Ownership Model
+
+Corti treats an item as **owned** when its implementation source is local to this repo and referenced by a `files` entry in `registry.json` (under `registry/default/...`).
+
+- `registry:block` and `registry:ui` are packaging categories.
+- Ownership is operationally defined by local source control, not item type.
+- `registryDependencies` are reserved for true prerequisites (for example, `@corti/button` for `dialog`), not as the primary component source.
+
 ## Structure
 
 - `registry.json`
@@ -161,6 +169,33 @@ The registry also republishes the default shadcn/ui catalog under `@corti/*`, in
 - `tooltip`
 
 See `public/r/` for the full generated list.
+
+## Phased Ownership Rollout
+
+The migration to full Corti ownership is intentionally phased to preserve shadcn API parity and reduce break risk.
+
+- **Phase 1 (implemented):** `button`, `input`, `textarea`, `select`, `dialog`, `sheet`, `popover`, `tabs`, `switch`, `checkbox`, `radio-group`
+- **Phase 2 (planned):** navigation/data/feedback surfaces
+- **Phase 3 (planned):** remaining long-tail components + consistency pass
+
+Phase 1 components are now source-backed in `registry/default/...` and include semantic token hooks.
+
+To inspect remaining non-owned registry UI items:
+
+```bash
+node scripts/list-unowned-items.mjs
+```
+
+## Upstream Sync Cadence
+
+Upstream shadcn changes are merged on a scheduled cadence, not continuously:
+
+1. Pull latest upstream component changes into a staging branch.
+2. Review API, behavior, and accessibility parity diffs.
+3. Verify token compatibility and theme output.
+4. Merge selected changes with concise release notes.
+
+This keeps Corti-owned components stable while still tracking upstream improvements.
 
 ## Theme Editing
 

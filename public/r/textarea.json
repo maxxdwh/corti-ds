@@ -2,9 +2,13 @@
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "textarea",
   "title": "Corti Textarea",
-  "description": "Corti namespaced shadcn default textarea component. Design opinion comes from installed Corti theme tokens.",
-  "registryDependencies": [
-    "https://ui.shadcn.com/r/styles/default/textarea.json"
+  "description": "Corti-owned textarea component with semantic token hooks and shadcn parity.",
+  "files": [
+    {
+      "path": "registry/default/corti-textarea/corti-textarea.tsx",
+      "content": "import * as React from \"react\"\n\nimport { cn } from \"@/lib/utils\"\n\nfunction Textarea({ className, ...props }: React.ComponentProps<\"textarea\">) {\n  return (\n    <textarea\n      data-slot=\"textarea\"\n      className={cn(\n        \"flex field-sizing-content min-h-[var(--textarea-min-height,4rem)] w-full rounded-[var(--textarea-radius,var(--radius))] border border-input bg-transparent px-[var(--textarea-px,0.75rem)] py-[var(--textarea-py,0.5rem)] text-base shadow-xs transition-[color,box-shadow] outline-none placeholder:text-muted-foreground focus-visible:border-ring focus-visible:ring-[3px] focus-visible:ring-ring/50 disabled:cursor-not-allowed disabled:opacity-50 aria-invalid:border-destructive aria-invalid:ring-destructive/20 md:text-sm dark:bg-input/30 dark:aria-invalid:ring-destructive/40\",\n        className\n      )}\n      {...props}\n    />\n  )\n}\n\nexport { Textarea }\n",
+      "type": "registry:ui"
+    }
   ],
   "type": "registry:ui"
 }

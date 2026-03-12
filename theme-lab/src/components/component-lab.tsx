@@ -4,6 +4,15 @@ import * as React from "react"
 import {
   Activity,
   ArrowUpRight,
+  Bot,
+  ClipboardList,
+  FileText,
+  FlaskConical,
+  HeartPulse,
+  MessageSquare,
+  Pill,
+  ShieldAlert,
+  Stethoscope,
   Upload,
   Users,
 } from "lucide-react"
@@ -12,7 +21,8 @@ import {
   THEME_STORAGE_KEY,
   ThemeFamily,
   ThemeMode,
-  ThemeSwitcher,
+  ThemeFamilySidebarNav,
+  ThemeModeTabs,
   isThemeFamily,
   isThemeMode,
   resolveMode,
@@ -104,6 +114,7 @@ import {
   SidebarFooter,
   SidebarGroup,
   SidebarGroupContent,
+  SidebarGroupLabel,
   SidebarHeader,
   SidebarInset,
   SidebarProvider,
@@ -230,9 +241,8 @@ function ExampleWall() {
               </TabsList>
               <TabsContent value="soap" className="space-y-3 pt-3">
                 <div className="rounded-lg border border-border/70 bg-secondary/30 p-3">
-                  <div className="mb-2 flex items-center justify-between gap-2">
-                    <p className="text-sm font-medium">corti-soap</p>
-                    <Badge variant="outline">Subjective · Objective · Assessment · Plan</Badge>
+                  <div className="mb-2 flex items-start gap-2">
+                    <p className="min-w-0 text-sm font-medium">corti-soap</p>
                   </div>
                   <p className="text-sm text-muted-foreground">
                     Classic SOAP note for ambient generation across most medical visits.
@@ -245,8 +255,8 @@ function ExampleWall() {
               </TabsContent>
               <TabsContent value="brief" className="space-y-3 pt-3">
                 <div className="rounded-lg border border-border/70 bg-secondary/30 p-3">
-                  <div className="mb-2 flex items-center justify-between gap-2">
-                    <p className="text-sm font-medium">corti-brief-clinical-note</p>
+                  <div className="mb-2 flex flex-wrap items-start justify-between gap-2">
+                    <p className="min-w-0 text-sm font-medium">corti-brief-clinical-note</p>
                     <Badge variant="outline">1 paragraph</Badge>
                   </div>
                   <p className="text-sm text-muted-foreground">
@@ -260,8 +270,8 @@ function ExampleWall() {
               </TabsContent>
               <TabsContent value="patient" className="space-y-3 pt-3">
                 <div className="rounded-lg border border-border/70 bg-secondary/30 p-3">
-                  <div className="mb-2 flex items-center justify-between gap-2">
-                    <p className="text-sm font-medium">corti-patient-summary</p>
+                  <div className="mb-2 flex flex-wrap items-start justify-between gap-2">
+                    <p className="min-w-0 text-sm font-medium">corti-patient-summary</p>
                     <Badge variant="outline">Plain language</Badge>
                   </div>
                   <p className="text-sm text-muted-foreground">
@@ -826,11 +836,573 @@ function ExampleWall() {
   )
 }
 
+type EhrPatient = {
+  id: string
+  name: string
+  age: number
+  sex: string
+  room: string
+  mrn: string
+  acuity: "high" | "moderate"
+  allergies: string
+  diagnosis: string
+}
+
+const EHR_PATIENTS: EhrPatient[] = [
+  {
+    id: "pt-40291",
+    name: "Elin Jensen",
+    age: 67,
+    sex: "F",
+    room: "ICU-04",
+    mrn: "40291",
+    acuity: "high",
+    allergies: "Penicillin, shellfish",
+    diagnosis: "Acute CHF exacerbation",
+  },
+  {
+    id: "pt-40311",
+    name: "Mikael Lund",
+    age: 52,
+    sex: "M",
+    room: "ED-12",
+    mrn: "40311",
+    acuity: "moderate",
+    allergies: "NKDA",
+    diagnosis: "Rule out TIA",
+  },
+  {
+    id: "pt-40322",
+    name: "Sofia Berg",
+    age: 34,
+    sex: "F",
+    room: "OBS-03",
+    mrn: "40322",
+    acuity: "moderate",
+    allergies: "Latex",
+    diagnosis: "Post-op pain management",
+  },
+]
+
+function buildAiReply(input: string) {
+  const normalized = input.toLowerCase()
+
+  if (normalized.includes("note") || normalized.includes("summary")) {
+    return "Draft recommendation: include symptom onset timestamp, oxygen trend over the last 6 hours, and explicit disposition criteria before sign-off."
+  }
+
+  if (normalized.includes("sepsis") || normalized.includes("lactate")) {
+    return "Sepsis watch: lactate is mildly elevated and MAP dipped below 65 once. Consider repeating lactate in 2 hours and continue fluid responsiveness checks."
+  }
+
+  if (normalized.includes("med") || normalized.includes("dose")) {
+    return "Medication safety check: no hard contraindications detected, but verify ACE inhibitor timing against most recent creatinine and potassium results."
+  }
+
+  return "I can help with note drafting, trend interpretation, and handoff prep. Ask me for a problem-oriented update, meds safety pass, or discharge-readiness checklist."
+}
+
+function EhrWorkspace() {
+  const [patientId, setPatientId] = React.useState(EHR_PATIENTS[0].id)
+  const [noteText, setNoteText] = React.useState(
+    "Subjective: Patient reports improved dyspnea at rest, persistent orthopnea overnight.\nObjective: O2 requirement decreased from 4L to 2L NC, bibasilar crackles remain, net -1.2L over 24h.\nAssessment: Improving acute CHF exacerbation with persistent volume overload.\nPlan: Continue IV diuresis, trend BMP q12h, and reassess for step-down transfer this evening."
+  )
+  const [chatInput, setChatInput] = React.useState("")
+  const [aiMessages, setAiMessages] = React.useState<
+    Array<{ id: number; role: "ai" | "user"; text: string }>
+  >([
+    {
+      id: 1,
+      role: "ai",
+      text: "Hi team, I reviewed the chart. I can draft a focused progress note, propose orders, or generate handoff bullets.",
+    },
+    {
+      id: 2,
+      role: "user",
+      text: "Give me a concise overnight handoff.",
+    },
+    {
+      id: 3,
+      role: "ai",
+      text: "Overnight handoff: no pressor use, oxygen weaned, one transient MAP drop, diuresis effective, labs stable except mild lactate elevation.",
+    },
+  ])
+  const [autoOrders, setAutoOrders] = React.useState(true)
+  const [drugSafety, setDrugSafety] = React.useState(true)
+  const [handoffAssist, setHandoffAssist] = React.useState(true)
+
+  const patient = EHR_PATIENTS.find((item) => item.id === patientId) ?? EHR_PATIENTS[0]
+
+  function sendAiMessage() {
+    const trimmed = chatInput.trim()
+    if (!trimmed) {
+      return
+    }
+
+    const messageId = Date.now()
+    setAiMessages((current) => [
+      ...current,
+      { id: messageId, role: "user", text: trimmed },
+      { id: messageId + 1, role: "ai", text: buildAiReply(trimmed) },
+    ])
+    setChatInput("")
+  }
+
+  return (
+    <div className="mx-auto flex h-[calc(100dvh-12rem)] max-w-[1320px] min-h-0 flex-col space-y-3 [&_[data-slot=card]]:gap-3 [&_[data-slot=card]]:py-3 [&_[data-slot=card-header]]:gap-1 [&_[data-slot=card-header]]:px-4 [&_[data-slot=card-content]]:px-4 [&_[data-slot=card-footer]]:px-4">
+      <Card>
+        <CardContent className="flex flex-col gap-4 p-4 lg:flex-row lg:items-center lg:justify-between">
+          <div className="space-y-2">
+            <div className="flex flex-wrap items-center gap-2">
+              <Badge variant="secondary">Demo EHR Workspace</Badge>
+              <Badge variant={patient.acuity === "high" ? "destructive" : "outline"}>
+                {patient.acuity === "high" ? "High Acuity" : "Moderate Acuity"}
+              </Badge>
+              <Badge variant="outline">MRN {patient.mrn}</Badge>
+            </div>
+            <div>
+              <p className="text-lg font-semibold tracking-tight">{patient.name}</p>
+              <p className="text-sm text-muted-foreground">
+                {patient.age}y {patient.sex} • {patient.room} • {patient.diagnosis}
+              </p>
+            </div>
+            <p className="text-xs text-muted-foreground">
+              Allergies: {patient.allergies}
+            </p>
+          </div>
+
+          <div className="flex w-full flex-col gap-3 lg:w-auto lg:min-w-80">
+            <div className="space-y-2">
+              <Label htmlFor="ehr-patient">Patient</Label>
+              <Select value={patientId} onValueChange={setPatientId}>
+                <SelectTrigger id="ehr-patient">
+                  <SelectValue />
+                </SelectTrigger>
+                <SelectContent>
+                  {EHR_PATIENTS.map((item) => (
+                    <SelectItem key={item.id} value={item.id}>
+                      {item.name} ({item.room})
+                    </SelectItem>
+                  ))}
+                </SelectContent>
+              </Select>
+            </div>
+            <div className="flex items-center gap-2">
+              <Button className="flex-1">Sign Note</Button>
+              <Button variant="outline" className="flex-1">Prep Handoff</Button>
+            </div>
+          </div>
+        </CardContent>
+      </Card>
+
+      <div className="grid h-full min-h-0 gap-3 xl:grid-cols-[minmax(0,2.1fr)_minmax(320px,1fr)]">
+        <div className="grid min-h-0 grid-rows-[auto_1fr] gap-3">
+          <div className="grid gap-3 sm:grid-cols-2 xl:grid-cols-4">
+            {[
+              { label: "Heart Rate", value: "92 bpm", trend: "+4 in 2h", icon: HeartPulse },
+              { label: "SpO2", value: "95%", trend: "2L NC", icon: Activity },
+              { label: "MAP", value: "71", trend: "Stable", icon: ShieldAlert },
+              { label: "Urine Output", value: "1.7L", trend: "24h", icon: ClipboardList },
+            ].map((stat) => (
+              <Card key={stat.label}>
+                <CardContent className="p-3">
+                  <div className="flex items-start justify-between gap-2">
+                    <div>
+                      <p className="text-xs text-muted-foreground">{stat.label}</p>
+                      <p className="mt-1 text-lg font-semibold">{stat.value}</p>
+                      <p className="mt-0.5 text-xs text-muted-foreground">{stat.trend}</p>
+                    </div>
+                    <stat.icon className="size-4 text-muted-foreground" />
+                  </div>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+
+          <Tabs defaultValue="chart" className="flex h-full min-h-0 w-full flex-col">
+            <TabsList className="grid h-auto w-full grid-cols-3 gap-1 p-1 lg:grid-cols-6">
+              <TabsTrigger value="overview">Overview</TabsTrigger>
+              <TabsTrigger value="chart">Clinical Note</TabsTrigger>
+              <TabsTrigger value="orders">Orders</TabsTrigger>
+              <TabsTrigger value="results">Results</TabsTrigger>
+              <TabsTrigger value="meds">Meds</TabsTrigger>
+              <TabsTrigger value="timeline">Timeline</TabsTrigger>
+            </TabsList>
+
+            <TabsContent value="overview" className="h-full min-h-0 space-y-3 overflow-y-auto pt-3">
+              <Card className="h-full">
+                <CardHeader>
+                  <CardTitle>Problem List</CardTitle>
+                  <CardDescription>Active issues with status and ownership</CardDescription>
+                </CardHeader>
+                <CardContent className="space-y-3">
+                  {[
+                    ["Acute CHF exacerbation", "Improving", "Cardiology"],
+                    ["Hypoxemia on exertion", "Monitoring", "Respiratory"],
+                    ["AKI risk during diuresis", "Watch", "Hospitalist"],
+                    ["Discharge planning barrier", "Pending PT eval", "Case Mgmt"],
+                  ].map(([problem, status, owner]) => (
+                    <div
+                      key={problem}
+                      className="flex flex-wrap items-center justify-between gap-2 p-3"
+                    >
+                      <div>
+                        <p className="text-sm font-medium">{problem}</p>
+                        <p className="text-xs text-muted-foreground">Owner: {owner}</p>
+                      </div>
+                      <Badge variant="outline">{status}</Badge>
+                    </div>
+                  ))}
+                </CardContent>
+              </Card>
+            </TabsContent>
+
+            <TabsContent value="chart" className="h-full min-h-0 space-y-3 overflow-y-auto pt-3">
+              <Card className="h-full">
+                <CardHeader>
+                  <CardTitle>Progress Note</CardTitle>
+                  <CardDescription>SOAP-style documentation with AI-assisted quick actions</CardDescription>
+                </CardHeader>
+                <CardContent className="flex h-full min-h-0 flex-col gap-3">
+                  <Textarea
+                    value={noteText}
+                    onChange={(event) => setNoteText(event.target.value)}
+                    className="min-h-52"
+                  />
+                  <div className="flex flex-wrap gap-2">
+                    <Button
+                      variant="outline"
+                      size="sm"
+                      onClick={() =>
+                        setNoteText((current) => `${current}\n- Added overnight summary and disposition criteria.`)
+                      }
+                    >
+                      Insert overnight summary
+                    </Button>
+                    <Button
+                      variant="outline"
+                      size="sm"
+                      onClick={() =>
+                        setNoteText((current) => `${current}\n- Added medication reconciliation confirmation.`)
+                      }
+                    >
+                      Add med rec line
+                    </Button>
+                    <Button size="sm">Save Draft</Button>
+                  </div>
+                </CardContent>
+              </Card>
+            </TabsContent>
+
+            <TabsContent value="orders" className="h-full min-h-0 space-y-3 overflow-y-auto pt-3">
+              <Card className="h-full">
+                <CardHeader>
+                  <CardTitle>Order Queue</CardTitle>
+                  <CardDescription>Pending, signed, and suggested actions</CardDescription>
+                </CardHeader>
+                <CardContent>
+                  <Table>
+                    <TableHeader>
+                      <TableRow>
+                        <TableHead>Order</TableHead>
+                        <TableHead>Priority</TableHead>
+                        <TableHead>Status</TableHead>
+                        <TableHead className="text-right">ETA</TableHead>
+                      </TableRow>
+                    </TableHeader>
+                    <TableBody>
+                      {[
+                        ["BMP q12h", "Routine", "Signed", "06:00"],
+                        ["IV Furosemide 40mg", "High", "Due now", "Now"],
+                        ["Portable CXR", "Routine", "In progress", "19:10"],
+                        ["PT mobility eval", "Routine", "Requested", "20:30"],
+                        ["Lactate repeat", "High", "Suggested by AI", "21:00"],
+                      ].map(([order, priority, status, eta]) => (
+                        <TableRow key={order}>
+                          <TableCell>{order}</TableCell>
+                          <TableCell>
+                            <Badge variant={priority === "High" ? "destructive" : "outline"}>
+                              {priority}
+                            </Badge>
+                          </TableCell>
+                          <TableCell>{status}</TableCell>
+                          <TableCell className="text-right">{eta}</TableCell>
+                        </TableRow>
+                      ))}
+                    </TableBody>
+                  </Table>
+                </CardContent>
+              </Card>
+            </TabsContent>
+
+            <TabsContent value="results" className="h-full min-h-0 space-y-3 overflow-y-auto pt-3">
+              <Card className="h-full">
+                <CardHeader>
+                  <CardTitle>Recent Results</CardTitle>
+                  <CardDescription>Key labs and trend flags</CardDescription>
+                </CardHeader>
+                <CardContent>
+                  <Table>
+                    <TableHeader>
+                      <TableRow>
+                        <TableHead>Test</TableHead>
+                        <TableHead>Current</TableHead>
+                        <TableHead>Previous</TableHead>
+                        <TableHead>Flag</TableHead>
+                      </TableRow>
+                    </TableHeader>
+                    <TableBody>
+                      {[
+                        ["Lactate", "2.6 mmol/L", "2.2 mmol/L", "High"],
+                        ["Creatinine", "1.3 mg/dL", "1.2 mg/dL", "Watch"],
+                        ["BNP", "880 pg/mL", "940 pg/mL", "Improving"],
+                        ["WBC", "10.4 x10^9/L", "11.1 x10^9/L", "Normal"],
+                        ["Potassium", "4.2 mmol/L", "4.0 mmol/L", "Normal"],
+                      ].map(([test, current, previous, flag]) => (
+                        <TableRow key={test}>
+                          <TableCell>{test}</TableCell>
+                          <TableCell>{current}</TableCell>
+                          <TableCell>{previous}</TableCell>
+                          <TableCell>
+                            <Badge
+                              variant={flag === "High" ? "destructive" : flag === "Watch" ? "outline" : "secondary"}
+                            >
+                              {flag}
+                            </Badge>
+                          </TableCell>
+                        </TableRow>
+                      ))}
+                    </TableBody>
+                  </Table>
+                </CardContent>
+              </Card>
+            </TabsContent>
+
+            <TabsContent value="meds" className="h-full min-h-0 space-y-3 overflow-y-auto pt-3">
+              <Card className="h-full">
+                <CardHeader>
+                  <CardTitle>Medication Administration</CardTitle>
+                  <CardDescription>Current regimen and hold parameters</CardDescription>
+                </CardHeader>
+                <CardContent className="space-y-3">
+                  {[
+                    ["Furosemide IV 40mg q12h", "Next: 20:00", true],
+                    ["Lisinopril 10mg daily", "Next: 08:00", true],
+                    ["Metoprolol 25mg BID", "Hold if HR < 55", true],
+                    ["PRN Morphine 2mg", "Last given 15:11", false],
+                  ].map(([name, detail, active]) => (
+                    <div
+                      key={name}
+                      className="flex items-center justify-between p-3"
+                    >
+                      <div>
+                        <p className="text-sm font-medium">{name}</p>
+                        <p className="text-xs text-muted-foreground">{detail}</p>
+                      </div>
+                      <Switch defaultChecked={active} />
+                    </div>
+                  ))}
+                </CardContent>
+              </Card>
+            </TabsContent>
+
+            <TabsContent value="timeline" className="h-full min-h-0 space-y-3 overflow-y-auto pt-3">
+              <Card className="h-full">
+                <CardHeader>
+                  <CardTitle>Encounter Timeline</CardTitle>
+                  <CardDescription>Chronological clinical events for the last 24 hours</CardDescription>
+                </CardHeader>
+                <CardContent className="space-y-2">
+                  {[
+                    ["07:14", "ED to ICU transfer completed", "Nursing"],
+                    ["08:02", "Initial AI note generated from transcript", "Corti AI"],
+                    ["10:35", "Cardiology consult signed", "Cardiology"],
+                    ["12:21", "Diuretic dose adjusted after fluid balance review", "Hospitalist"],
+                    ["16:48", "Family update documented in chart", "Resident"],
+                    ["18:06", "Handoff prep requested", "Charge RN"],
+                  ].map(([time, event, source]) => (
+                    <div key={`${time}-${event}`} className="p-3">
+                      <div className="flex items-center justify-between gap-2">
+                        <p className="text-sm font-medium">{event}</p>
+                        <Badge variant="outline">{time}</Badge>
+                      </div>
+                      <p className="mt-1 text-xs text-muted-foreground">{source}</p>
+                    </div>
+                  ))}
+                </CardContent>
+              </Card>
+            </TabsContent>
+          </Tabs>
+        </div>
+
+        <div className="flex min-h-0 flex-col gap-3 overflow-y-auto pr-1">
+          <Card className="flex min-h-[20rem] flex-1 flex-col">
+            <CardHeader className="min-w-0">
+              <CardTitle className="flex min-w-0 items-center gap-2">
+                <Bot className="size-4" />
+                AI Clinical Copilot
+              </CardTitle>
+              <CardDescription className="leading-snug">
+                Simulated side-chat for decision support and note drafting
+              </CardDescription>
+            </CardHeader>
+            <CardContent className="flex min-h-0 flex-1 flex-col gap-3">
+              <div className="min-h-0 flex-1 space-y-2 overflow-y-auto p-1">
+                {aiMessages.map((message) => (
+                  <div
+                    key={message.id}
+                    className={cn(
+                      "px-3 py-2 text-sm",
+                      message.role === "ai"
+                        ? "bg-muted/50"
+                        : "ml-6 border-primary/40 bg-primary/10"
+                    )}
+                  >
+                    <p className="mb-1 text-xs uppercase tracking-wide text-muted-foreground">
+                      {message.role === "ai" ? "AI" : "You"}
+                    </p>
+                    <p>{message.text}</p>
+                  </div>
+                ))}
+              </div>
+              <div className="space-y-2">
+                <Input
+                  value={chatInput}
+                  onChange={(event) => setChatInput(event.target.value)}
+                  placeholder="Ask for a summary, recommendation, or draft..."
+                  onKeyDown={(event) => {
+                    if (event.key === "Enter") {
+                      event.preventDefault()
+                      sendAiMessage()
+                    }
+                  }}
+                />
+                <Button className="w-full" onClick={sendAiMessage}>
+                  <MessageSquare className="mr-2 size-4" />
+                  Send to AI
+                </Button>
+              </div>
+            </CardContent>
+          </Card>
+
+          <Card className="gap-3 py-3">
+            <CardHeader className="gap-1 px-4">
+              <CardTitle>AI Assist Controls</CardTitle>
+              <CardDescription>Interactive toggles for automation behavior</CardDescription>
+            </CardHeader>
+            <CardContent className="space-y-2 px-4">
+              <div className="flex items-center justify-between py-2">
+                <div className="flex items-start gap-2">
+                  <ClipboardList className="mt-0.5 size-4 text-muted-foreground" />
+                  <div>
+                    <p className="text-sm font-medium">Auto-suggest orders</p>
+                    <p className="text-xs text-muted-foreground">Suggest order sets from labs and vitals</p>
+                  </div>
+                </div>
+                <Switch checked={autoOrders} onCheckedChange={setAutoOrders} />
+              </div>
+
+              <div className="flex items-center justify-between py-2">
+                <div className="flex items-start gap-2">
+                  <Pill className="mt-0.5 size-4 text-muted-foreground" />
+                  <div>
+                    <p className="text-sm font-medium">Medication safety pass</p>
+                    <p className="text-xs text-muted-foreground">Flag interactions and renal dosing concerns</p>
+                  </div>
+                </div>
+                <Switch checked={drugSafety} onCheckedChange={setDrugSafety} />
+              </div>
+
+              <div className="flex items-center justify-between py-2">
+                <div className="flex items-start gap-2">
+                  <FileText className="mt-0.5 size-4 text-muted-foreground" />
+                  <div>
+                    <p className="text-sm font-medium">Handoff assistant</p>
+                    <p className="text-xs text-muted-foreground">Generate shift-ready bullet handoffs</p>
+                  </div>
+                </div>
+                <Switch checked={handoffAssist} onCheckedChange={setHandoffAssist} />
+              </div>
+            </CardContent>
+          </Card>
+
+          <Card>
+            <CardHeader>
+              <CardTitle>Context Tabs</CardTitle>
+              <CardDescription>Side intelligence panels for the active encounter</CardDescription>
+            </CardHeader>
+            <CardContent>
+              <Tabs defaultValue="team">
+                <TabsList className="grid w-full grid-cols-3">
+                  <TabsTrigger value="team">Team</TabsTrigger>
+                  <TabsTrigger value="alerts">Alerts</TabsTrigger>
+                  <TabsTrigger value="docs">Docs</TabsTrigger>
+                </TabsList>
+                <TabsContent value="team" className="space-y-2 pt-3">
+                  {[
+                    "Attending: Dr. Karen Madsen",
+                    "Resident: Dr. Jonas Holm",
+                    "Charge RN: Sara Nilsson",
+                  ].map((line) => (
+                    <div key={line} className="px-3 py-2 text-sm">
+                      {line}
+                    </div>
+                  ))}
+                </TabsContent>
+                <TabsContent value="alerts" className="space-y-2 pt-3">
+                  {[
+                    "Fluid balance threshold exceeded",
+                    "Mild lactate rise requires repeat check",
+                    "Discharge summary missing PT recommendation",
+                  ].map((line) => (
+                    <div key={line} className="px-3 py-2 text-sm">
+                      {line}
+                    </div>
+                  ))}
+                </TabsContent>
+                <TabsContent value="docs" className="space-y-2 pt-3">
+                  {[
+                    "Admission H&P - signed",
+                    "Cardiology consult - signed",
+                    "Nursing shift note - pending cosign",
+                  ].map((line) => (
+                    <div key={line} className="px-3 py-2 text-sm">
+                      {line}
+                    </div>
+                  ))}
+                </TabsContent>
+              </Tabs>
+            </CardContent>
+          </Card>
+
+          <div className="grid grid-cols-2 gap-3">
+            <Card>
+              <CardContent className="p-3">
+                <p className="text-xs text-muted-foreground">Pending Labs</p>
+                <p className="mt-1 text-lg font-semibold">3</p>
+                <FlaskConical className="mt-2 size-4 text-muted-foreground" />
+              </CardContent>
+            </Card>
+            <Card>
+              <CardContent className="p-3">
+                <p className="text-xs text-muted-foreground">Consults Open</p>
+                <p className="mt-1 text-lg font-semibold">2</p>
+                <Stethoscope className="mt-2 size-4 text-muted-foreground" />
+              </CardContent>
+            </Card>
+          </div>
+        </div>
+      </div>
+    </div>
+  )
+}
+
 export function ComponentLab() {
   const [portalContainer, setPortalContainer] = React.useState<HTMLElement | null>(null)
   const [themeFamily, setThemeFamily] = React.useState<ThemeFamily>("corti-console")
   const [mode, setMode] = React.useState<ThemeMode>("system")
   const [resolvedMode, setResolvedMode] = React.useState<"light" | "dark">("light")
+  const [activeView, setActiveView] = React.useState<"gallery" | "ehr">("gallery")
 
   React.useEffect(() => {
     const storedThemeFamily = window.localStorage.getItem(THEME_STORAGE_KEY) ?? ""
@@ -897,20 +1469,17 @@ export function ComponentLab() {
               </SidebarHeader>
               <SidebarContent>
                 <SidebarGroup>
-                  <SidebarGroupContent className="px-2">
-                    <ThemeSwitcher
+                  <SidebarGroupLabel>Themes</SidebarGroupLabel>
+                  <SidebarGroupContent>
+                    <ThemeFamilySidebarNav
                       themeFamily={themeFamily}
-                      mode={mode}
                       onThemeFamilyChange={onThemeFamilyChange}
-                      onModeChange={onModeChange}
                     />
                   </SidebarGroupContent>
                 </SidebarGroup>
               </SidebarContent>
               <SidebarFooter className="border-t border-sidebar-border/70">
-                <p className="px-2 text-xs text-muted-foreground">
-                  Base shadcn/ui primitives + Corti theme tokens.
-                </p>
+                <ThemeModeTabs mode={mode} onModeChange={onModeChange} />
               </SidebarFooter>
             </Sidebar>
             <SidebarInset>
@@ -927,9 +1496,32 @@ export function ComponentLab() {
                       : "rounded-[28px]"
                   )}
                 >
-                  <div className="mx-auto max-w-[1180px] columns-1 gap-4 md:columns-2 xl:columns-3">
-                    <ExampleWall />
+                  <div className="mx-auto mb-4 flex flex-wrap items-center justify-between gap-3">
+                    <div>
+                      <p className="text-sm font-medium">UI Sandbox</p>
+                      <p className="text-xs text-muted-foreground">
+                        Switch between the component wall and a dense fake EHR workspace.
+                      </p>
+                    </div>
+                    <Tabs
+                      value={activeView}
+                      onValueChange={(value) => setActiveView(value as "gallery" | "ehr")}
+                      className="w-full max-w-sm"
+                    >
+                      <TabsList className="grid w-full grid-cols-2">
+                        <TabsTrigger value="gallery">Component Gallery</TabsTrigger>
+                        <TabsTrigger value="ehr">EHR Workspace</TabsTrigger>
+                      </TabsList>
+                    </Tabs>
                   </div>
+
+                  {activeView === "gallery" ? (
+                    <div className="mx-auto max-w-[1180px] columns-1 gap-4 md:columns-2 xl:columns-3">
+                      <ExampleWall />
+                    </div>
+                  ) : (
+                    <EhrWorkspace />
+                  )}
                 </div>
               </div>
             </SidebarInset>
