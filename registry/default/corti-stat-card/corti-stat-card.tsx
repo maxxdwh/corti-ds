@@ -25,8 +25,10 @@ export function CortiStatCard({
           <Badge
             variant="secondary"
             className={cn(
-              tone === "positive" && "text-emerald-700",
-              tone === "negative" && "text-red-700"
+              tone === "positive" &&
+                "border-[color:var(--variant-success-border)] bg-[color:var(--variant-success-bg)] text-[color:var(--variant-success-text)]",
+              tone === "negative" &&
+                "border-[color:var(--variant-error-border)] bg-[color:var(--variant-error-bg)] text-[color:var(--variant-error-text)]"
             )}
           >
             {delta}

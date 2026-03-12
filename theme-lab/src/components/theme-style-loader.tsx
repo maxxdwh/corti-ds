@@ -1,6 +1,11 @@
 "use client"
 
 import * as React from "react"
+import themeAssistant from "../../../public/r/theme-assistant.json"
+import themeClassic from "../../../public/r/theme-classic.json"
+import themeConsole from "../../../public/r/theme-console.json"
+import themeCore from "../../../public/r/theme-core.json"
+import themeShowcase from "../../../public/r/theme-showcase.json"
 
 type ThemeFile = {
   css?: {
@@ -11,12 +16,12 @@ type ThemeFile = {
   }
 }
 
-const THEME_FILES = [
-  "/themes/theme-core.json",
-  "/themes/theme-console.json",
-  "/themes/theme-assistant.json",
-  "/themes/theme-classic.json",
-  "/themes/theme-showcase.json",
+const THEME_FILES: ThemeFile[] = [
+  themeCore,
+  themeConsole,
+  themeAssistant,
+  themeClassic,
+  themeShowcase,
 ]
 
 function declarations(vars: Record<string, string>) {
@@ -53,42 +58,20 @@ function toCss(themeFiles: ThemeFile[]) {
 }
 
 export function ThemeStyleLoader() {
+  const css = React.useMemo(() => toCss(THEME_FILES), [])
+
   React.useEffect(() => {
-    let cancelled = false
+    const id = "theme-styles"
+    let styleTag = document.getElementById(id) as HTMLStyleElement | null
 
-    async function load() {
-      const responses = await Promise.all(
-        THEME_FILES.map(async (file) => {
-          const response = await fetch(file)
-          return (await response.json()) as ThemeFile
-        })
-      )
-
-      if (cancelled) {
-        return
-      }
-
-      const css = toCss(responses)
-      const id = "theme-styles"
-      let styleTag = document.getElementById(id) as HTMLStyleElement | null
-
-      if (!styleTag) {
-        styleTag = document.createElement("style")
-        styleTag.id = id
-        document.head.appendChild(styleTag)
-      }
-
-      styleTag.textContent = css
+    if (!styleTag) {
+      styleTag = document.createElement("style")
+      styleTag.id = id
+      document.head.appendChild(styleTag)
     }
 
-    load().catch((error) => {
-      console.error("Failed to load Corti theme styles", error)
-    })
-
-    return () => {
-      cancelled = true
-    }
-  }, [])
+    styleTag.textContent = css
+  }, [css])
 
   return null
 }

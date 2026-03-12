@@ -36,7 +36,6 @@ import {
   AlertDialogDescription,
   AlertDialogFooter,
   AlertDialogHeader,
-  AlertDialogMedia,
   AlertDialogTitle,
   AlertDialogTrigger,
 } from "@/components/ui/alert-dialog"
@@ -50,6 +49,7 @@ import {
 } from "@/components/ui/card"
 import {
   Dialog,
+  DialogClose,
   DialogContent,
   DialogDescription,
   DialogFooter,
@@ -57,28 +57,11 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog"
-import {
-  Empty,
-  EmptyContent,
-  EmptyDescription,
-  EmptyHeader,
-  EmptyMedia,
-  EmptyTitle,
-} from "@/components/ui/empty"
-import {
-  Field,
-  FieldContent,
-  FieldGroup,
-  FieldLabel,
-} from "@/components/ui/field"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import {
   Popover,
   PopoverContent,
-  PopoverDescription,
-  PopoverHeader,
-  PopoverTitle,
   PopoverTrigger,
 } from "@/components/ui/popover"
 import {
@@ -428,39 +411,36 @@ function ExampleWall() {
                   <DialogTitle>Encounter summary draft</DialogTitle>
                   <DialogDescription>Review, edit, and approve the note before sending it to the EHR.</DialogDescription>
                 </DialogHeader>
-                <FieldGroup>
-                  <Field>
-                    <FieldLabel htmlFor="dialog-patient">Patient label</FieldLabel>
-                    <FieldContent>
-                      <Input id="dialog-patient" defaultValue="EH-2050 / suspected stroke" />
-                    </FieldContent>
-                  </Field>
-                  <Field>
-                    <FieldLabel htmlFor="dialog-priority">Priority</FieldLabel>
-                    <FieldContent>
-                      <Select defaultValue="immediate">
-                        <SelectTrigger id="dialog-priority">
-                          <SelectValue />
-                        </SelectTrigger>
-                        <SelectContent>
-                          <SelectItem value="immediate">Immediate dispatch</SelectItem>
-                          <SelectItem value="urgent">Urgent callback</SelectItem>
-                          <SelectItem value="routine">Routine follow-up</SelectItem>
-                        </SelectContent>
-                      </Select>
-                    </FieldContent>
-                  </Field>
-                  <Field>
-                    <FieldLabel htmlFor="dialog-note">Clinical note</FieldLabel>
-                    <FieldContent>
-                      <Textarea
-                        id="dialog-note"
-                        defaultValue="Caller reports slurred speech and unilateral weakness beginning 14 minutes ago. AI pathway marked FAST positive and recommends immediate ambulance dispatch."
-                      />
-                    </FieldContent>
-                  </Field>
-                </FieldGroup>
-                <DialogFooter showCloseButton>
+                <div className="space-y-4">
+                  <div className="space-y-2">
+                    <Label htmlFor="dialog-patient">Patient label</Label>
+                    <Input id="dialog-patient" defaultValue="EH-2050 / suspected stroke" />
+                  </div>
+                  <div className="space-y-2">
+                    <Label htmlFor="dialog-priority">Priority</Label>
+                    <Select defaultValue="immediate">
+                      <SelectTrigger id="dialog-priority">
+                        <SelectValue />
+                      </SelectTrigger>
+                      <SelectContent>
+                        <SelectItem value="immediate">Immediate dispatch</SelectItem>
+                        <SelectItem value="urgent">Urgent callback</SelectItem>
+                        <SelectItem value="routine">Routine follow-up</SelectItem>
+                      </SelectContent>
+                    </Select>
+                  </div>
+                  <div className="space-y-2">
+                    <Label htmlFor="dialog-note">Clinical note</Label>
+                    <Textarea
+                      id="dialog-note"
+                      defaultValue="Caller reports slurred speech and unilateral weakness beginning 14 minutes ago. AI pathway marked FAST positive and recommends immediate ambulance dispatch."
+                    />
+                  </div>
+                </div>
+                <DialogFooter>
+                  <Button variant="outline" asChild>
+                    <DialogClose>Cancel</DialogClose>
+                  </Button>
                   <Button>Approve draft</Button>
                 </DialogFooter>
               </DialogContent>
@@ -514,11 +494,11 @@ function ExampleWall() {
               <AlertDialogTrigger asChild>
                 <Button variant="destructive" className="w-full">Reroute case</Button>
               </AlertDialogTrigger>
-              <AlertDialogContent size="sm">
+              <AlertDialogContent>
                 <AlertDialogHeader>
-                  <AlertDialogMedia>
-                    <Activity className="size-7" />
-                  </AlertDialogMedia>
+                  <div className="mx-auto inline-flex size-12 items-center justify-center rounded-full bg-muted sm:mx-0">
+                    <Activity className="size-5" />
+                  </div>
                   <AlertDialogTitle>Reroute this case?</AlertDialogTitle>
                   <AlertDialogDescription>
                     The cardiology reviewer will lose ownership and the case will be reassigned immediately.
@@ -526,7 +506,7 @@ function ExampleWall() {
                 </AlertDialogHeader>
                 <AlertDialogFooter>
                   <AlertDialogCancel>Keep assigned</AlertDialogCancel>
-                  <AlertDialogAction variant="destructive">Confirm reroute</AlertDialogAction>
+                  <AlertDialogAction>Confirm reroute</AlertDialogAction>
                 </AlertDialogFooter>
               </AlertDialogContent>
             </AlertDialog>
@@ -541,20 +521,18 @@ function ExampleWall() {
             <CardDescription>Upload files for transcription and QA analysis</CardDescription>
           </CardHeader>
           <CardContent className="space-y-3">
-            <Empty className="border-border/80 bg-secondary/30 p-6 md:p-8">
-              <EmptyHeader>
-                <EmptyMedia variant="icon">
-                  <Upload className="size-5" />
-                </EmptyMedia>
-                <EmptyTitle>Drop call recordings</EmptyTitle>
-                <EmptyDescription>
+            <div className="flex flex-col items-center gap-4 rounded-lg border border-dashed border-border/80 bg-secondary/30 p-6 text-center md:p-8">
+              <div className="inline-flex size-10 items-center justify-center rounded-lg bg-muted">
+                <Upload className="size-5" />
+              </div>
+              <div className="space-y-1">
+                <p className="text-base font-medium">Drop call recordings</p>
+                <p className="text-sm text-muted-foreground">
                   WAV, MP3, MP4 and EHR exports up to 2GB.
-                </EmptyDescription>
-              </EmptyHeader>
-              <EmptyContent>
-                <Button size="sm">Select files</Button>
-              </EmptyContent>
-            </Empty>
+                </p>
+              </div>
+              <Button size="sm">Select files</Button>
+            </div>
             <div className="grid grid-cols-3 gap-2">
               <div className="rounded-lg border border-border/70 bg-secondary/25 p-3">
                 <p className="text-xs text-muted-foreground">Queued</p>
@@ -594,10 +572,10 @@ function ExampleWall() {
                 <Button variant="outline">Open tools</Button>
               </PopoverTrigger>
               <PopoverContent align="end" className="space-y-3">
-                <PopoverHeader>
-                  <PopoverTitle>Case tools</PopoverTitle>
-                  <PopoverDescription>Choose the fastest next step for this active review.</PopoverDescription>
-                </PopoverHeader>
+                <div className="space-y-1 text-sm">
+                  <p className="font-medium">Case tools</p>
+                  <p className="text-muted-foreground">Choose the fastest next step for this active review.</p>
+                </div>
                 <div className="space-y-2">
                   <Button className="w-full">Assign neurologist</Button>
                   <Button variant="outline" className="w-full">Create callback task</Button>
@@ -625,29 +603,25 @@ function ExampleWall() {
                 <p className="text-xs text-muted-foreground">Primary escalation reviewer</p>
               </div>
             </div>
-            <FieldGroup>
-              <Field>
-                <FieldLabel htmlFor="profile-reviewer">Reviewer</FieldLabel>
-                <FieldContent>
-                  <Input id="profile-reviewer" defaultValue="Dr. Sofie Andersen" />
-                </FieldContent>
-              </Field>
-              <Field>
-                <FieldLabel htmlFor="profile-specialty">Specialty</FieldLabel>
-                <FieldContent>
-                  <Select defaultValue="emergency-medicine">
-                    <SelectTrigger id="profile-specialty">
-                      <SelectValue />
-                    </SelectTrigger>
-                    <SelectContent>
-                      <SelectItem value="emergency-medicine">Emergency medicine</SelectItem>
-                      <SelectItem value="nursing-supervision">Nursing supervision</SelectItem>
-                      <SelectItem value="behavioral-health">Behavioral health</SelectItem>
-                    </SelectContent>
-                  </Select>
-                </FieldContent>
-              </Field>
-            </FieldGroup>
+            <div className="space-y-4">
+              <div className="space-y-2">
+                <Label htmlFor="profile-reviewer">Reviewer</Label>
+                <Input id="profile-reviewer" defaultValue="Dr. Sofie Andersen" />
+              </div>
+              <div className="space-y-2">
+                <Label htmlFor="profile-specialty">Specialty</Label>
+                <Select defaultValue="emergency-medicine">
+                  <SelectTrigger id="profile-specialty">
+                    <SelectValue />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="emergency-medicine">Emergency medicine</SelectItem>
+                    <SelectItem value="nursing-supervision">Nursing supervision</SelectItem>
+                    <SelectItem value="behavioral-health">Behavioral health</SelectItem>
+                  </SelectContent>
+                </Select>
+              </div>
+            </div>
             <div className="grid grid-cols-2 gap-2">
               <div className="rounded-lg border border-border/70 bg-secondary/25 p-3">
                 <p className="text-xs text-muted-foreground">Avg. review time</p>

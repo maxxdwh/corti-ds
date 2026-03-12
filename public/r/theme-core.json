@@ -16,7 +16,8 @@
       "variant-error-text": "hsl(0 72% 37%)",
       "variant-info-bg": "hsl(210 100% 97%)",
       "variant-info-border": "hsl(210 100% 88%)",
-      "variant-info-text": "hsl(215 60% 23%)"
+      "variant-info-text": "hsl(215 60% 23%)",
+      "overlay": "hsl(0 0% 0% / 0.48)"
     }
   },
   "type": "registry:theme"
