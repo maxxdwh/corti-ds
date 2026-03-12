@@ -7,109 +7,9 @@
       "name": "button",
       "type": "registry:ui",
       "title": "Corti Button",
-      "description": "Corti namespaced button wrapper around shadcn default button.",
+      "description": "Corti themed shadcn button component.",
       "registryDependencies": [
         "https://ui.shadcn.com/r/styles/default/button.json"
-      ],
-      "files": [
-        {
-          "path": "registry/default/corti-button/corti-button.tsx",
-          "type": "registry:ui"
-        }
-      ]
-    },
-    {
-      "name": "empty-state",
-      "type": "registry:block",
-      "title": "Corti Empty State",
-      "description": "A compact empty-state card with optional actions.",
-      "registryDependencies": [
-        "https://ui.shadcn.com/r/styles/default/button.json",
-        "https://ui.shadcn.com/r/styles/default/card.json"
-      ],
-      "files": [
-        {
-          "path": "registry/default/corti-empty-state/corti-empty-state.tsx",
-          "type": "registry:block"
-        }
-      ]
-    },
-    {
-      "name": "stat-card",
-      "type": "registry:ui",
-      "title": "Corti Stat Card",
-      "description": "A compact metric card with optional trend badge.",
-      "registryDependencies": [
-        "https://ui.shadcn.com/r/styles/default/card.json",
-        "https://ui.shadcn.com/r/styles/default/badge.json"
-      ],
-      "files": [
-        {
-          "path": "registry/default/corti-stat-card/corti-stat-card.tsx",
-          "type": "registry:ui"
-        }
-      ]
-    },
-    {
-      "name": "section-header",
-      "type": "registry:ui",
-      "title": "Corti Section Header",
-      "description": "A section title with optional description and action button.",
-      "registryDependencies": [
-        "https://ui.shadcn.com/r/styles/default/button.json"
-      ],
-      "files": [
-        {
-          "path": "registry/default/corti-section-header/corti-section-header.tsx",
-          "type": "registry:ui"
-        }
-      ]
-    },
-    {
-      "name": "status-pill",
-      "type": "registry:ui",
-      "title": "Corti Status Pill",
-      "description": "A status badge wrapper with semantic variants.",
-      "registryDependencies": [
-        "https://ui.shadcn.com/r/styles/default/badge.json"
-      ],
-      "files": [
-        {
-          "path": "registry/default/corti-status-pill/corti-status-pill.tsx",
-          "type": "registry:ui"
-        }
-      ]
-    },
-    {
-      "name": "loading-panel",
-      "type": "registry:ui",
-      "title": "Corti Loading Panel",
-      "description": "A card-shaped loading placeholder for content areas.",
-      "registryDependencies": [
-        "https://ui.shadcn.com/r/styles/default/card.json",
-        "https://ui.shadcn.com/r/styles/default/skeleton.json"
-      ],
-      "files": [
-        {
-          "path": "registry/default/corti-loading-panel/corti-loading-panel.tsx",
-          "type": "registry:ui"
-        }
-      ]
-    },
-    {
-      "name": "activity-row",
-      "type": "registry:ui",
-      "title": "Corti Activity Row",
-      "description": "A compact activity row with actor, action, status, and time.",
-      "registryDependencies": [
-        "https://ui.shadcn.com/r/styles/default/avatar.json",
-        "https://ui.shadcn.com/r/styles/default/badge.json"
-      ],
-      "files": [
-        {
-          "path": "registry/default/corti-activity-row/corti-activity-row.tsx",
-          "type": "registry:ui"
-        }
       ]
     },
     {
@@ -130,7 +30,8 @@
           "variant-error-text": "hsl(0 72% 37%)",
           "variant-info-bg": "hsl(210 100% 97%)",
           "variant-info-border": "hsl(210 100% 88%)",
-          "variant-info-text": "hsl(215 60% 23%)"
+          "variant-info-text": "hsl(215 60% 23%)",
+          "overlay": "hsl(0 0% 0% / 0.48)"
         }
       }
     },
@@ -525,14 +426,6 @@
             "letter-spacing": "0.04em",
             "line-height": "1.35",
             "text-transform": "uppercase"
-          },
-          "html[data-theme^=\"corti-showcase\"] [data-slot=\"alert-dialog-media\"]": {
-            "background": "transparent",
-            "border": "0",
-            "box-shadow": "none"
-          },
-          "html[data-theme^=\"corti-showcase\"] [data-slot=\"alert-dialog-content\"][data-size=\"sm\"]": {
-            "max-width": "42rem"
           }
         }
       }
@@ -758,14 +651,6 @@
             "justify-items": "start",
             "text-align": "left"
           },
-          "html[data-theme^=\"corti-classic\"] [data-slot=\"alert-dialog-content\"][data-size=\"sm\"]": {
-            "max-width": "40rem"
-          },
-          "html[data-theme^=\"corti-classic\"] [data-slot=\"alert-dialog-media\"]": {
-            "background": "var(--classic-panel)",
-            "border": "1px solid var(--classic-highlight)",
-            "box-shadow": "inset 1px 1px 0 color-mix(in srgb, var(--classic-face) 82%, var(--classic-highlight)), inset -1px -1px 0 var(--classic-shadow-deep)"
-          },
           "html[data-theme^=\"corti-classic\"] [data-slot=\"sidebar-footer\"]": {
             "background": "var(--classic-face)",
             "color": "var(--foreground)"
@@ -886,25 +771,6 @@
           }
         }
       }
-    },
-    {
-      "name": "theme-switcher",
-      "type": "registry:ui",
-      "title": "Corti Theme Switcher",
-      "description": "A lightweight theme switcher for Corti data-theme values.",
-      "registryDependencies": [
-        "https://ui.shadcn.com/r/styles/default/select.json",
-        "@corti/theme-console",
-        "@corti/theme-assistant",
-        "@corti/theme-showcase",
-        "@corti/theme-classic"
-      ],
-      "files": [
-        {
-          "path": "registry/default/corti-theme-switcher/corti-theme-switcher.tsx",
-          "type": "registry:ui"
-        }
-      ]
     },
     {
       "name": "accordion",

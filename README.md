@@ -4,17 +4,16 @@ Corti's shadcn/ui-based component registry and theme library.
 
 This repo publishes:
 
-- Corti-specific components such as `button`, `empty-state`, `stat-card`, and `activity-row`
 - namespaced shadcn/ui primitives under `@corti/*`
 - shared themes: `Console`, `Assistant`, `Classic`, and `Showcase`
-- a `theme-switcher` component and a local Theme Lab for visual review
+- a local Theme Lab for visual review
 
 ## Structure
 
 - `registry.json`
   Source of truth for registry items and themes.
 - `registry/default/...`
-  Source files for Corti-owned registry items.
+  Local source files for future Corti-owned components.
 - `public/r/...`
   Generated installable registry JSON files.
 - `theme-lab/...`
@@ -35,7 +34,7 @@ Available themes:
 - `theme-showcase`
   High-contrast editorial/demo theme.
 
-`Console` is the default baseline option. In Theme Lab and `theme-switcher`, choosing `Console` clears `data-theme` overrides and falls back to standard shadcn styling.
+`Console` is the default baseline option. In Theme Lab, choosing `Console` clears `data-theme` overrides and falls back to standard shadcn styling.
 
 Runtime theme values:
 
@@ -96,14 +95,10 @@ Install components with the shadcn CLI:
 
 ```bash
 npx shadcn@latest add @corti/button
-npx shadcn@latest add @corti/empty-state
-npx shadcn@latest add @corti/stat-card
-npx shadcn@latest add @corti/activity-row
 npx shadcn@latest add @corti/theme-console
 npx shadcn@latest add @corti/theme-assistant
 npx shadcn@latest add @corti/theme-classic
 npx shadcn@latest add @corti/theme-showcase
-npx shadcn@latest add @corti/theme-switcher
 ```
 
 Install standard shadcn primitives from this registry the same way:
@@ -118,25 +113,17 @@ To overwrite an existing installed item:
 npx shadcn@latest add -o @corti/<item-name>
 ```
 
-## Included Items
+## Published Items
 
-Corti-owned items:
+Published themes:
 
-- `button`
-- `empty-state`
-- `stat-card`
-- `section-header`
-- `status-pill`
-- `loading-panel`
-- `activity-row`
 - `theme-core`
 - `theme-console`
 - `theme-assistant`
 - `theme-classic`
 - `theme-showcase`
-- `theme-switcher`
 
-The registry also republishes the default shadcn/ui catalog under `@corti/*`, including:
+The registry also republishes most of the default shadcn/ui catalog under `@corti/*`, including:
 
 - `accordion`
 - `alert`
@@ -167,8 +154,6 @@ See `public/r/` for the full generated list.
 If you need to change a theme, start here:
 
 - `registry.json`
-- `registry/default/corti-theme-switcher/corti-theme-switcher.tsx`
-- `theme-lab/public/themes/*.json`
 - `theme-lab/src/components/theme-style-loader.tsx`
 - `theme-lab/src/components/theme-switcher.tsx`
 
@@ -192,4 +177,4 @@ Theme Lab is the local preview app for registry components and theme behavior. U
 - dialogs, sheets, popovers, and other portal surfaces
 - component states across `Console`, `Assistant`, `Classic`, and `Showcase`
 
-Theme Lab theme files live in `theme-lab/public/themes/`.
+Theme Lab imports the generated theme registry items from `public/r/`.

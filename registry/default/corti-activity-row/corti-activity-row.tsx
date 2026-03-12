@@ -30,9 +30,12 @@ export function CortiActivityRow({
         <Badge
           variant="secondary"
           className={cn(
-            status === "success" && "text-emerald-700",
-            status === "warning" && "text-amber-700",
-            status === "critical" && "text-red-700"
+            status === "success" &&
+              "border-[color:var(--variant-success-border)] bg-[color:var(--variant-success-bg)] text-[color:var(--variant-success-text)]",
+            status === "warning" &&
+              "border-[color:var(--variant-warning-border)] bg-[color:var(--variant-warning-bg)] text-[color:var(--variant-warning-text)]",
+            status === "critical" &&
+              "border-[color:var(--variant-error-border)] bg-[color:var(--variant-error-bg)] text-[color:var(--variant-error-text)]"
           )}
         >
           {status}

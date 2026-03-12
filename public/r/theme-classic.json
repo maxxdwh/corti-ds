@@ -219,14 +219,6 @@
         "justify-items": "start",
         "text-align": "left"
       },
-      "html[data-theme^=\"corti-classic\"] [data-slot=\"alert-dialog-content\"][data-size=\"sm\"]": {
-        "max-width": "40rem"
-      },
-      "html[data-theme^=\"corti-classic\"] [data-slot=\"alert-dialog-media\"]": {
-        "background": "var(--classic-panel)",
-        "border": "1px solid var(--classic-highlight)",
-        "box-shadow": "inset 1px 1px 0 color-mix(in srgb, var(--classic-face) 82%, var(--classic-highlight)), inset -1px -1px 0 var(--classic-shadow-deep)"
-      },
       "html[data-theme^=\"corti-classic\"] [data-slot=\"sidebar-footer\"]": {
         "background": "var(--classic-face)",
         "color": "var(--foreground)"

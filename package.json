@@ -3,10 +3,11 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "registry:build": "shadcn build",
-    "registry:watch": "shadcn build --watch"
+    "registry:clean": "node scripts/clean-registry.mjs",
+    "registry:build": "npm run registry:clean && shadcn build",
+    "registry:watch": "npm run registry:clean && shadcn build --watch"
   },
   "devDependencies": {
-    "shadcn": "^3.4.5"
+    "shadcn": "^4.0.5"
   }
 }
