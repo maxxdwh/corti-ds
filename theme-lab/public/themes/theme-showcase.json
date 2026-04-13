@@ -8,7 +8,7 @@
   ],
   "css": {
     "@layer base": {
-      "html[data-theme=\"corti-showcase-light\"]": {
+      "[data-theme=\"corti-showcase-light\"]": {
         "--font-sans": "\"IBM Plex Mono\", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace",
         "--font-mono": "\"IBM Plex Mono\", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace",
         "--background": "hsl(0 0% 100%)",
@@ -111,7 +111,7 @@
         "checkbox-checked-fg": "var(--primary-foreground)",
         "radio-indicator": "var(--primary)"
       },
-      "html[data-theme=\"corti-showcase-dark\"]": {
+      "[data-theme=\"corti-showcase-dark\"]": {
         "--font-sans": "\"IBM Plex Mono\", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace",
         "--font-mono": "\"IBM Plex Mono\", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace",
         "--background": "#000000",
@@ -127,13 +127,13 @@
         "--secondary-foreground": "#ffffff",
         "--muted": "#1a1a1a",
         "--muted-foreground": "#999999",
-        "--accent": "#B9F818",
-        "--accent-foreground": "#000000",
+        "--accent": "#1f1f1f",
+        "--accent-foreground": "#ffffff",
         "--destructive": "#dc2626",
         "--destructive-foreground": "#ffffff",
-        "--border": "#333333",
-        "--input": "#333333",
-        "--ring": "#B9F818",
+        "--border": "#2a2a2a",
+        "--input": "#3a3a3a",
+        "--ring": "#83b80e",
         "--radius": "0px",
         "--radius-sm": "0px",
         "--radius-md": "0px",
@@ -214,14 +214,23 @@
         "checkbox-checked-fg": "var(--primary-foreground)",
         "radio-indicator": "var(--primary)"
       },
-      "html[data-theme^=\"corti-showcase\"]": {
-        "font-family": "\"IBM Plex Mono\", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace"
+      "[data-theme^=\"corti-showcase\"]": {
+        "font-family": "\"IBM Plex Mono\", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace",
+        "color": "var(--foreground)"
       },
-      "html[data-theme^=\"corti-showcase\"] :is(h1, h2, h3, h4, h5, h6)": {
+      "[data-theme^=\"corti-showcase\"] :is(h1, h2, h3, h4, h5, h6)": {
         "font-family": "\"IBM Plex Mono\", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace",
         "letter-spacing": "0.04em",
         "line-height": "1.35",
         "text-transform": "uppercase"
+      },
+      "[data-theme^=\"corti-showcase\"] [data-slot=\"alert-dialog-media\"]": {
+        "background": "transparent",
+        "border": "0",
+        "box-shadow": "none"
+      },
+      "[data-theme^=\"corti-showcase\"] [data-slot=\"alert-dialog-content\"][data-size=\"sm\"]": {
+        "max-width": "42rem"
       }
     }
   },

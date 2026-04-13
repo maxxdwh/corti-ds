@@ -2,9 +2,6 @@
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "input",
   "title": "Corti Input",
-  "description": "Corti namespaced shadcn default input component. Design opinion comes from installed Corti theme tokens.",
-  "registryDependencies": [
-    "https://ui.shadcn.com/r/styles/default/input.json"
-  ],
+  "description": "Shadcn/ui input exposed through the Corti registry.",
   "type": "registry:ui"
 }

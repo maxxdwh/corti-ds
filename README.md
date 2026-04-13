@@ -5,15 +5,21 @@ Corti's shadcn/ui-based component registry and theme library.
 This repo publishes:
 
 - namespaced shadcn/ui primitives under `@corti/*`
-- shared themes: `Console`, `Assistant`, `Classic`, and `Showcase`
+- shared themes: `Console`, `Assistant`, `Classic`, `Showcase`, and `Retro Arcade`
 - a local Theme Lab for visual review
+
+## Registry Model
+
+This registry currently aims for shadcn/ui parity for component implementations.
+
+- `registry:block` and `registry:ui` are packaging categories.
+- UI items are exposed through the Corti namespace without local component overrides.
+- Theme items remain defined locally in `registry.json`.
 
 ## Structure
 
 - `registry.json`
   Source of truth for registry items and themes.
-- `registry/default/...`
-  Local source files for future Corti-owned components.
 - `public/r/...`
   Generated installable registry JSON files.
 - `theme-lab/...`
@@ -33,8 +39,10 @@ Available themes:
   Retro desktop-inspired theme with beveled chrome.
 - `theme-showcase`
   High-contrast editorial/demo theme.
+- `theme-retro-arcade`
+  Pixel-inspired arcade theme.
 
-`Console` is the default baseline option. In Theme Lab, choosing `Console` clears `data-theme` overrides and falls back to standard shadcn styling.
+`Console` is the default baseline option. In Theme Lab and `theme-switcher`, choosing `Console` clears `data-theme` overrides and falls back to standard shadcn styling.
 
 Runtime theme values:
 
@@ -46,6 +54,8 @@ Runtime theme values:
 - `corti-classic-dark`
 - `corti-showcase-light`
 - `corti-showcase-dark`
+- `corti-retro-arcade-light`
+- `corti-retro-arcade-dark`
 
 Example:
 
@@ -99,6 +109,7 @@ npx shadcn@latest add @corti/theme-console
 npx shadcn@latest add @corti/theme-assistant
 npx shadcn@latest add @corti/theme-classic
 npx shadcn@latest add @corti/theme-showcase
+npx shadcn@latest add @corti/theme-retro-arcade
 ```
 
 Install standard shadcn primitives from this registry the same way:
@@ -113,17 +124,9 @@ To overwrite an existing installed item:
 npx shadcn@latest add -o @corti/<item-name>
 ```
 
-## Published Items
+## Included Items
 
-Published themes:
-
-- `theme-core`
-- `theme-console`
-- `theme-assistant`
-- `theme-classic`
-- `theme-showcase`
-
-The registry also republishes most of the default shadcn/ui catalog under `@corti/*`, including:
+The registry republishes the default shadcn/ui catalog under `@corti/*`, including:
 
 - `accordion`
 - `alert`
@@ -147,13 +150,34 @@ The registry also republishes most of the default shadcn/ui catalog under `@cort
 - `toast`
 - `tooltip`
 
+Registry-local theme items include:
+
+- `theme-core`
+- `theme-console`
+- `theme-assistant`
+- `theme-classic`
+- `theme-showcase`
+- `theme-retro-arcade`
+
 See `public/r/` for the full generated list.
+
+## Upstream Sync Cadence
+
+Upstream shadcn changes are merged on a scheduled cadence, not continuously:
+
+1. Pull latest upstream component changes into a staging branch.
+2. Review API, behavior, and accessibility parity diffs.
+3. Verify token compatibility and theme output.
+4. Merge selected changes with concise release notes.
+
+This keeps the Corti registry aligned with upstream improvements while preserving local theme behavior.
 
 ## Theme Editing
 
 If you need to change a theme, start here:
 
 - `registry.json`
+- `theme-lab/public/themes/*.json`
 - `theme-lab/src/components/theme-style-loader.tsx`
 - `theme-lab/src/components/theme-switcher.tsx`
 
@@ -177,4 +201,4 @@ Theme Lab is the local preview app for registry components and theme behavior. U
 - dialogs, sheets, popovers, and other portal surfaces
 - component states across `Console`, `Assistant`, `Classic`, and `Showcase`
 
-Theme Lab imports the generated theme registry items from `public/r/`.
+Theme Lab theme files live in `theme-lab/public/themes/`.

@@ -2,9 +2,6 @@
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "textarea",
   "title": "Corti Textarea",
-  "description": "Corti namespaced shadcn default textarea component. Design opinion comes from installed Corti theme tokens.",
-  "registryDependencies": [
-    "https://ui.shadcn.com/r/styles/default/textarea.json"
-  ],
+  "description": "Shadcn/ui textarea exposed through the Corti registry.",
   "type": "registry:ui"
 }

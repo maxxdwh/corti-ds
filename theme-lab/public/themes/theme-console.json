@@ -8,7 +8,7 @@
   ],
   "css": {
     "@layer base": {
-      "html[data-theme=\"corti-console-light\"]": {
+      "[data-theme=\"corti-console-light\"]": {
         "--font-sans": "ui-sans-serif, system-ui, sans-serif",
         "--background": "hsl(0 0% 100%)",
         "--foreground": "hsl(0 0% 3.9%)",
@@ -104,7 +104,7 @@
         "--tw-shadow-color": "transparent",
         "--tw-inset-shadow-color": "transparent"
       },
-      "html[data-theme=\"corti-console-dark\"]": {
+      "[data-theme=\"corti-console-dark\"]": {
         "--font-sans": "ui-sans-serif, system-ui, sans-serif",
         "--background": "hsl(0 0% 3.9%)",
         "--foreground": "hsl(0 0% 98%)",

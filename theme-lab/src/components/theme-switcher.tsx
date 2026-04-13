@@ -4,6 +4,11 @@ import * as React from "react"
 import { Laptop, Moon, Sun } from "lucide-react"
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { cn } from "@/lib/utils"
+import {
+  SidebarMenu,
+  SidebarMenuButton,
+  SidebarMenuItem,
+} from "@/components/ui/sidebar"
 
 export const THEME_STORAGE_KEY = "theme-family"
 export const MODE_STORAGE_KEY = "theme-mode"
@@ -13,6 +18,7 @@ export const THEME_FAMILIES = [
   { label: "Assistant", value: "corti-assistant" },
   { label: "Classic", value: "corti-classic" },
   { label: "Showcase", value: "corti-showcase" },
+  { label: "Retro Arcade", value: "corti-retro-arcade" },
 ] as const
 
 export const THEME_MODES = ["system", "light", "dark"] as const
@@ -116,5 +122,63 @@ export function ThemeSwitcher({
         </TabsList>
       </Tabs>
     </div>
+  )
+}
+
+export function ThemeFamilySidebarNav({
+  themeFamily,
+  onThemeFamilyChange,
+  className,
+}: {
+  themeFamily: ThemeFamily
+  onThemeFamilyChange: (value: ThemeFamily) => void
+  className?: string
+}) {
+  return (
+    <SidebarMenu className={className}>
+      {THEME_FAMILIES.map((option) => (
+        <SidebarMenuItem key={option.value}>
+          <SidebarMenuButton
+            type="button"
+            isActive={themeFamily === option.value}
+            onClick={() => onThemeFamilyChange(option.value)}
+          >
+            <span>{option.label}</span>
+          </SidebarMenuButton>
+        </SidebarMenuItem>
+      ))}
+    </SidebarMenu>
+  )
+}
+
+export function ThemeModeTabs({
+  mode,
+  onModeChange,
+  className,
+}: {
+  mode: ThemeMode
+  onModeChange: (value: ThemeMode) => void
+  className?: string
+}) {
+  function handleModeChange(nextMode: string) {
+    if (isThemeMode(nextMode)) {
+      onModeChange(nextMode)
+    }
+  }
+
+  return (
+    <Tabs value={mode} onValueChange={handleModeChange} className={cn("w-full", className)}>
+      <TabsList className="grid w-full grid-cols-3">
+        <TabsTrigger value="system" title="System" aria-label="System theme">
+          <Laptop className="size-4" />
+        </TabsTrigger>
+        <TabsTrigger value="light" title="Light" aria-label="Light theme">
+          <Sun className="size-4" />
+        </TabsTrigger>
+        <TabsTrigger value="dark" title="Dark" aria-label="Dark theme">
+          <Moon className="size-4" />
+        </TabsTrigger>
+      </TabsList>
+    </Tabs>
   )
 }

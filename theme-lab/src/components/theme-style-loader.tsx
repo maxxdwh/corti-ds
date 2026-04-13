@@ -1,11 +1,6 @@
 "use client"
 
 import * as React from "react"
-import themeAssistant from "../../../public/r/theme-assistant.json"
-import themeClassic from "../../../public/r/theme-classic.json"
-import themeConsole from "../../../public/r/theme-console.json"
-import themeCore from "../../../public/r/theme-core.json"
-import themeShowcase from "../../../public/r/theme-showcase.json"
 
 type ThemeFile = {
   css?: {
@@ -16,18 +11,37 @@ type ThemeFile = {
   }
 }
 
-const THEME_FILES: ThemeFile[] = [
-  themeCore,
-  themeConsole,
-  themeAssistant,
-  themeClassic,
-  themeShowcase,
+const THEME_FILES = [
+  "/themes/theme-core.json",
+  "/themes/theme-console.json",
+  "/themes/theme-assistant.json",
+  "/themes/theme-classic.json",
+  "/themes/theme-showcase.json",
+  "/themes/theme-retro-arcade.json",
 ]
+
+const THEME_FONTS_HREF =
+  "https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Silkscreen:wght@400;700&family=VT323&display=swap"
 
 function declarations(vars: Record<string, string>) {
   return Object.entries(vars)
     .map(([key, value]) => `${key}: ${value};`)
     .join(" ")
+}
+
+function ensureThemeFonts() {
+  const id = "theme-fonts"
+  let link = document.getElementById(id) as HTMLLinkElement | null
+
+  if (link) {
+    return
+  }
+
+  link = document.createElement("link")
+  link.id = id
+  link.rel = "stylesheet"
+  link.href = THEME_FONTS_HREF
+  document.head.appendChild(link)
 }
 
 function toCss(themeFiles: ThemeFile[]) {
@@ -58,20 +72,44 @@ function toCss(themeFiles: ThemeFile[]) {
 }
 
 export function ThemeStyleLoader() {
-  const css = React.useMemo(() => toCss(THEME_FILES), [])
-
   React.useEffect(() => {
-    const id = "theme-styles"
-    let styleTag = document.getElementById(id) as HTMLStyleElement | null
+    let cancelled = false
 
-    if (!styleTag) {
-      styleTag = document.createElement("style")
-      styleTag.id = id
-      document.head.appendChild(styleTag)
+    async function load() {
+      ensureThemeFonts()
+
+      const responses = await Promise.all(
+        THEME_FILES.map(async (file) => {
+          const response = await fetch(file)
+          return (await response.json()) as ThemeFile
+        })
+      )
+
+      if (cancelled) {
+        return
+      }
+
+      const css = toCss(responses)
+      const id = "theme-styles"
+      let styleTag = document.getElementById(id) as HTMLStyleElement | null
+
+      if (!styleTag) {
+        styleTag = document.createElement("style")
+        styleTag.id = id
+        document.head.appendChild(styleTag)
+      }
+
+      styleTag.textContent = css
     }
 
-    styleTag.textContent = css
-  }, [css])
+    load().catch((error) => {
+      console.error("Failed to load Corti theme styles", error)
+    })
+
+    return () => {
+      cancelled = true
+    }
+  }, [])
 
   return null
 }

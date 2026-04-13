@@ -8,7 +8,7 @@
   ],
   "css": {
     "@layer base": {
-      "html[data-theme=\"corti-assistant-light\"]": {
+      "[data-theme=\"corti-assistant-light\"]": {
         "--font-sans": "var(--font-inter), ui-sans-serif, system-ui, sans-serif",
         "--background": "hsl(0 0% 100%)",
         "--foreground": "hsl(0 0% 4%)",
@@ -122,7 +122,7 @@
         "checkbox-checked-fg": "var(--primary-foreground)",
         "radio-indicator": "var(--primary)"
       },
-      "html[data-theme=\"corti-assistant-dark\"]": {
+      "[data-theme=\"corti-assistant-dark\"]": {
         "--font-sans": "var(--font-inter), ui-sans-serif, system-ui, sans-serif",
         "--background": "hsl(0 0% 4%)",
         "--foreground": "hsl(0 0% 98%)",
@@ -236,7 +236,7 @@
         "checkbox-checked-fg": "var(--primary-foreground)",
         "radio-indicator": "var(--primary)"
       },
-      "html[data-theme^=\"corti-assistant\"] :is([data-slot=\"card\"], [data-slot=\"button\"], [data-slot=\"input\"], [data-slot=\"textarea\"], [data-slot=\"select-trigger\"], [data-slot=\"popover-content\"], [data-slot=\"dialog-content\"], [data-slot=\"sheet-content\"], [data-slot=\"alert-dialog-content\"], [data-slot=\"switch\"], [data-slot=\"switch-thumb\"])": {
+      "[data-theme^=\"corti-assistant\"] :is([data-slot=\"card\"], [data-slot=\"button\"], [data-slot=\"input\"], [data-slot=\"textarea\"], [data-slot=\"select-trigger\"], [data-slot=\"popover-content\"], [data-slot=\"dialog-content\"], [data-slot=\"sheet-content\"], [data-slot=\"alert-dialog-content\"], [data-slot=\"switch\"], [data-slot=\"switch-thumb\"])": {
         "box-shadow": "none"
       }
     }

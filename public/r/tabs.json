@@ -2,9 +2,6 @@
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "tabs",
   "title": "Corti Tabs",
-  "description": "Corti namespaced shadcn default tabs component. Design opinion comes from installed Corti theme tokens.",
-  "registryDependencies": [
-    "https://ui.shadcn.com/r/styles/default/tabs.json"
-  ],
+  "description": "Shadcn/ui tabs exposed through the Corti registry.",
   "type": "registry:ui"
 }

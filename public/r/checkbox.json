@@ -2,9 +2,6 @@
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "checkbox",
   "title": "Corti Checkbox",
-  "description": "Corti namespaced shadcn default checkbox component. Design opinion comes from installed Corti theme tokens.",
-  "registryDependencies": [
-    "https://ui.shadcn.com/r/styles/default/checkbox.json"
-  ],
+  "description": "Shadcn/ui checkbox exposed through the Corti registry.",
   "type": "registry:ui"
 }
