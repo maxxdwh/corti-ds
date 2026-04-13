@@ -7,107 +7,7 @@
       "name": "button",
       "type": "registry:ui",
       "title": "Corti Button",
-      "description": "Corti-owned button component with semantic token hooks and shadcn parity.",
-      "files": [
-        {
-          "path": "registry/default/corti-button/corti-button.tsx",
-          "type": "registry:ui"
-        }
-      ]
-    },
-    {
-      "name": "empty-state",
-      "type": "registry:block",
-      "title": "Corti Empty State",
-      "description": "A compact empty-state card with optional actions.",
-      "registryDependencies": [
-        "https://ui.shadcn.com/r/styles/default/button.json",
-        "https://ui.shadcn.com/r/styles/default/card.json"
-      ],
-      "files": [
-        {
-          "path": "registry/default/corti-empty-state/corti-empty-state.tsx",
-          "type": "registry:block"
-        }
-      ]
-    },
-    {
-      "name": "stat-card",
-      "type": "registry:ui",
-      "title": "Corti Stat Card",
-      "description": "A compact metric card with optional trend badge.",
-      "registryDependencies": [
-        "https://ui.shadcn.com/r/styles/default/card.json",
-        "https://ui.shadcn.com/r/styles/default/badge.json"
-      ],
-      "files": [
-        {
-          "path": "registry/default/corti-stat-card/corti-stat-card.tsx",
-          "type": "registry:ui"
-        }
-      ]
-    },
-    {
-      "name": "section-header",
-      "type": "registry:ui",
-      "title": "Corti Section Header",
-      "description": "A section title with optional description and action button.",
-      "registryDependencies": [
-        "https://ui.shadcn.com/r/styles/default/button.json"
-      ],
-      "files": [
-        {
-          "path": "registry/default/corti-section-header/corti-section-header.tsx",
-          "type": "registry:ui"
-        }
-      ]
-    },
-    {
-      "name": "status-pill",
-      "type": "registry:ui",
-      "title": "Corti Status Pill",
-      "description": "A status badge wrapper with semantic variants.",
-      "registryDependencies": [
-        "https://ui.shadcn.com/r/styles/default/badge.json"
-      ],
-      "files": [
-        {
-          "path": "registry/default/corti-status-pill/corti-status-pill.tsx",
-          "type": "registry:ui"
-        }
-      ]
-    },
-    {
-      "name": "loading-panel",
-      "type": "registry:ui",
-      "title": "Corti Loading Panel",
-      "description": "A card-shaped loading placeholder for content areas.",
-      "registryDependencies": [
-        "https://ui.shadcn.com/r/styles/default/card.json",
-        "https://ui.shadcn.com/r/styles/default/skeleton.json"
-      ],
-      "files": [
-        {
-          "path": "registry/default/corti-loading-panel/corti-loading-panel.tsx",
-          "type": "registry:ui"
-        }
-      ]
-    },
-    {
-      "name": "activity-row",
-      "type": "registry:ui",
-      "title": "Corti Activity Row",
-      "description": "A compact activity row with actor, action, status, and time.",
-      "registryDependencies": [
-        "https://ui.shadcn.com/r/styles/default/avatar.json",
-        "https://ui.shadcn.com/r/styles/default/badge.json"
-      ],
-      "files": [
-        {
-          "path": "registry/default/corti-activity-row/corti-activity-row.tsx",
-          "type": "registry:ui"
-        }
-      ]
+      "description": "Shadcn/ui button exposed through the Corti registry."
     },
     {
       "name": "theme-core",
@@ -280,7 +180,9 @@
             "checkbox-checked-border": "var(--primary)",
             "checkbox-checked-bg": "var(--primary)",
             "checkbox-checked-fg": "var(--primary-foreground)",
-            "radio-indicator": "var(--primary)"
+            "radio-indicator": "var(--primary)",
+            "--tw-shadow-color": "transparent",
+            "--tw-inset-shadow-color": "transparent"
           },
           "html[data-theme=\"corti-console-dark\"]": {
             "--font-sans": "ui-sans-serif, system-ui, sans-serif",
@@ -374,7 +276,9 @@
             "checkbox-checked-border": "var(--primary)",
             "checkbox-checked-bg": "var(--primary)",
             "checkbox-checked-fg": "var(--primary-foreground)",
-            "radio-indicator": "var(--primary)"
+            "radio-indicator": "var(--primary)",
+            "--tw-shadow-color": "transparent",
+            "--tw-inset-shadow-color": "transparent"
           }
         }
       },
@@ -644,7 +548,7 @@
             "--card-foreground": "hsl(0 0% 14%)",
             "--popover": "hsl(0 0% 95%)",
             "--popover-foreground": "hsl(0 0% 14%)",
-            "--primary": "hsl(78 82% 47%)",
+            "--primary": "#b8f818",
             "--primary-foreground": "hsl(0 0% 0%)",
             "--secondary": "hsl(0 0% 92%)",
             "--secondary-foreground": "hsl(0 0% 18%)",
@@ -747,7 +651,7 @@
             "--card-foreground": "#ffffff",
             "--popover": "#111111",
             "--popover-foreground": "#ffffff",
-            "--primary": "#B9F818",
+            "--primary": "#b8f818",
             "--primary-foreground": "#000000",
             "--secondary": "#1a1a1a",
             "--secondary-foreground": "#ffffff",
@@ -1501,26 +1405,6 @@
       }
     },
     {
-      "name": "theme-switcher",
-      "type": "registry:ui",
-      "title": "Corti Theme Switcher",
-      "description": "A lightweight theme switcher for Corti data-theme values.",
-      "registryDependencies": [
-        "https://ui.shadcn.com/r/styles/default/select.json",
-        "@corti/theme-console",
-        "@corti/theme-assistant",
-        "@corti/theme-showcase",
-        "@corti/theme-classic",
-        "@corti/theme-retro-arcade"
-      ],
-      "files": [
-        {
-          "path": "registry/default/corti-theme-switcher/corti-theme-switcher.tsx",
-          "type": "registry:ui"
-        }
-      ]
-    },
-    {
       "name": "accordion",
       "type": "registry:ui",
       "title": "Corti Accordion",
@@ -1632,13 +1516,7 @@
       "name": "checkbox",
       "type": "registry:ui",
       "title": "Corti Checkbox",
-      "description": "Corti-owned checkbox component with semantic token hooks and shadcn parity.",
-      "files": [
-        {
-          "path": "registry/default/corti-checkbox/corti-checkbox.tsx",
-          "type": "registry:ui"
-        }
-      ]
+      "description": "Shadcn/ui checkbox exposed through the Corti registry."
     },
     {
       "name": "collapsible",
@@ -1671,16 +1549,7 @@
       "name": "dialog",
       "type": "registry:ui",
       "title": "Corti Dialog",
-      "description": "Corti-owned dialog component with semantic token hooks and shadcn parity.",
-      "registryDependencies": [
-        "@corti/button"
-      ],
-      "files": [
-        {
-          "path": "registry/default/corti-dialog/corti-dialog.tsx",
-          "type": "registry:ui"
-        }
-      ]
+      "description": "Shadcn/ui dialog exposed through the Corti registry."
     },
     {
       "name": "drawer",
@@ -1740,13 +1609,7 @@
       "name": "input",
       "type": "registry:ui",
       "title": "Corti Input",
-      "description": "Corti-owned input component with semantic token hooks and shadcn parity.",
-      "files": [
-        {
-          "path": "registry/default/corti-input/corti-input.tsx",
-          "type": "registry:ui"
-        }
-      ]
+      "description": "Shadcn/ui input exposed through the Corti registry."
     },
     {
       "name": "input-group",
@@ -1824,13 +1687,7 @@
       "name": "popover",
       "type": "registry:ui",
       "title": "Corti Popover",
-      "description": "Corti-owned popover component with semantic token hooks and shadcn parity.",
-      "files": [
-        {
-          "path": "registry/default/corti-popover/corti-popover.tsx",
-          "type": "registry:ui"
-        }
-      ]
+      "description": "Shadcn/ui popover exposed through the Corti registry."
     },
     {
       "name": "progress",
@@ -1845,13 +1702,7 @@
       "name": "radio-group",
       "type": "registry:ui",
       "title": "Corti Radio Group",
-      "description": "Corti-owned radio-group component with semantic token hooks and shadcn parity.",
-      "files": [
-        {
-          "path": "registry/default/corti-radio-group/corti-radio-group.tsx",
-          "type": "registry:ui"
-        }
-      ]
+      "description": "Shadcn/ui radio-group exposed through the Corti registry."
     },
     {
       "name": "resizable",
@@ -1875,13 +1726,7 @@
       "name": "select",
       "type": "registry:ui",
       "title": "Corti Select",
-      "description": "Corti-owned select component with semantic token hooks and shadcn parity.",
-      "files": [
-        {
-          "path": "registry/default/corti-select/corti-select.tsx",
-          "type": "registry:ui"
-        }
-      ]
+      "description": "Shadcn/ui select exposed through the Corti registry."
     },
     {
       "name": "separator",
@@ -1896,13 +1741,7 @@
       "name": "sheet",
       "type": "registry:ui",
       "title": "Corti Sheet",
-      "description": "Corti-owned sheet component with semantic token hooks and shadcn parity.",
-      "files": [
-        {
-          "path": "registry/default/corti-sheet/corti-sheet.tsx",
-          "type": "registry:ui"
-        }
-      ]
+      "description": "Shadcn/ui sheet exposed through the Corti registry."
     },
     {
       "name": "sidebar",
@@ -1953,13 +1792,7 @@
       "name": "switch",
       "type": "registry:ui",
       "title": "Corti Switch",
-      "description": "Corti-owned switch component with semantic token hooks and shadcn parity.",
-      "files": [
-        {
-          "path": "registry/default/corti-switch/corti-switch.tsx",
-          "type": "registry:ui"
-        }
-      ]
+      "description": "Shadcn/ui switch exposed through the Corti registry."
     },
     {
       "name": "table",
@@ -1974,25 +1807,13 @@
       "name": "tabs",
       "type": "registry:ui",
       "title": "Corti Tabs",
-      "description": "Corti-owned tabs component with semantic token hooks and shadcn parity.",
-      "files": [
-        {
-          "path": "registry/default/corti-tabs/corti-tabs.tsx",
-          "type": "registry:ui"
-        }
-      ]
+      "description": "Shadcn/ui tabs exposed through the Corti registry."
     },
     {
       "name": "textarea",
       "type": "registry:ui",
       "title": "Corti Textarea",
-      "description": "Corti-owned textarea component with semantic token hooks and shadcn parity.",
-      "files": [
-        {
-          "path": "registry/default/corti-textarea/corti-textarea.tsx",
-          "type": "registry:ui"
-        }
-      ]
+      "description": "Shadcn/ui textarea exposed through the Corti registry."
     },
     {
       "name": "toast",

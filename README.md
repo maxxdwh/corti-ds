@@ -4,25 +4,22 @@ Corti's shadcn/ui-based component registry and theme library.
 
 This repo publishes:
 
-- Corti-specific components such as `button`, `empty-state`, `stat-card`, and `activity-row`
 - namespaced shadcn/ui primitives under `@corti/*`
-- shared themes: `Console`, `Assistant`, `Classic`, and `Showcase`
-- a `theme-switcher` component and a local Theme Lab for visual review
+- shared themes: `Console`, `Assistant`, `Classic`, `Showcase`, and `Retro Arcade`
+- a local Theme Lab for visual review
 
-## Ownership Model
+## Registry Model
 
-Corti treats an item as **owned** when its implementation source is local to this repo and referenced by a `files` entry in `registry.json` (under `registry/default/...`).
+This registry currently aims for shadcn/ui parity for component implementations.
 
 - `registry:block` and `registry:ui` are packaging categories.
-- Ownership is operationally defined by local source control, not item type.
-- `registryDependencies` are reserved for true prerequisites (for example, `@corti/button` for `dialog`), not as the primary component source.
+- UI items are exposed through the Corti namespace without local component overrides.
+- Theme items remain defined locally in `registry.json`.
 
 ## Structure
 
 - `registry.json`
   Source of truth for registry items and themes.
-- `registry/default/...`
-  Source files for Corti-owned registry items.
 - `public/r/...`
   Generated installable registry JSON files.
 - `theme-lab/...`
@@ -42,6 +39,8 @@ Available themes:
   Retro desktop-inspired theme with beveled chrome.
 - `theme-showcase`
   High-contrast editorial/demo theme.
+- `theme-retro-arcade`
+  Pixel-inspired arcade theme.
 
 `Console` is the default baseline option. In Theme Lab and `theme-switcher`, choosing `Console` clears `data-theme` overrides and falls back to standard shadcn styling.
 
@@ -55,6 +54,8 @@ Runtime theme values:
 - `corti-classic-dark`
 - `corti-showcase-light`
 - `corti-showcase-dark`
+- `corti-retro-arcade-light`
+- `corti-retro-arcade-dark`
 
 Example:
 
@@ -104,14 +105,11 @@ Install components with the shadcn CLI:
 
 ```bash
 npx shadcn@latest add @corti/button
-npx shadcn@latest add @corti/empty-state
-npx shadcn@latest add @corti/stat-card
-npx shadcn@latest add @corti/activity-row
 npx shadcn@latest add @corti/theme-console
 npx shadcn@latest add @corti/theme-assistant
 npx shadcn@latest add @corti/theme-classic
 npx shadcn@latest add @corti/theme-showcase
-npx shadcn@latest add @corti/theme-switcher
+npx shadcn@latest add @corti/theme-retro-arcade
 ```
 
 Install standard shadcn primitives from this registry the same way:
@@ -128,23 +126,7 @@ npx shadcn@latest add -o @corti/<item-name>
 
 ## Included Items
 
-Corti-owned items:
-
-- `button`
-- `empty-state`
-- `stat-card`
-- `section-header`
-- `status-pill`
-- `loading-panel`
-- `activity-row`
-- `theme-core`
-- `theme-console`
-- `theme-assistant`
-- `theme-classic`
-- `theme-showcase`
-- `theme-switcher`
-
-The registry also republishes the default shadcn/ui catalog under `@corti/*`, including:
+The registry republishes the default shadcn/ui catalog under `@corti/*`, including:
 
 - `accordion`
 - `alert`
@@ -168,23 +150,16 @@ The registry also republishes the default shadcn/ui catalog under `@corti/*`, in
 - `toast`
 - `tooltip`
 
+Registry-local theme items include:
+
+- `theme-core`
+- `theme-console`
+- `theme-assistant`
+- `theme-classic`
+- `theme-showcase`
+- `theme-retro-arcade`
+
 See `public/r/` for the full generated list.
-
-## Phased Ownership Rollout
-
-The migration to full Corti ownership is intentionally phased to preserve shadcn API parity and reduce break risk.
-
-- **Phase 1 (implemented):** `button`, `input`, `textarea`, `select`, `dialog`, `sheet`, `popover`, `tabs`, `switch`, `checkbox`, `radio-group`
-- **Phase 2 (planned):** navigation/data/feedback surfaces
-- **Phase 3 (planned):** remaining long-tail components + consistency pass
-
-Phase 1 components are now source-backed in `registry/default/...` and include semantic token hooks.
-
-To inspect remaining non-owned registry UI items:
-
-```bash
-node scripts/list-unowned-items.mjs
-```
 
 ## Upstream Sync Cadence
 
@@ -195,14 +170,13 @@ Upstream shadcn changes are merged on a scheduled cadence, not continuously:
 3. Verify token compatibility and theme output.
 4. Merge selected changes with concise release notes.
 
-This keeps Corti-owned components stable while still tracking upstream improvements.
+This keeps the Corti registry aligned with upstream improvements while preserving local theme behavior.
 
 ## Theme Editing
 
 If you need to change a theme, start here:
 
 - `registry.json`
-- `registry/default/corti-theme-switcher/corti-theme-switcher.tsx`
 - `theme-lab/public/themes/*.json`
 - `theme-lab/src/components/theme-style-loader.tsx`
 - `theme-lab/src/components/theme-switcher.tsx`

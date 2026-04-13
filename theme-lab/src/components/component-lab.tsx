@@ -31,7 +31,7 @@ import { ThemeStyleLoader } from "@/components/theme-style-loader"
 import { ThemeScopeProvider } from "@/components/theme-scope"
 import { Avatar, AvatarFallback } from "@/components/ui/avatar"
 import { Badge } from "@/components/ui/badge"
-import { Button } from "@/components/ui/button"
+import { Button, buttonVariants } from "@/components/ui/button"
 import {
   Accordion,
   AccordionContent,
@@ -46,7 +46,6 @@ import {
   AlertDialogDescription,
   AlertDialogFooter,
   AlertDialogHeader,
-  AlertDialogMedia,
   AlertDialogTitle,
   AlertDialogTrigger,
 } from "@/components/ui/alert-dialog"
@@ -86,9 +85,6 @@ import { Label } from "@/components/ui/label"
 import {
   Popover,
   PopoverContent,
-  PopoverDescription,
-  PopoverHeader,
-  PopoverTitle,
   PopoverTrigger,
 } from "@/components/ui/popover"
 import {
@@ -138,11 +134,7 @@ function MasonryItem({ children }: { children: React.ReactNode }) {
 }
 
 function ExampleCard({ children, className }: { children: React.ReactNode; className?: string }) {
-  return (
-    <Card className={cn("overflow-hidden rounded-2xl border-border/70 bg-background shadow-none", className)}>
-      {children}
-    </Card>
-  )
+  return <Card className={className}>{children}</Card>
 }
 
 function ExampleWall() {
@@ -150,7 +142,7 @@ function ExampleWall() {
     <>
       <MasonryItem>
         <ExampleCard>
-          <CardContent className="flex items-center justify-between p-4">
+          <CardContent className="flex items-center justify-between p-6">
             <div>
               <p className="text-xs uppercase tracking-wide text-muted-foreground">Active calls</p>
               <p className="mt-2 text-3xl font-semibold tracking-tight">128</p>
@@ -162,7 +154,7 @@ function ExampleWall() {
 
       <MasonryItem>
         <ExampleCard>
-          <CardContent className="flex items-center justify-between p-4">
+          <CardContent className="flex items-center justify-between p-6">
             <div>
               <p className="text-xs uppercase tracking-wide text-muted-foreground">High-acuity rate</p>
               <p className="mt-2 text-3xl font-semibold tracking-tight">18%</p>
@@ -204,7 +196,7 @@ function ExampleWall() {
 
       <MasonryItem>
         <ExampleCard>
-          <CardHeader className="pb-3">
+          <CardHeader>
             <CardTitle>Pipeline Progress</CardTitle>
             <CardDescription>Classic-theme progress bars and throughput states</CardDescription>
           </CardHeader>
@@ -290,7 +282,7 @@ function ExampleWall() {
 
       <MasonryItem>
         <ExampleCard>
-          <CardHeader className="pb-3">
+          <CardHeader>
             <CardTitle>Suggested Follow-up</CardTitle>
             <CardDescription>AI next steps after review completion</CardDescription>
           </CardHeader>
@@ -470,7 +462,7 @@ function ExampleWall() {
                     </FieldContent>
                   </Field>
                 </FieldGroup>
-                <DialogFooter showCloseButton>
+                <DialogFooter>
                   <Button>Approve draft</Button>
                 </DialogFooter>
               </DialogContent>
@@ -481,7 +473,7 @@ function ExampleWall() {
 
       <MasonryItem>
         <ExampleCard>
-          <CardHeader className="pb-3">
+          <CardHeader>
             <CardTitle>Language Mix</CardTitle>
             <CardDescription>Incoming call distribution today</CardDescription>
           </CardHeader>
@@ -524,11 +516,13 @@ function ExampleWall() {
               <AlertDialogTrigger asChild>
                 <Button variant="destructive" className="w-full">Reroute case</Button>
               </AlertDialogTrigger>
-              <AlertDialogContent size="sm">
+              <AlertDialogContent>
                 <AlertDialogHeader>
-                  <AlertDialogMedia>
-                    <Activity className="size-7" />
-                  </AlertDialogMedia>
+                  <div className="flex items-center justify-center sm:justify-start">
+                    <div className="flex size-12 items-center justify-center rounded-full bg-destructive/10 text-destructive">
+                      <Activity className="size-7" />
+                    </div>
+                  </div>
                   <AlertDialogTitle>Reroute this case?</AlertDialogTitle>
                   <AlertDialogDescription>
                     The cardiology reviewer will lose ownership and the case will be reassigned immediately.
@@ -536,7 +530,9 @@ function ExampleWall() {
                 </AlertDialogHeader>
                 <AlertDialogFooter>
                   <AlertDialogCancel>Keep assigned</AlertDialogCancel>
-                  <AlertDialogAction variant="destructive">Confirm reroute</AlertDialogAction>
+                  <AlertDialogAction className={cn(buttonVariants({ variant: "destructive" }))}>
+                    Confirm reroute
+                  </AlertDialogAction>
                 </AlertDialogFooter>
               </AlertDialogContent>
             </AlertDialog>
@@ -604,10 +600,12 @@ function ExampleWall() {
                 <Button variant="outline">Open tools</Button>
               </PopoverTrigger>
               <PopoverContent align="end" className="space-y-3">
-                <PopoverHeader>
-                  <PopoverTitle>Case tools</PopoverTitle>
-                  <PopoverDescription>Choose the fastest next step for this active review.</PopoverDescription>
-                </PopoverHeader>
+                <div className="space-y-1.5">
+                  <p className="text-sm font-medium">Case tools</p>
+                  <p className="text-sm text-muted-foreground">
+                    Choose the fastest next step for this active review.
+                  </p>
+                </div>
                 <div className="space-y-2">
                   <Button className="w-full">Assign neurologist</Button>
                   <Button variant="outline" className="w-full">Create callback task</Button>
@@ -949,9 +947,9 @@ function EhrWorkspace() {
   }
 
   return (
-    <div className="mx-auto flex h-[calc(100dvh-12rem)] max-w-[1320px] min-h-0 flex-col space-y-3 [&_[data-slot=card]]:gap-3 [&_[data-slot=card]]:py-3 [&_[data-slot=card-header]]:gap-1 [&_[data-slot=card-header]]:px-4 [&_[data-slot=card-content]]:px-4 [&_[data-slot=card-footer]]:px-4">
+    <div className="mx-auto flex h-[calc(100dvh-12rem)] max-w-[1320px] min-h-0 flex-col space-y-3">
       <Card>
-        <CardContent className="flex flex-col gap-4 p-4 lg:flex-row lg:items-center lg:justify-between">
+        <CardContent className="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
           <div className="space-y-2">
             <div className="flex flex-wrap items-center gap-2">
               <Badge variant="secondary">Demo EHR Workspace</Badge>
@@ -1005,7 +1003,7 @@ function EhrWorkspace() {
               { label: "Urine Output", value: "1.7L", trend: "24h", icon: ClipboardList },
             ].map((stat) => (
               <Card key={stat.label}>
-                <CardContent className="p-3">
+                <CardContent className="p-6">
                   <div className="flex items-start justify-between gap-2">
                     <div>
                       <p className="text-xs text-muted-foreground">{stat.label}</p>
@@ -1186,11 +1184,11 @@ function EhrWorkspace() {
                 </CardHeader>
                 <CardContent className="space-y-3">
                   {[
-                    ["Furosemide IV 40mg q12h", "Next: 20:00", true],
-                    ["Lisinopril 10mg daily", "Next: 08:00", true],
-                    ["Metoprolol 25mg BID", "Hold if HR < 55", true],
-                    ["PRN Morphine 2mg", "Last given 15:11", false],
-                  ].map(([name, detail, active]) => (
+                    { name: "Furosemide IV 40mg q12h", detail: "Next: 20:00", active: true },
+                    { name: "Lisinopril 10mg daily", detail: "Next: 08:00", active: true },
+                    { name: "Metoprolol 25mg BID", detail: "Hold if HR < 55", active: true },
+                    { name: "PRN Morphine 2mg", detail: "Last given 15:11", active: false },
+                  ].map(({ name, detail, active }) => (
                     <div
                       key={name}
                       className="flex items-center justify-between p-3"
@@ -1285,12 +1283,12 @@ function EhrWorkspace() {
             </CardContent>
           </Card>
 
-          <Card className="gap-3 py-3">
-            <CardHeader className="gap-1 px-4">
+          <Card>
+            <CardHeader>
               <CardTitle>AI Assist Controls</CardTitle>
               <CardDescription>Interactive toggles for automation behavior</CardDescription>
             </CardHeader>
-            <CardContent className="space-y-2 px-4">
+            <CardContent className="space-y-2">
               <div className="flex items-center justify-between py-2">
                 <div className="flex items-start gap-2">
                   <ClipboardList className="mt-0.5 size-4 text-muted-foreground" />
@@ -1377,14 +1375,14 @@ function EhrWorkspace() {
 
           <div className="grid grid-cols-2 gap-3">
             <Card>
-              <CardContent className="p-3">
+              <CardContent className="p-6">
                 <p className="text-xs text-muted-foreground">Pending Labs</p>
                 <p className="mt-1 text-lg font-semibold">3</p>
                 <FlaskConical className="mt-2 size-4 text-muted-foreground" />
               </CardContent>
             </Card>
             <Card>
-              <CardContent className="p-3">
+              <CardContent className="p-6">
                 <p className="text-xs text-muted-foreground">Consults Open</p>
                 <p className="mt-1 text-lg font-semibold">2</p>
                 <Stethoscope className="mt-2 size-4 text-muted-foreground" />

@@ -100,7 +100,9 @@
         "checkbox-checked-border": "var(--primary)",
         "checkbox-checked-bg": "var(--primary)",
         "checkbox-checked-fg": "var(--primary-foreground)",
-        "radio-indicator": "var(--primary)"
+        "radio-indicator": "var(--primary)",
+        "--tw-shadow-color": "transparent",
+        "--tw-inset-shadow-color": "transparent"
       },
       "html[data-theme=\"corti-console-dark\"]": {
         "--font-sans": "ui-sans-serif, system-ui, sans-serif",
@@ -194,7 +196,9 @@
         "checkbox-checked-border": "var(--primary)",
         "checkbox-checked-bg": "var(--primary)",
         "checkbox-checked-fg": "var(--primary-foreground)",
-        "radio-indicator": "var(--primary)"
+        "radio-indicator": "var(--primary)",
+        "--tw-shadow-color": "transparent",
+        "--tw-inset-shadow-color": "transparent"
       }
     }
   },
