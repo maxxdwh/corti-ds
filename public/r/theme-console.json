@@ -199,6 +199,10 @@
         "radio-indicator": "var(--primary)",
         "--tw-shadow-color": "transparent",
         "--tw-inset-shadow-color": "transparent"
+      },
+      "html[data-theme^=\"corti-console\"] *": {
+        "box-shadow": "none",
+        "text-shadow": "none"
       }
     }
   },

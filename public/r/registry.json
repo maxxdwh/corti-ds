@@ -7,7 +7,10 @@
       "name": "button",
       "type": "registry:ui",
       "title": "Corti Button",
-      "description": "Shadcn/ui button exposed through the Corti registry."
+      "description": "Corti namespaced shadcn default button component. Design opinion comes from installed Corti theme tokens.",
+      "registryDependencies": [
+        "https://ui.shadcn.com/r/styles/default/button.json"
+      ]
     },
     {
       "name": "theme-core",
@@ -279,6 +282,10 @@
             "radio-indicator": "var(--primary)",
             "--tw-shadow-color": "transparent",
             "--tw-inset-shadow-color": "transparent"
+          },
+          "html[data-theme^=\"corti-console\"] *": {
+            "box-shadow": "none",
+            "text-shadow": "none"
           }
         }
       },
@@ -522,7 +529,7 @@
             "checkbox-checked-fg": "var(--primary-foreground)",
             "radio-indicator": "var(--primary)"
           },
-          "html[data-theme^=\"corti-assistant\"] :is([data-slot=\"card\"], [data-slot=\"button\"], [data-slot=\"input\"], [data-slot=\"textarea\"], [data-slot=\"select-trigger\"], [data-slot=\"popover-content\"], [data-slot=\"dialog-content\"], [data-slot=\"sheet-content\"], [data-slot=\"alert-dialog-content\"], [data-slot=\"switch\"], [data-slot=\"switch-thumb\"])": {
+          "html[data-theme^=\"corti-assistant\"] *": {
             "box-shadow": "none"
           }
         }
@@ -752,6 +759,10 @@
             "letter-spacing": "0.04em",
             "line-height": "1.35",
             "text-transform": "uppercase"
+          },
+          "html[data-theme^=\"corti-showcase\"] *": {
+            "box-shadow": "none",
+            "text-shadow": "none"
           },
           "html[data-theme^=\"corti-showcase\"] [data-slot=\"alert-dialog-media\"]": {
             "background": "transparent",
@@ -1516,7 +1527,10 @@
       "name": "checkbox",
       "type": "registry:ui",
       "title": "Corti Checkbox",
-      "description": "Shadcn/ui checkbox exposed through the Corti registry."
+      "description": "Corti namespaced shadcn default checkbox component. Design opinion comes from installed Corti theme tokens.",
+      "registryDependencies": [
+        "https://ui.shadcn.com/r/styles/default/checkbox.json"
+      ]
     },
     {
       "name": "collapsible",
@@ -1549,7 +1563,10 @@
       "name": "dialog",
       "type": "registry:ui",
       "title": "Corti Dialog",
-      "description": "Shadcn/ui dialog exposed through the Corti registry."
+      "description": "Corti namespaced shadcn default dialog component. Design opinion comes from installed Corti theme tokens.",
+      "registryDependencies": [
+        "https://ui.shadcn.com/r/styles/default/dialog.json"
+      ]
     },
     {
       "name": "drawer",
@@ -1609,7 +1626,10 @@
       "name": "input",
       "type": "registry:ui",
       "title": "Corti Input",
-      "description": "Shadcn/ui input exposed through the Corti registry."
+      "description": "Corti namespaced shadcn default input component. Design opinion comes from installed Corti theme tokens.",
+      "registryDependencies": [
+        "https://ui.shadcn.com/r/styles/default/input.json"
+      ]
     },
     {
       "name": "input-group",
@@ -1687,7 +1707,10 @@
       "name": "popover",
       "type": "registry:ui",
       "title": "Corti Popover",
-      "description": "Shadcn/ui popover exposed through the Corti registry."
+      "description": "Corti namespaced shadcn default popover component. Design opinion comes from installed Corti theme tokens.",
+      "registryDependencies": [
+        "https://ui.shadcn.com/r/styles/default/popover.json"
+      ]
     },
     {
       "name": "progress",
@@ -1702,7 +1725,10 @@
       "name": "radio-group",
       "type": "registry:ui",
       "title": "Corti Radio Group",
-      "description": "Shadcn/ui radio-group exposed through the Corti registry."
+      "description": "Corti namespaced shadcn default radio-group component. Design opinion comes from installed Corti theme tokens.",
+      "registryDependencies": [
+        "https://ui.shadcn.com/r/styles/default/radio-group.json"
+      ]
     },
     {
       "name": "resizable",
@@ -1726,7 +1752,10 @@
       "name": "select",
       "type": "registry:ui",
       "title": "Corti Select",
-      "description": "Shadcn/ui select exposed through the Corti registry."
+      "description": "Corti namespaced shadcn default select component. Design opinion comes from installed Corti theme tokens.",
+      "registryDependencies": [
+        "https://ui.shadcn.com/r/styles/default/select.json"
+      ]
     },
     {
       "name": "separator",
@@ -1741,7 +1770,10 @@
       "name": "sheet",
       "type": "registry:ui",
       "title": "Corti Sheet",
-      "description": "Shadcn/ui sheet exposed through the Corti registry."
+      "description": "Corti namespaced shadcn default sheet component. Design opinion comes from installed Corti theme tokens.",
+      "registryDependencies": [
+        "https://ui.shadcn.com/r/styles/default/sheet.json"
+      ]
     },
     {
       "name": "sidebar",
@@ -1792,7 +1824,10 @@
       "name": "switch",
       "type": "registry:ui",
       "title": "Corti Switch",
-      "description": "Shadcn/ui switch exposed through the Corti registry."
+      "description": "Corti namespaced shadcn default switch component. Design opinion comes from installed Corti theme tokens.",
+      "registryDependencies": [
+        "https://ui.shadcn.com/r/styles/default/switch.json"
+      ]
     },
     {
       "name": "table",
@@ -1807,13 +1842,19 @@
       "name": "tabs",
       "type": "registry:ui",
       "title": "Corti Tabs",
-      "description": "Shadcn/ui tabs exposed through the Corti registry."
+      "description": "Corti namespaced shadcn default tabs component. Design opinion comes from installed Corti theme tokens.",
+      "registryDependencies": [
+        "https://ui.shadcn.com/r/styles/default/tabs.json"
+      ]
     },
     {
       "name": "textarea",
       "type": "registry:ui",
       "title": "Corti Textarea",
-      "description": "Shadcn/ui textarea exposed through the Corti registry."
+      "description": "Corti namespaced shadcn default textarea component. Design opinion comes from installed Corti theme tokens.",
+      "registryDependencies": [
+        "https://ui.shadcn.com/r/styles/default/textarea.json"
+      ]
     },
     {
       "name": "toast",

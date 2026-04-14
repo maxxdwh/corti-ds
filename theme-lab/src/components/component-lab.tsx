@@ -1,6 +1,7 @@
 "use client"
 
 import * as React from "react"
+import Link from "next/link"
 import {
   Activity,
   ArrowUpRight,
@@ -9,6 +10,7 @@ import {
   FileText,
   FlaskConical,
   HeartPulse,
+  LayoutDashboard,
   MessageSquare,
   Pill,
   ShieldAlert,
@@ -113,7 +115,11 @@ import {
   SidebarGroupLabel,
   SidebarHeader,
   SidebarInset,
+  SidebarMenu,
+  SidebarMenuButton,
+  SidebarMenuItem,
   SidebarProvider,
+  SidebarSeparator,
   SidebarTrigger,
 } from "@/components/ui/sidebar"
 import { Switch } from "@/components/ui/switch"
@@ -1452,9 +1458,14 @@ export function ComponentLab() {
           data-theme={scopedTheme}
           data-theme-family={themeFamily}
           className={cn(
-            "min-h-screen bg-[radial-gradient(1200px_600px_at_50%_-120px,rgba(0,0,0,0.05),transparent_60%)] text-foreground antialiased dark:bg-[radial-gradient(1200px_600px_at_50%_-120px,rgba(255,255,255,0.06),transparent_60%)]",
+            "min-h-screen text-foreground antialiased",
+            themeFamily === "corti-classic"
+              ? "bg-none"
+              : resolvedMode === "dark"
+                ? "bg-background bg-[radial-gradient(1200px_600px_at_50%_-120px,rgba(255,255,255,0.06),transparent_60%)]"
+                : "bg-background bg-[radial-gradient(1200px_600px_at_50%_-120px,rgba(0,0,0,0.05),transparent_60%)]",
             themeFamily === "corti-classic" &&
-              "bg-none dark:bg-none",
+              "bg-none",
             resolvedMode === "dark" && "dark"
           )}
         >
@@ -1466,6 +1477,30 @@ export function ComponentLab() {
                 </div>
               </SidebarHeader>
               <SidebarContent>
+                <SidebarGroup>
+                  <SidebarGroupLabel>Pages</SidebarGroupLabel>
+                  <SidebarGroupContent>
+                    <SidebarMenu>
+                      <SidebarMenuItem>
+                        <SidebarMenuButton asChild isActive>
+                          <Link href="/">
+                            <Activity className="size-4" />
+                            <span>Component Gallery</span>
+                          </Link>
+                        </SidebarMenuButton>
+                      </SidebarMenuItem>
+                      <SidebarMenuItem>
+                        <SidebarMenuButton asChild>
+                          <Link href="/showcase">
+                            <LayoutDashboard className="size-4" />
+                            <span>Dashboard Showcase</span>
+                          </Link>
+                        </SidebarMenuButton>
+                      </SidebarMenuItem>
+                    </SidebarMenu>
+                  </SidebarGroupContent>
+                </SidebarGroup>
+                <SidebarSeparator />
                 <SidebarGroup>
                   <SidebarGroupLabel>Themes</SidebarGroupLabel>
                   <SidebarGroupContent>
@@ -1481,14 +1516,14 @@ export function ComponentLab() {
               </SidebarFooter>
             </Sidebar>
             <SidebarInset>
-              <div className="w-full p-4 sm:p-6">
+              <div className="min-w-0 p-4 sm:p-6">
                 <div className="mb-4 md:hidden">
                   <SidebarTrigger />
                 </div>
 
                 <div
                   className={cn(
-                    "mx-auto border border-border/70 bg-secondary/45 p-4 transition-all sm:p-5",
+                    "mx-auto min-w-0 border border-border/70 bg-secondary/45 p-4 transition-all sm:p-5",
                     themeFamily === "corti-classic"
                       ? "rounded-none bg-card p-3 shadow-[inset_1px_1px_0_var(--classic-highlight),inset_-1px_-1px_0_var(--classic-shadow-deep),inset_2px_2px_0_color-mix(in_srgb,var(--classic-face)_84%,var(--classic-highlight)),inset_-2px_-2px_0_var(--classic-shadow)]"
                       : "rounded-[28px]"

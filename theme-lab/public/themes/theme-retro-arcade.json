@@ -177,7 +177,7 @@
       },
       "[data-theme^=\"corti-retro-arcade\"] :is(h1, h2, h3, h4, h5, h6, [data-slot=\"card-title\"], [data-slot=\"dialog-title\"], [data-slot=\"alert-dialog-title\"])": {
         "color": "var(--foreground)",
-        "font-family": "\"Silkscreen\", \"VT323\", \"IBM Plex Mono\", \"Courier New\", monospace",
+        "font-family": "\"Press Start 2P\", \"Silkscreen\", monospace",
         "letter-spacing": "0.02em",
         "line-height": "1.45",
         "text-shadow": "0 0 4px color-mix(in srgb, var(--primary) 45%, transparent)"

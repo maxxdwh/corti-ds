@@ -223,6 +223,10 @@
         "line-height": "1.35",
         "text-transform": "uppercase"
       },
+      "html[data-theme^=\"corti-showcase\"] *": {
+        "box-shadow": "none",
+        "text-shadow": "none"
+      },
       "html[data-theme^=\"corti-showcase\"] [data-slot=\"alert-dialog-media\"]": {
         "background": "transparent",
         "border": "0",

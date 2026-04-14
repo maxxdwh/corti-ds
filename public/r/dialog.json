@@ -2,6 +2,9 @@
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "dialog",
   "title": "Corti Dialog",
-  "description": "Shadcn/ui dialog exposed through the Corti registry.",
+  "description": "Corti namespaced shadcn default dialog component. Design opinion comes from installed Corti theme tokens.",
+  "registryDependencies": [
+    "https://ui.shadcn.com/r/styles/default/dialog.json"
+  ],
   "type": "registry:ui"
 }

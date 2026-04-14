@@ -2,6 +2,9 @@
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "button",
   "title": "Corti Button",
-  "description": "Shadcn/ui button exposed through the Corti registry.",
+  "description": "Corti namespaced shadcn default button component. Design opinion comes from installed Corti theme tokens.",
+  "registryDependencies": [
+    "https://ui.shadcn.com/r/styles/default/button.json"
+  ],
   "type": "registry:ui"
 }

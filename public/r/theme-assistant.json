@@ -236,7 +236,7 @@
         "checkbox-checked-fg": "var(--primary-foreground)",
         "radio-indicator": "var(--primary)"
       },
-      "html[data-theme^=\"corti-assistant\"] :is([data-slot=\"card\"], [data-slot=\"button\"], [data-slot=\"input\"], [data-slot=\"textarea\"], [data-slot=\"select-trigger\"], [data-slot=\"popover-content\"], [data-slot=\"dialog-content\"], [data-slot=\"sheet-content\"], [data-slot=\"alert-dialog-content\"], [data-slot=\"switch\"], [data-slot=\"switch-thumb\"])": {
+      "html[data-theme^=\"corti-assistant\"] *": {
         "box-shadow": "none"
       }
     }

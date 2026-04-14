@@ -96,10 +96,13 @@ Add the registry to the consumer app's `components.json`:
 ```json
 {
   "registries": {
-    "@corti": "<your-hosted-url>/public/r/{name}.json"
+    "@corti": "<your-hosted-url>/r/{name}.json"
   }
 }
 ```
+
+Every `@corti/<component>` item proxies the standard shadcn/ui component source.
+Install a Corti theme alongside the component to apply Corti styling tokens and theme CSS.
 
 Install components with the shadcn CLI:
 

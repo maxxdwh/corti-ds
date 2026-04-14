@@ -2,6 +2,9 @@
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "radio-group",
   "title": "Corti Radio Group",
-  "description": "Shadcn/ui radio-group exposed through the Corti registry.",
+  "description": "Corti namespaced shadcn default radio-group component. Design opinion comes from installed Corti theme tokens.",
+  "registryDependencies": [
+    "https://ui.shadcn.com/r/styles/default/radio-group.json"
+  ],
   "type": "registry:ui"
 }

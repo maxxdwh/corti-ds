@@ -224,6 +224,10 @@
         "line-height": "1.35",
         "text-transform": "uppercase"
       },
+      "[data-theme^=\"corti-showcase\"] *": {
+        "box-shadow": "none",
+        "text-shadow": "none"
+      },
       "[data-theme^=\"corti-showcase\"] [data-slot=\"alert-dialog-media\"]": {
         "background": "transparent",
         "border": "0",
