@@ -1,204 +1,182 @@
 # Corti DS Registry
 
-Corti's shadcn/ui-based component registry and theme library.
+A shadcn/ui-compatible component and theme registry for Corti. Install components and themes directly into any shadcn project via the CLI — no copy-pasting required.
 
-This repo publishes:
+**Registry URL:** `https://maxxdwh.github.io/corti-ds/public/r/{name}.json`
 
-- namespaced shadcn/ui primitives under `@corti/*`
-- shared themes: `Console`, `Assistant`, `Classic`, `Showcase`, and `Retro Arcade`
-- a local Theme Lab for visual review
+---
 
-## Registry Model
+## Quick Start
 
-This registry currently aims for shadcn/ui parity for component implementations.
+### 1. Add the registry to your project
 
-- `registry:block` and `registry:ui` are packaging categories.
-- UI items are exposed through the Corti namespace without local component overrides.
-- Theme items remain defined locally in `registry.json`.
+In your project's `components.json`, add the `@corti` registry:
 
-## Structure
-
-- `registry.json`
-  Source of truth for registry items and themes.
-- `public/r/...`
-  Generated installable registry JSON files.
-- `theme-lab/...`
-  Local app for reviewing components and themes.
-
-Do not edit `public/r/*.json` directly. Rebuild from `registry.json`.
-
-## Themes
-
-Available themes:
-
-- `theme-console`
-  Baseline shadcn-style light and dark tokens under the Corti namespace.
-- `theme-assistant`
-  Corti assistant theme.
-- `theme-classic`
-  Retro desktop-inspired theme with beveled chrome.
-- `theme-showcase`
-  High-contrast editorial/demo theme.
-- `theme-retro-arcade`
-  Pixel-inspired arcade theme.
-
-`Console` is the default baseline option. In Theme Lab and `theme-switcher`, choosing `Console` clears `data-theme` overrides and falls back to standard shadcn styling.
-
-Runtime theme values:
-
-- `corti-console-light`
-- `corti-console-dark`
-- `corti-assistant-light`
-- `corti-assistant-dark`
-- `corti-classic-light`
-- `corti-classic-dark`
-- `corti-showcase-light`
-- `corti-showcase-dark`
-- `corti-retro-arcade-light`
-- `corti-retro-arcade-dark`
-
-Example:
-
-```ts
-document.documentElement.dataset.theme = "corti-classic-light"
+```json
+{
+  "registries": {
+    "@corti": "https://maxxdwh.github.io/corti-ds/public/r/{name}.json"
+  }
+}
 ```
 
-To return to baseline shadcn styling, remove the override:
+### 2. Install components
+
+Use the shadcn CLI to pull in any registry item:
+
+```bash
+npx shadcn@latest add @corti/button
+npx shadcn@latest add @corti/input @corti/select @corti/sidebar
+```
+
+### 3. Install a theme
+
+Pick a theme and install it:
+
+```bash
+npx shadcn@latest add @corti/theme-console    # Monochrome baseline
+npx shadcn@latest add @corti/theme-assistant  # Corti blue
+npx shadcn@latest add @corti/theme-classic    # Retro desktop chrome
+npx shadcn@latest add @corti/theme-showcase   # High-contrast editorial
+npx shadcn@latest add @corti/theme-retro-arcade  # Pixel/arcade
+```
+
+`theme-core` is installed automatically as a dependency of any theme.
+
+### 4. Apply a theme at runtime
+
+Set `data-theme` on the root `<html>` element:
+
+```ts
+document.documentElement.dataset.theme = "corti-assistant-light"
+```
+
+Available values:
+
+| Theme | Light | Dark |
+|---|---|---|
+| Console | `corti-console-light` | `corti-console-dark` |
+| Assistant | `corti-assistant-light` | `corti-assistant-dark` |
+| Classic | `corti-classic-light` | `corti-classic-dark` |
+| Showcase | `corti-showcase-light` | `corti-showcase-dark` |
+| Retro Arcade | `corti-retro-arcade-light` | `corti-retro-arcade-dark` |
+
+To fall back to standard shadcn styling (no Corti theme), remove the attribute:
 
 ```ts
 delete document.documentElement.dataset.theme
 ```
 
-## Build
+### 5. (Optional) Add the theme switcher
 
-Install dependencies:
-
-```bash
-npm install
-```
-
-Build the registry:
+Install the `theme-switcher` component for a ready-made UI control:
 
 ```bash
-npm run registry:build
+npx shadcn@latest add @corti/theme-switcher
 ```
 
-Watch registry output during theme or component work:
+---
+
+## MCP Setup
+
+The registry supports the shadcn MCP server, which lets Claude install and use components on your behalf.
+
+In your project, run:
 
 ```bash
-npm run registry:watch
+npx shadcn@latest mcp init --client claude
 ```
 
-## Consume From Another Project
+Then restart Claude Code. You can then prompt Claude with things like:
+> *"Add the @corti/button and @corti/theme-assistant to this project"*
 
-Add the registry to the consumer app's `components.json`:
+---
 
-```json
-{
-  "registries": {
-    "@corti": "<your-hosted-url>/public/r/{name}.json"
-  }
-}
-```
+## Available Items
 
-Install components with the shadcn CLI:
+### Themes
 
-```bash
-npx shadcn@latest add @corti/button
-npx shadcn@latest add @corti/theme-console
-npx shadcn@latest add @corti/theme-assistant
-npx shadcn@latest add @corti/theme-classic
-npx shadcn@latest add @corti/theme-showcase
-npx shadcn@latest add @corti/theme-retro-arcade
-```
+| Name | Description |
+|---|---|
+| `theme-core` | Shared semantic tokens (auto-installed with any theme) |
+| `theme-console` | Monochrome light/dark — closest to shadcn defaults |
+| `theme-assistant` | Corti blue — matches the Corti assistant product |
+| `theme-classic` | Retro desktop-inspired with beveled chrome |
+| `theme-showcase` | High-contrast editorial theme with IBM Plex Mono |
+| `theme-retro-arcade` | Pixel-inspired arcade aesthetic |
 
-Install standard shadcn primitives from this registry the same way:
+### Components
 
-```bash
-npx shadcn@latest add @corti/input @corti/select @corti/sidebar
-```
+All standard shadcn/ui components are available under `@corti/*`:
 
-To overwrite an existing installed item:
+`accordion` · `alert` · `alert-dialog` · `avatar` · `badge` · `button` · `card` · `checkbox` · `dialog` · `dropdown-menu` · `form` · `input` · `label` · `popover` · `progress` · `radio-group` · `select` · `separator` · `sheet` · `sidebar` · `skeleton` · `slider` · `switch` · `table` · `tabs` · `textarea` · `toast` · `toggle` · `tooltip`
+
+---
+
+## Updating an Installed Item
+
+If a component or theme has been updated in the registry, reinstall with the overwrite flag:
 
 ```bash
 npx shadcn@latest add -o @corti/<item-name>
 ```
 
-## Included Items
+---
 
-The registry republishes the default shadcn/ui catalog under `@corti/*`, including:
+## Contributing / Local Development
 
-- `accordion`
-- `alert`
-- `alert-dialog`
-- `avatar`
-- `badge`
-- `card`
-- `dialog`
-- `field`
-- `form`
-- `input`
-- `popover`
-- `progress`
-- `select`
-- `sheet`
-- `sidebar`
-- `switch`
-- `table`
-- `tabs`
-- `textarea`
-- `toast`
-- `tooltip`
+### Prerequisites
 
-Registry-local theme items include:
+- Node.js 18+
+- npm
 
-- `theme-core`
-- `theme-console`
-- `theme-assistant`
-- `theme-classic`
-- `theme-showcase`
-- `theme-retro-arcade`
+### Install dependencies
 
-See `public/r/` for the full generated list.
+```bash
+npm install
+```
 
-## Upstream Sync Cadence
+### Build the registry
 
-Upstream shadcn changes are merged on a scheduled cadence, not continuously:
-
-1. Pull latest upstream component changes into a staging branch.
-2. Review API, behavior, and accessibility parity diffs.
-3. Verify token compatibility and theme output.
-4. Merge selected changes with concise release notes.
-
-This keeps the Corti registry aligned with upstream improvements while preserving local theme behavior.
-
-## Theme Editing
-
-If you need to change a theme, start here:
-
-- `registry.json`
-- `theme-lab/public/themes/*.json`
-- `theme-lab/src/components/theme-style-loader.tsx`
-- `theme-lab/src/components/theme-switcher.tsx`
-
-After editing:
+Compiles `registry.json` into installable JSON files under `public/r/`:
 
 ```bash
 npm run registry:build
 ```
 
-If you changed Theme Lab surfaces or theme previews, also verify the app build from `theme-lab/`:
+### Watch mode
+
+Rebuilds automatically as you edit registry items:
 
 ```bash
-npm run build
+npm run registry:watch
 ```
 
-## Theme Lab
+> Do not edit files in `public/r/` directly — they are generated. Edit `registry.json` or the source files under `registry/default/`, then rebuild.
 
-Theme Lab is the local preview app for registry components and theme behavior. Use it to review:
+### Editing a theme
 
-- theme token application
-- dialogs, sheets, popovers, and other portal surfaces
-- component states across `Console`, `Assistant`, `Classic`, and `Showcase`
+1. Open `registry.json` and find the theme entry (e.g. `theme-showcase`)
+2. Edit the CSS variable values
+3. Run `npm run registry:build`
+4. Preview changes in Theme Lab (see below)
 
-Theme Lab theme files live in `theme-lab/public/themes/`.
+### Theme Lab
+
+A local preview app for reviewing components across all themes:
+
+```bash
+cd theme-lab
+npm install
+npm run dev
+```
+
+---
+
+## Deployment
+
+The registry is deployed via GitHub Pages from the `main` branch. Pushing to `main` automatically publishes updated registry files at:
+
+```
+https://maxxdwh.github.io/corti-ds/public/r/{name}.json
+```
